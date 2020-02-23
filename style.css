@@ -165,6 +165,10 @@ footer a {
     padding: 0 10px;
 }
 
+.contatti {
+    padding: 20px 0;
+}
+
 /* Live animation */
 
 @keyframes live {
