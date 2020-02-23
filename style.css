@@ -111,6 +111,21 @@ h1 {
     font-size: 28px;
 }
 
+/* Numero */
+
+.numero {
+    margin: 0 auto;
+}
+
+.numero span {
+    float: left;
+}
+
+.spannumero {
+    color: #008000;
+    float: left;
+}
+
 /* Notizie */
 
 .notizie {
