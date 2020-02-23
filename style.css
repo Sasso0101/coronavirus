@@ -104,6 +104,13 @@ h1 {
     border: 1px solid #ffffff;
 }
 
+/* Facebook */
+
+.facebook a {
+    color: white;
+    font-size: 28px;
+}
+
 /* Notizie */
 
 .notizie {
