@@ -158,6 +158,7 @@ footer a {
     padding: 10px 0;
     background-color: rgba(255, 255, 255, 0.86);
     color: #000000;
+    height: 39px;
 }
 
 .social div {
@@ -187,8 +188,5 @@ footer a {
     }
     .regioni {
         font-size: 30px;
-    }
-    .social {
-        background-color: transparent;
     }
 }
