@@ -146,6 +146,10 @@ footer a {
     color: white;
 }
 
+.contatti {
+    padding: 20px 0;
+}
+
 /* Pulsanti social */
 
 .social {
@@ -165,8 +169,9 @@ footer a {
     padding: 0 10px;
 }
 
-.contatti {
-    padding: 20px 0;
+.inpage {
+    background-color: #000000;
+    color: white;
 }
 
 /* Live animation */
