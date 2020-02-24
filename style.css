@@ -1,9 +1,9 @@
-body, h1, h2 {
+.mainBody, h1, h2 {
     padding: 0;
     margin: 0;
 }
 
-body {
+.mainBody {
     font-family: 'Roboto', sans-serif;
     background-color: black;
     color: #ffffff;
@@ -89,9 +89,8 @@ h1 {
 }
 
 /* Pulsante aggiorna */
+
 .aggiorna {
-    /* background-color: #7e7373; */
-    /* color: #000000; */
     float: left;
     width: 200px;
     text-align: center;
@@ -124,19 +123,11 @@ h1 {
     font-size: 28px;
 }
 
-/* Numero */
+/* Grafico */
 
-.numero {
+.infogram-embed {
+    max-width: 600px;
     margin: 0 auto;
-}
-
-.numero span {
-    float: left;
-}
-
-.spannumero {
-    color: #008000;
-    float: left;
 }
 
 /* Notizie */
