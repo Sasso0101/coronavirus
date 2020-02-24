@@ -103,7 +103,7 @@ h1 {
 
 /* Tabella regioni */
 
-#regioni {
+.regioni {
     margin: 0 auto;
     text-align: center;
     font-size: 4vw;
@@ -219,7 +219,7 @@ footer a {
     .live {
         display: block;
     }
-    #regioni {
+    .regioni {
         font-size: 30px;
     }
 }
