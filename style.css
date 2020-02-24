@@ -117,10 +117,12 @@ h1 {
 }
 
 /* Tabella regioni */
+.regioni, #nota {
+    font-size: 4vw;
+}
 .regioni {
     margin: 0 auto;
     text-align: center;
-    font-size: 4vw;
     width: 80%;
     max-width: 1000px;
     border-collapse: collapse;
@@ -133,6 +135,12 @@ h1 {
 
 .tabellaitalia {
     color: #ff0000;
+}
+
+#nota {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
 }
 
 /* Grafico */
@@ -217,5 +225,8 @@ footer p {
     }
     .regioni {
         font-size: 30px;
+    }
+    #nota {
+        font-size: 24px;
     }
 }

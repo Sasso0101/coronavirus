@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?_=2">
+    <link rel="stylesheet" href="style.css?_=3">
     <title>Situazione Coronavirus Italia - LIVE</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
@@ -65,6 +65,7 @@
                 <th>Casi guariti</th>
             </tr>
         </table>
+        <span id="nota"></span>
     </section>
     <section>
         <h2 class="facebook"><a href="https://www.facebook.com/coronavirusliveitalia">➡Seguici su Facebook!⬅</a></h2>
@@ -108,7 +109,7 @@
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var dati = JSON.parse(this.responseText);
-                var totaleContagiati = 0, totaleDecessi = 0, totaleGuariti = 0;
+                var totaleContagiati = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, nonConfermati = '';
                 const tabella = document.getElementById('regioni').getElementsByTagName('tbody')[0];
                 for (let index = 0; index < dati["regioni"].length; index++) {
                     regione = dati["regioni"][index];
@@ -116,12 +117,24 @@
                     totaleContagiati += regione.contagiati;
                     totaleDecessi += regione.decessi;
                     totaleGuariti += regione.guariti;
-                    row.innerHTML = '<td>'+regione.nome+'</td><td>'+regione.contagiati+'</td><td>'+regione.decessi+'</td><td>'+regione.guariti+'</td>';
+
+                    nonConfermati = '';
+                    if (regione.nonConfermati > 0) {
+                        nonConfermati = ' (+'+regione.nonConfermati+')*';
+                        totaleNonConfermati += regione.nonConfermati;
+                    }
+                    row.innerHTML = '<td>'+regione.nome+'</td><td>'+regione.contagiati+nonConfermati+'</td><td>'+regione.decessi+'</td><td>'+regione.guariti+'</td>';
                     tabella.appendChild(row);
                 }
+                nonConfermati='';
+                if (totaleNonConfermati > 0) {
+                    document.getElementById('nota').innerHTML='* Casi di tampone positivo ma non confermati';
+                    nonConfermati = ' (+'+totaleNonConfermati+')*';
+                }
+
                 var row = document.createElement("tr");
                 row.classList.add("tabellaitalia");
-                row.innerHTML = '<td>Italia</td><td>'+totaleContagiati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td>';
+                row.innerHTML = '<td>Italia</td><td>'+totaleContagiati+nonConfermati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td>';
                 tabella.appendChild(row);
                 var row = document.createElement("tr");
                 row.innerHTML = '<td colspan="4">'+dati.paeseAlMondo+'° paese nel mondo per numero di contagi</td>';
