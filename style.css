@@ -58,7 +58,7 @@ h1 {
     min-width: 300px;
     background-color: #ffffff;
     border-radius: 40px;
-    margin: 20px;
+    margin: 4px;
     text-align: center;
 }
 
@@ -81,6 +81,7 @@ h1 {
 .numeroitalia {
     font-size: 100px;
     display: block;
+    line-height: 90px;
 }
 
 .percmondiale {
@@ -114,6 +115,10 @@ h1 {
 
 .regioni, .regioni td {
     border: 1px solid #ffffff;
+}
+
+.tabellaitalia {
+    color: #ff0000;
 }
 
 /* Facebook */
