@@ -31,67 +31,67 @@
     </script>
 </head>
 <body class="mainBody">
-    <div class="titolo">
-        <span class="live"></span>
+    <header class="titolo">
+        <span class="liveDot"></span>
         <h1>Situazione Coronavirus in Italia - LIVE</h1>
-    </div>
-    <div class="situazione">
-        <div class="caso confermati">
-            <h2>Casi confermati</h2>
-            <span class="numeroitalia" id="totaleConfermati"></span>
-            <span class="percmondiale">(0,17% casi mondiali)</span>
+    </header>
+    <section class="numeriTotali">
+        <div class="totale confermati">
+            <span class="spanTotaleTitolo">Casi confermati</span>
+            <span class="spanTotaleNumero" id="totaleConfermati"></span>
+            <span>(0,17% casi mondiali)</span>
         </div>
-        <div class="caso morti">
-            <h2>Decessi</h2>
-            <span class="numeroitalia" id="totaleDecessi"></span>
-            <span class="percmondiale">(0,08% casi mondiali)</span>
+        <div class="totale morti">
+            <span class="spanTotaleTitolo">Decessi</span>
+            <span class="spanTotaleNumero" id="totaleDecessi"></span>
+            <span>(0,08% casi mondiali)</span>
         </div>
-        <div class="caso guariti">
-            <h2>Casi guariti</h2>
-            <span class="numeroitalia" id="totaleGuariti"></span>
-            <span class="percmondiale">(0,004% casi mondiali)</span>
+        <div class="totale guariti">
+            <span class="spanTotaleTitolo">Casi guariti</span>
+            <span class="spanTotaleNumero" id="totaleGuariti"></span>
+            <span>(0,004% casi mondiali)</span>
         </div>
-    </div>
+    </section>
     <div class="aggiorna" onClick="window.location.reload();">
         Aggiorna dati
     </div>
-    <span class="sottotitolo">Regioni colpite:</span>
-    <table class="regioni" id="regioni">
-        <tr>
-            <th>Regione</th>
-            <th>Contagiati</th>
-            <th>Decessi</th>
-            <th>Casi guariti</th>
-        </tr>
-    </table>
-    <div>
-        <span class="sottotitolo facebook"><a href="https://www.facebook.com/coronavirusliveitalia">➡Seguici su Facebook!⬅</a></span>
-        <div class="social inpage">
+    <section>
+        <h2>Regioni colpite:</h2>
+        <table class="regioni" id="regioni">
+            <tr>
+                <th>Regione</th>
+                <th>Contagiati</th>
+                <th>Decessi</th>
+                <th>Casi guariti</th>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h2 class="facebook"><a href="https://www.facebook.com/coronavirusliveitalia">➡Seguici su Facebook!⬅</a></h2>
+        <div class="social socialFissi">
             <span>Condividi: </span>
             <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large">
                 <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
             </div>
-            <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large" data-url="https://coronaviruslive.it/" data-hashtags="COVID19italia, coronavirus, contagio">
-                Tweet
-            </a>
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large" data-url="https://coronaviruslive.it/" data-hashtags="COVID19italia, coronavirus, contagio">Tweet</a>
         </div>
-    </div>
-    <div>
-        <span class="sottotitolo">Storico casi totali</span>
+    </section>
+    <section>
+        <h2>Storico casi totali</h2>
         <div class="infogram-embed" data-id="e61b99b0-f73b-4fba-a7ac-b2b8b4cbceb8" data-type="interactive" data-title="Regioni"></div><script>!function(e,i,n,s){var t="InfogramEmbeds",d=e.getElementsByTagName("script")[0];if(window[t]&&window[t].initialized)window[t].process&&window[t].process();else if(!e.getElementById(n)){var o=e.createElement("script");o.async=1,o.id=n,o.src="https://e.infogram.com/js/dist/embed-loader-min.js",d.parentNode.insertBefore(o,d)}}(document,0,"infogram-async");</script></div>
-    </div>
-    <div class="notizie">
-        <span class="sottotitolo">Coperture live:</span>
-        <div class="notizia"><a href="https://www.corriere.it/cronache/20_febbraio_24/coronavirus-italia-ultime-notizie-oggi-nord-23035e06-56ce-11ea-b89d-a5ca249e9e1e.shtml" rel="noopener" target="_blank">Copertura live Corriere della Sera</a></div>
-        <div class="notizia"><a href="https://www.repubblica.it/cronaca/2020/02/22/news/coronavirus_in_italia_aggiornamento_ora_per_ora-249241616/" rel="noopener" target="_blank">Copertura live Repubblica</a></div>
-    </div>
+    </section>
+    <section class="live">
+        <h2>Coperture live:</h2>
+        <div><a href="https://www.corriere.it/cronache/20_febbraio_24/coronavirus-italia-ultime-notizie-oggi-nord-23035e06-56ce-11ea-b89d-a5ca249e9e1e.shtml" rel="noopener" target="_blank">Copertura live Corriere della Sera</a></div>
+        <div><a href="https://www.repubblica.it/cronaca/2020/02/22/news/coronavirus_in_italia_aggiornamento_ora_per_ora-249241616/" rel="noopener" target="_blank">Copertura live Repubblica</a></div>
+    </section>
     <footer>
-        <p class="aggiornamento">Ultimo aggiornamento: <span id="ultimoaggiornamento"></span></p>
-        <p class="aggiornamento">Fonti dei dati: <a href="https://www.facebook.com/RegionedelVeneto" rel="noopener" target="_blank" rel="noopener" target="_blank">Regione Veneto</a>, <a href="https://www.lombardianotizie.online/coronavirus-casi-lombardia/" rel="noopener" target="_blank">Regione Lombardia</a>, <a href="http://www.regione.emilia-romagna.it/" rel="noopener" target="_blank">Regione Emilia Romagna</a>, <a href="https://www.youtube.com/channel/UC4fru33Tzpu0UhCIHChiNFA" rel="noopener" target="_blank">Protezione Civile</a> (Italia), <a href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" rel="noopener" target="_blank">The Lancet</a> (Mondo)</p>
+        <p>Ultimo aggiornamento: <span id="ultimoAggiornamento"></span></p>
+        <p>Fonti dei dati: <a href="https://www.facebook.com/RegionedelVeneto" rel="noopener" target="_blank" rel="noopener" target="_blank">Regione Veneto</a>, <a href="https://www.lombardianotizie.online/coronavirus-casi-lombardia/" rel="noopener" target="_blank">Regione Lombardia</a>, <a href="http://www.regione.emilia-romagna.it/" rel="noopener" target="_blank">Regione Emilia Romagna</a>, <a href="https://www.youtube.com/channel/UC4fru33Tzpu0UhCIHChiNFA" rel="noopener" target="_blank">Protezione Civile</a> (Italia), <a href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" rel="noopener" target="_blank">The Lancet</a> (Mondo)</p>
         <p class="contatti">Creato e aggiornato costantemente da Salvatore Andaloro<br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a> - (c) 2020</p>
     </footer>
 
-    <div class="social">
+    <div class="social socialOverlay">
         <span>Condividi: </span>
         <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large">
             <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
@@ -127,7 +127,7 @@
                 document.getElementById('totaleConfermati').innerHTML=totaleContagiati+totaleDecessi+totaleGuariti;
                 document.getElementById('totaleDecessi').innerHTML=totaleDecessi;
                 document.getElementById('totaleGuariti').innerHTML=totaleGuariti;
-                document.getElementById('ultimoaggiornamento').innerHTML=dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
+                document.getElementById('ultimoAggiornamento').innerHTML=dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
             }
         };
         xmlhttp.open('GET', 'https://coronaviruslive.it/dati.json?_=' + new Date().getTime(), true);
