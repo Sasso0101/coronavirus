@@ -105,15 +105,17 @@ h1 {
     color: #008000;
 }
 
-/* Pulsante aggiorna */
+/* Sezione aggiorna */
 .aggiorna {
-    float: left;
-    width: 200px;
     text-align: center;
     cursor: pointer;
     margin: 0 auto;
     font-size: 30px;
     text-decoration: underline;
+}
+#ultimoControllo {
+    text-align: center;
+    display: none;
 }
 
 /* Tabella regioni */
