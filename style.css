@@ -136,6 +136,15 @@ h1 {
 }
 
 /* Grafico */
+.grafico h2 {
+    padding-bottom: 0px;
+}
+.grafico h3 {
+    margin: 5px 0 10px 0;
+    text-align: center;
+    font-weight: normal;
+    font-size: 18px;
+}
 .infogram-embed {
     max-width: 600px;
     margin: 0 auto;
