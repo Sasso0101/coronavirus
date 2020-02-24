@@ -38,17 +38,17 @@
     <div class="situazione">
         <div class="caso confermati">
             <h2>Casi confermati</h2>
-            <span class="numeroitalia">229</span>
+            <span class="numeroitalia" id="totaleConfermati"></span>
             <span class="percmondiale">(0,17% casi mondiali)</span>
         </div>
         <div class="caso morti">
             <h2>Decessi</h2>
-            <span class="numeroitalia">6</span>
+            <span class="numeroitalia" id="totaleDecessi"></span>
             <span class="percmondiale">(0,08% casi mondiali)</span>
         </div>
         <div class="caso guariti">
             <h2>Casi guariti</h2>
-            <span class="numeroitalia">1</span>
+            <span class="numeroitalia" id="totaleGuariti"></span>
             <span class="percmondiale">(0,004% casi mondiali)</span>
         </div>
     </div>
@@ -56,51 +56,12 @@
         Aggiorna dati
     </div>
     <span class="sottotitolo">Regioni colpite:</span>
-    <table class="regioni">
+    <table id="regioni">
         <tr>
             <th>Regione</th>
             <th>Contagiati</th>
             <th>Decessi</th>
             <th>Casi guariti</th>
-        </tr>
-        <tr>
-            <td>Lombardia</td>
-            <td>172</td>
-            <td>5</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Veneto</td>
-            <td>26</td>
-            <td>1</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Emilia Romagna</td>
-            <td>18</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Piemonte</td>
-            <td>4</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Lazio</td>
-            <td>2</td>
-            <td>0</td>
-            <td>1</td>
-        </tr>
-        <tr class="tabellaitalia">
-            <td><b>Italia</b></td>
-            <td><b>222</b></td>
-            <td><b>6</b></td>
-            <td><b>1</b></td>
-        </tr>
-        <tr>
-            <td colspan="4">3° paese nel mondo per numero di contagi</td>
         </tr>
     </table>
     <div>
@@ -139,6 +100,38 @@
             Tweet
         </a>
     </div>
+
+    <script>
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var dati = JSON.parse(this.responseText);
+                var totaleContagiati = 0, totaleDecessi = 0, totaleGuariti = 0;
+                const tabella = document.getElementById('regioni').getElementsByTagName('tbody')[0];
+                for (let index = 0; index < dati["regioni"].length; index++) {
+                    regione = dati["regioni"][index];
+                    var row = document.createElement("tr");
+                    totaleContagiati += regione.contagiati;
+                    totaleDecessi += regione.decessi;
+                    totaleGuariti += regione.guariti;
+                    row.innerHTML = '<td>'+regione.nome+'</td><td>'+regione.contagiati+'</td><td>'+regione.decessi+'</td><td>'+regione.guariti+'</td>';
+                    tabella.appendChild(row);
+                }
+                var row = document.createElement("tr");
+                row.classList.add("tabellaitalia");
+                row.innerHTML = '<td>Italia</td><td>'+totaleContagiati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td>';
+                tabella.appendChild(row);
+                var row = document.createElement("tr");
+                row.innerHTML = '<td colspan="4">'+dati.paeseAlMondo+'° paese nel mondo per numero di contagi</td>';
+                tabella.appendChild(row);
+                document.getElementById('totaleConfermati').innerHTML=totaleContagiati+totaleDecessi+totaleGuariti;
+                document.getElementById('totaleDecessi').innerHTML=totaleDecessi;
+                document.getElementById('totaleGuariti').innerHTML=totaleGuariti;
+            }
+        };
+        xmlhttp.open("GET", "https://coronaviruslive.it/dati.json", true);
+        xmlhttp.send();
+    </script>
 
     <!-- Facebook condividi -->
     <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
