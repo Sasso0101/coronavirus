@@ -1,0 +1,38 @@
+{
+    "regioni": [
+        {
+            "nome": "Lombardia",
+            "contagiati": 172,
+            "decessi": 5,
+            "guariti": 0
+        },
+        {
+            "nome": "Veneto",
+            "contagiati": 26,
+            "decessi": 1,
+            "guariti": 0
+        },
+        {
+            "nome": "Emilia Romagna",
+            "contagiati": 18,
+            "decessi": 0,
+            "guariti": 0
+        },
+        {
+            "nome": "Piemonte",
+            "contagiati": 4,
+            "decessi": 0,
+            "guariti": 0
+        },
+        {
+            "nome": "Lazio",
+            "contagiati": 2,
+            "decessi": 0,
+            "guariti": 0
+        }
+    ],
+    "ultimoAggiornamento": {
+        "ora": "16:57",
+        "data": "24/02/2020"
+    }
+}
