@@ -5,7 +5,7 @@
 
 .mainBody {
     font-family: 'Roboto', sans-serif;
-    background-color: black;
+    background-color: #0a0a0a;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -176,7 +176,6 @@ footer p {
 }
 
 /* Pulsanti social */
-
 .social {
     display: flex;
     flex-direction: row;
@@ -197,7 +196,6 @@ footer p {
 }
 
 .socialFissi {
-    background-color: #000000;
     color: #ffffff;
 }
 
