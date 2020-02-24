@@ -2,13 +2,13 @@
     "regioni": [
         {
             "nome": "Lombardia",
-            "contagiati": 172,
+            "contagiati": 167,
             "decessi": 5,
             "guariti": 0
         },
         {
             "nome": "Veneto",
-            "contagiati": 33,
+            "contagiati": 32,
             "decessi": 1,
             "guariti": 0
         },
