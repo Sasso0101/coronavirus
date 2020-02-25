@@ -13,7 +13,7 @@
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: normal;
     display: block;
     text-align: center;
@@ -35,7 +35,7 @@ a {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 37px;
     text-align: center;
 }
 
@@ -87,12 +87,12 @@ h1 {
     display: block;
 }
 .spanTotaleTitolo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 .spanTotaleNumero {
-    font-size: 100px;
-    line-height: 90px;
+    font-size: 89px;
+    line-height: 85px;
 }
 
 .confermati {
@@ -112,7 +112,7 @@ h1 {
 .pulsanteAggiorna {
     cursor: pointer;
     margin: 0 auto;
-    font-size: 30px;
+    font-size: 27px;
     text-decoration: underline;
     user-select: none;
 }
@@ -235,7 +235,7 @@ footer p {
         display: block;
     }
     .regioni {
-        font-size: 30px;
+        font-size: 24px;
     }
     #nota {
         font-size: 24px;
