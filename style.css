@@ -114,6 +114,7 @@ h1 {
     margin: 0 auto;
     font-size: 30px;
     text-decoration: underline;
+    user-select: none;
 }
 #ultimoControllo {
     display: none;
