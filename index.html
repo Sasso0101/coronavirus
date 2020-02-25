@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?_=45">
+    <link rel="stylesheet" href="style.css?_=13">
     <title>Situazione Coronavirus Italia - LIVE</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
 
-    <meta name="description" content="Numero contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.">
-    <meta name="keywords" content="Coronavirus,Covid19Italia,Contagio,Coronaviruslive, live, tracker">
+    <meta name="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati live in tempo reale.">
+    <meta name="keywords" content="coronavirus,covid19Italia,contagio,coronaviruslive,live,tracker,conteggio">
 
     <meta property="og:url"           content="https://coronaviruslive.it/" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Situazione Coronavirus in Italia - LIVE" />
-    <meta property="og:description"   content="Numero contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale." />
+    <meta property="og:description"   content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati live in tempo reale." />
     <meta property="og:image"         content="https://coronaviruslive.it/icons/favicon-96x96.png" />
     <meta property="og:locale"        content="it_IT" />
 
@@ -52,10 +52,10 @@
             <span>(0,004% casi mondiali)</span>
         </div>
     </section>
-    <section>
-        <div class="aggiorna" onClick="updateData();">
+    <section class="aggiorna">
+        <a class="pulsanteAggiorna" onClick="updateData();">
             Aggiorna dati
-        </div>
+        </a>
         <span id="ultimoControllo"></span>
     </section>
     <section>
@@ -72,11 +72,10 @@
     </section>
     <section>
         <h2 class="facebook"><a href="https://www.facebook.com/coronavirusliveitalia">➡Seguici su Facebook!⬅</a></h2>
+        <span class="consiglialo">Consiglialo ai tuoi amici: </span>
         <div class="social socialFissi">
-            <span>Condividi: </span>
-            <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large">
-                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-            </div>
+            <div class="fb-like" data-href="https://coronaviruslive.it/" data-width="" data-layout="button_count" data-action="recommend" data-size="large" data-share="false"></div>
+            <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcoronaviruslive.it%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Condividi</a></div>
             <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large" data-url="https://coronaviruslive.it/" data-hashtags="COVID19italia, coronavirus, contagio">Tweet</a>
         </div>
     </section>
@@ -92,16 +91,14 @@
     </section>
     <footer>
         <p>Ultimo aggiornamento: <span id="ultimoAggiornamento"></span></p>
-        <p>Riguardo alle notizie di stampa: aggiorniamo i numeri dei contagiati solo quando due o più testate confermano i fatti (decessi, contagi ecc.) oppure quando un ente governativo rilascia dati ufficiali (Regioni, Protezione Civile, Ministero ecc.), questo per prevenire il potenziale propagarsi di fake news.</p>
+        <p>Riguardo alle notizie di stampa: aggiorniamo i numeri dei contagiati solo quando due o più testate confermano i fatti (decessi, contagi ecc.) oppure quando un ente governativo rilascia dati ufficiali (Regioni, Protezione Civile, Ministero ecc.), questo per prevenire potenziali fake news.</p>
         <p>Fonti dei dati: <a href="https://www.facebook.com/RegionedelVeneto" rel="noopener" target="_blank">Regione Veneto</a>, <a href="https://www.lombardianotizie.online/coronavirus-casi-lombardia/" rel="noopener" target="_blank">Regione Lombardia</a>, <a href="http://www.regione.emilia-romagna.it/" rel="noopener" target="_blank">Regione Emilia Romagna</a>, <a href="https://www.youtube.com/channel/UC4fru33Tzpu0UhCIHChiNFA" rel="noopener" target="_blank">Protezione Civile</a> (Italia), <a href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" rel="noopener" target="_blank">The Lancet</a> (Mondo)</p>
         <p class="contatti">Creato e aggiornato costantemente da Salvatore Andaloro<br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a>, <a href="https://www.instagram.com/sasso0101/" rel="noopener" target="_blank">Instagram</a>, <a href="https://t.me/sasso0101" rel="noopener" target="_blank">Telegram</a> - (c) 2020</p>
     </footer>
 
     <div class="social socialOverlay">
-        <span>Condividi: </span>
-        <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large">
-            <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
-        </div>
+        <div class="fb-like" data-href="https://coronaviruslive.it/" data-width="" data-layout="button_count" data-action="recommend" data-size="large" data-share="false"></div>
+        <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcoronaviruslive.it%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Condividi</a></div>
         <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large" data-url="https://coronaviruslive.it/" data-hashtags="COVID19italia, coronavirus, contagio">
             Tweet
         </a>
@@ -188,7 +185,7 @@
     </script>
 
     <!-- Facebook condividi -->
-    <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v6.0"></script>
+    <div id="fb-root"></div><script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v6.0"></script>
     <!-- Twitter condividi -->
     <script>window.twttr = (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],

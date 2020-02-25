@@ -108,13 +108,14 @@ h1 {
 /* Sezione aggiorna */
 .aggiorna {
     text-align: center;
+}
+.pulsanteAggiorna {
     cursor: pointer;
     margin: 0 auto;
     font-size: 30px;
     text-decoration: underline;
 }
 #ultimoControllo {
-    text-align: center;
     display: none;
 }
 
@@ -200,12 +201,12 @@ footer p {
 .social {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
 }
 .social div {
-    padding: 0 10px;
+    margin: 1px 2px;
 }
 
 .socialOverlay {
@@ -213,13 +214,20 @@ footer p {
     bottom: 0;
     background-color: rgba(255, 255, 255, 0.86);
     color: #000000;
+    padding: 10px 0;
     height: 39px;
 }
 
 .socialFissi {
     color: #ffffff;
 }
-
+.consiglialo {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4px;
+    font-size: 23px;
+}
 
 @media screen and (min-width: 750px) {
     .liveDot {
