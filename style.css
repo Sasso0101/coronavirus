@@ -73,7 +73,7 @@ h1 {
     justify-content: center;
 }
 .numeriTotali > div {
-    min-width: 300px;
+    width: 300px;
     background-color: #ffffff;
     border-radius: 40px;
     margin: 4px;
