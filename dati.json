@@ -9,8 +9,8 @@
         },
         {
             "nome": "Veneto",
-            "contagiati": 42,
-            "decessi": 1,
+            "contagiati": 41,
+            "decessi": 2,
             "guariti": 0,
             "nonConfermati": 0
         },
@@ -66,7 +66,7 @@
     ],
     "paeseAlMondo": 3,
     "ultimoAggiornamento": {
-        "ora": "18:25",
+        "ora": "19:11",
         "data": "25/02/2020"
     }
 }
