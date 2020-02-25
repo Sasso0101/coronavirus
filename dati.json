@@ -2,7 +2,7 @@
     "regioni": [
         {
             "nome": "Lombardia",
-            "contagiati": 200,
+            "contagiati": 206,
             "decessi": 6,
             "guariti": 0,
             "nonConfermati": 0
@@ -16,7 +16,7 @@
         },
         {
             "nome": "Emilia Romagna",
-            "contagiati": 19,
+            "contagiati": 23,
             "decessi": 0,
             "guariti": 0,
             "nonConfermati": 0
@@ -37,14 +37,14 @@
         },
         {
             "nome": "Trentino Alto Adige",
-            "contagiati": 0,
+            "contagiati": 1,
             "decessi": 0,
             "guariti": 0,
-            "nonConfermati": 1
+            "nonConfermati": 0
         },
         {
             "nome": "Toscana",
-            "contagiati": 1,
+            "contagiati": 2,
             "decessi": 0,
             "guariti": 0,
             "nonConfermati": 0
