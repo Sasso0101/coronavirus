@@ -36,15 +36,15 @@
             "nonConfermati": 0
         },
         {
-            "nome": "Trentino Alto Adige",
-            "contagiati": 1,
+            "nome": "Toscana",
+            "contagiati": 2,
             "decessi": 0,
             "guariti": 0,
             "nonConfermati": 0
         },
         {
-            "nome": "Toscana",
-            "contagiati": 2,
+            "nome": "Trentino Alto Adige",
+            "contagiati": 1,
             "decessi": 0,
             "guariti": 0,
             "nonConfermati": 0
