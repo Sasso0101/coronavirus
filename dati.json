@@ -41,11 +41,18 @@
             "decessi": 0,
             "guariti": 0,
             "nonConfermati": 1
+        },
+        {
+            "nome": "Toscana",
+            "contagiati": 0,
+            "decessi": 0,
+            "guariti": 0,
+            "nonConfermati": 1
         }
     ],
     "paeseAlMondo": 3,
     "ultimoAggiornamento": {
-        "ora": "23:44",
-        "data": "24/02/2020"
+        "ora": "08:29",
+        "data": "25/02/2020"
     }
 }
