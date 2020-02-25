@@ -2,7 +2,7 @@
     "regioni": [
         {
             "nome": "Lombardia",
-            "contagiati": 241,
+            "contagiati": 231,
             "decessi": 9,
             "guariti": 0,
             "nonConfermati": 0
