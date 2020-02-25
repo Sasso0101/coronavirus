@@ -9,7 +9,7 @@
         },
         {
             "nome": "Veneto",
-            "contagiati": 41,
+            "contagiati": 43,
             "decessi": 2,
             "guariti": 0,
             "nonConfermati": 0
@@ -58,7 +58,7 @@
         },
         {
             "nome": "Liguria",
-            "contagiati": 1,
+            "contagiati": 2,
             "decessi": 0,
             "guariti": 0,
             "nonConfermati": 0
