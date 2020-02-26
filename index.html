@@ -91,6 +91,7 @@
     </section>
     <footer>
         <p>Ultimo aggiornamento: <span id="ultimoAggiornamento"></span></p>
+        <p id="idVersione" style="display: none"></p>
         <p>Riguardo alle notizie di stampa: aggiorniamo i numeri dei contagiati solo quando due o più testate confermano i fatti (decessi, contagi ecc.) oppure quando un ente governativo rilascia dati ufficiali (Regioni, Protezione Civile, Ministero ecc.), questo per prevenire potenziali fake news.</p>
         <p>Fonti dei dati: <a href="https://www.facebook.com/RegionedelVeneto" rel="noopener" target="_blank">Regione Veneto</a>, <a href="http://www.regione.marche.it/" rel="noopener" target="_blank">Regione Marche</a>, <a href="https://www.lombardianotizie.online/coronavirus-casi-lombardia/" rel="noopener" target="_blank">Regione Lombardia</a>, <a href="http://www.regione.emilia-romagna.it/" rel="noopener" target="_blank">Regione Emilia Romagna</a>, <a href="https://www.youtube.com/channel/UC4fru33Tzpu0UhCIHChiNFA" rel="noopener" target="_blank">Protezione Civile</a> (Italia), <a href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" rel="noopener" target="_blank">The Lancet</a> (Mondo)</p>
         <p class="contatti">Creato e aggiornato costantemente da Salvatore Andaloro<br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a>, <a href="https://www.instagram.com/sasso0101/" rel="noopener" target="_blank">Instagram</a>, <a href="https://t.me/sasso0101" rel="noopener" target="_blank">Telegram</a> - (c) 2020</p>
@@ -114,9 +115,10 @@
                 if (this.readyState == 4 && this.status == 200) {
                     // Parse dati JSON
                     var dati = JSON.parse(this.responseText);
-                    var ultimoAggiornamento = document.getElementById('ultimoAggiornamento').innerHTML;
-                    var nuovoUltimoAggiornamento = dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
-                    if (ultimoAggiornamento != nuovoUltimoAggiornamento) {
+                    var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
+                    var nuovoIdVersione = parseInt(dati.idVersione);
+                    if (idVersione != nuovoIdVersione) {
+                        var nuovoUltimoAggiornamento = dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
                         var totaleContagiati = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, nonConfermati = '';
                         const tabella = document.getElementById('regioni').getElementsByTagName('tbody')[0];
                         // Reset tabella
@@ -157,7 +159,8 @@
                         document.getElementById('totaleGuariti').innerHTML=totaleGuariti;
                         document.getElementById('ultimoAggiornamento').innerHTML=nuovoUltimoAggiornamento;
                         document.getElementById('ultimoControllo').innerHTML='';
-                        if (ultimoAggiornamento) {
+                        document.getElementById('idVersione').innerHTML = nuovoIdVersione;
+                        if (idVersione) {
                             document.getElementById('ultimoControllo').innerHTML='I dati sono stati aggiornati.';
                             clearTimeout(animation);
                             $("#ultimoControllo").slideDown("slow");
