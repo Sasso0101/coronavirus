@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia - LIVE</title>
-    <link rel="stylesheet" href="style.css?_=20">
+    <link rel="stylesheet" href="style.css?_=21">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
@@ -29,9 +29,6 @@
         gtag('js', new Date());
         gtag('config', 'UA-120259790-3');
     </script>
-<!-- 
-    <link rel="stylesheet" href="odometer/odometer-theme-minimal.css" />
-    <script src="odometer/odometer.js"></script> -->
 </head>
 <body class="mainBody">
     <header class="titolo">
@@ -88,7 +85,9 @@
     <section class="grafico">
         <h2>Storico casi totali</h2>
         <h3>(Aggiornato alle 18 giornalmente)</h3>
-        <div class="infogram-embed" data-id="e61b99b0-f73b-4fba-a7ac-b2b8b4cbceb8" data-type="interactive" data-title="Regioni"></div><script>!function(e,i,n,s){var t="InfogramEmbeds",d=e.getElementsByTagName("script")[0];if(window[t]&&window[t].initialized)window[t].process&&window[t].process();else if(!e.getElementById(n)){var o=e.createElement("script");o.async=1,o.id=n,o.src="https://e.infogram.com/js/dist/embed-loader-min.js",d.parentNode.insertBefore(o,d)}}(document,0,"infogram-async");</script></div>
+        <div class="containerGrafico">
+            <canvas id="canvasGrafico"></canvas>
+        </div>
     </section>
     <section class="live">
         <h2>Coperture live:</h2>
@@ -110,16 +109,88 @@
             Tweet
         </a>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script>
-        // window.odometerOptions = {
-        //     duration: 2000, // Change how long the javascript expects the CSS animation to take
-        //     format: '(.ddd),dd',
-        // };
 
         var animation;
         updateData();
+        getChart();
+        
+        function getChart(){
+            $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico.php?_=' + new Date().getTime(), function(dati) {
+                datasets = [];
+                for (var i = 1; i < dati.length; i++) {
+                    var label = dati[i][0];
+                    var color = dati[i][1];
+                    dati[i].splice(0, 2);
+                    datasets.push({
+                        label: label,
+                        data: dati[i],
+                        borderColor: color,
+                        pointBackgroundColor: color,
+                        backgroundColor: color,
+                        fill: false
+                    });
+                }
+                var ctx = document.getElementById('canvasGrafico').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dati[0],
+                        datasets: datasets
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        defaultFontFamily: "'Roboto', 'sans-serif'",
+                        layout: {
+                            padding: {
+                                left: 0,
+                                right: 0,
+                                top: 20,
+                                bottom: 0
+                            }
+                        },
+                        elements: {
+                            line: {
+                                tension: 0
+                            },
+                            point: {
+                                hitRadius: 3
+                            }
+                        },
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 20,
+                                usePointStyle: true,
+                                padding: 10,
+                                fontColor: '#d4d4d4'
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                gridLines: {
+                                    color: "#8a8a8a"
+                                },
+                                ticks: {
+                                    fontColor: "#fff"
+                                },
+                            }],
+                            yAxes: [{
+                                gridLines: {
+                                    color: "#8a8a8a"
+                                },
+                                ticks: {
+                                    fontColor: "#fff"
+                                },
+                            }],
+                        }
+                    }
+                });
+            });
+        }
+
         function updateData() {
             $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/dati.php?_=' + new Date().getTime(), function(dati) {
                 var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
