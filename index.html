@@ -83,10 +83,17 @@
         </div>
     </section>
     <section class="grafico">
-        <h2>Storico casi totali</h2>
+        <h2>Storico casi per regione</h2>
         <h3>(Aggiornato alle 18 giornalmente)</h3>
         <div class="containerGrafico">
-            <canvas id="canvasGrafico"></canvas>
+            <canvas id="canvasdatiGrafico"></canvas>
+        </div>
+    </section>
+    <section class="grafico">
+        <h2>Storico casi disaggregati</h2>
+        <h3>(Aggiornato alle 18 giornalmente)</h3>
+        <div class="containerGrafico">
+            <canvas id="canvasdatiGrafico1"></canvas>
         </div>
     </section>
     <section class="live">
@@ -115,10 +122,11 @@
 
         var animation;
         updateData();
-        getChart();
+        getChart('datiGrafico');
+        getChart('datiGrafico1');
         
-        function getChart(){
-            $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico.php?_=' + new Date().getTime(), function(dati) {
+        function getChart(grafico){
+            $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/'+grafico+'.php?_=' + new Date().getTime(), function(dati) {
                 datasets = [];
                 for (var i = 1; i < dati.length; i++) {
                     var label = dati[i][0];
@@ -133,7 +141,7 @@
                         fill: false
                     });
                 }
-                var ctx = document.getElementById('canvasGrafico').getContext('2d');
+                var ctx = document.getElementById('canvas'+grafico).getContext('2d');
                 var chart = new Chart(ctx, {
                     type: 'line',
                     data: {
