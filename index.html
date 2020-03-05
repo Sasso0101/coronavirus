@@ -37,17 +37,17 @@
     </header>
     <section class="numeriTotali">
         <div class="totale confermati">
-            <span class="spanTotaleTitolo">Casi totali</span>
-            <span class="spanTotaleNumero odometer" id="totaleConfermati"></span>
+            <span class="spanTotaleTitolo">Positivi</span>
+            <span class="spanTotaleNumero odometer" id="totalePositivi"></span>
             <span>(0,55% casi mondiali)</span>
         </div>
         <div class="totale morti">
-            <span class="spanTotaleTitolo">Decessi</span>
+            <span class="spanTotaleTitolo">Deceduti</span>
             <span class="spanTotaleNumero odometer" id="totaleDecessi"></span>
             <span>(0,43% casi mondiali)</span>
         </div>
         <div class="totale guariti">
-            <span class="spanTotaleTitolo">Casi guariti</span>
+            <span class="spanTotaleTitolo">Guariti</span>
             <span class="spanTotaleNumero odometer" id="totaleGuariti"></span>
             <span>(0.009% casi mondiali)</span>
         </div>
@@ -205,7 +205,7 @@
                 var nuovoIdVersione = parseInt(dati.idVersione);
                 if (idVersione != nuovoIdVersione) {
                     var nuovoUltimoAggiornamento = dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
-                    var totaleContagiati = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, nonConfermati = '', nome = '';
+                    var totalePositivi = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, nonConfermati = '', nome = '';
                     const tabella = document.getElementById('regioni').getElementsByTagName('tbody')[0];
                     // Reset tabella
                     tabella.innerHTML = tabella.rows[0].innerHTML;
@@ -214,7 +214,7 @@
                         regione = dati["regioni"][regione];
                         var row = document.createElement("tr");
                         // Incremento counter totali
-                        totaleContagiati += regione.contagiati;
+                        totalePositivi += regione.contagiati;
                         totaleDecessi += regione.decessi;
                         totaleGuariti += regione.guariti;
                         // Casi non confermati
@@ -241,7 +241,7 @@
                     row.innerHTML = '<td colspan="4">'+dati.paeseAlMondo+'° paese nel mondo per numero di contagi</td>';
                     tabella.appendChild(row);
                     // Counter totali
-                    document.getElementById('totaleConfermati').innerHTML=totaleContagiati+totaleDecessi+totaleGuariti;
+                    document.getElementById('totalePositivi').innerHTML=totalePositivi;
                     document.getElementById('totaleDecessi').innerHTML=totaleDecessi;
                     document.getElementById('totaleGuariti').innerHTML=totaleGuariti;
                     document.getElementById('ultimoAggiornamento').innerHTML=nuovoUltimoAggiornamento;
