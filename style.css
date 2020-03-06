@@ -178,6 +178,10 @@ h1 {
     background-color: #303030;
 }
 
+.containerGrafico1 {
+    max-height: 300px;
+}
+
 /* Coperture live giornali */
 .live {
     text-align: center;
