@@ -120,14 +120,6 @@ h1 {
     display: none;
 }
 
-/* Disclaimer */
-.disclaimer {
-    max-width: 600px;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 5px;
-}
-
 /* Tabella regioni */
 .regioni, #nota {
     font-size: 4vw;
