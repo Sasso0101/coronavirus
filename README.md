@@ -1,4 +1,4 @@
-# [coronaviruslive.it](coronaviruslive.it)
+# [coronaviruslive.it](https://coronaviruslive.it)
 
 Dashboard per controllare l'avanzamento del contagio del coronavirus in Italia.
 Il codice hostato in questo repository rappresenta solo il front-end del sito mentre i dati vengono caricati dai seguenti link.
