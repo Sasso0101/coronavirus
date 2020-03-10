@@ -455,7 +455,7 @@
                 element.addEventListener('click', subscriptionButtonClicked);
                 element.innerHTML = buttonText;
 
-                if (state.hideWhenSubscribed || state.isPushEnabled) {
+                if (state.hideWhenSubscribed && state.isPushEnabled) {
                     element.style.display = "none";
                 } else {
                     element.style.display = "";
