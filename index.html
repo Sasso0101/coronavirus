@@ -113,7 +113,7 @@
             Aggiorna dati
         </a>
         <span id="ultimoControllo"></span>
-        <p class="disclaimer">BREAKING NEWS - Conte: «Non c’è più tempo: le misure restrittive vengono estese a tutta Italia»</p>
+        <p class="disclaimer"></p>
     </section>
     <section>
         <h2>Regioni colpite:</h2>
@@ -196,6 +196,7 @@
         OneSignal.push(function() {
             // Unsupported browser
             if (!OneSignal.isPushNotificationsSupported()) {
+                document.querySelector(buttonSelector).style.display = "none";
                 return;
             }
             subscriptionButtonHandler(buttonSelector);
