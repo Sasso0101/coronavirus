@@ -441,7 +441,7 @@
         function subscriptionButtonHandler(buttonSelector) {
             var hideWhenSubscribed = false;
             var subscribeText = "🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!";
-            var unsubscribeText = "";
+            var unsubscribeText = "Disiscriviti";
 
             getSubscriptionState().then(function(state) {
                 var buttonText = !state.isPushEnabled || state.isOptedOut ? subscribeText : unsubscribeText;
