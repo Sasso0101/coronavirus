@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia - LIVE</title>
-    <link rel="stylesheet" href="style.css?_=24">
+    <link rel="stylesheet" href="style.css?_=25">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
@@ -42,7 +42,7 @@
             }
           },
           "datePublished": "2020-03-08",
-          "dateModified": "2020-03-09"
+          "dateModified": "2020-03-10"
         }
     </script>
 
@@ -67,6 +67,20 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120259790-3');
+    </script>
+
+    <!-- Push notification -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "6df81c29-6877-4bda-81fa-602cba9abf83",
+          notifyButton: {
+            enable: false,
+          },
+        });
+      });
     </script>
 </head>
 <body class="mainBody">
@@ -111,6 +125,9 @@
         <span id="nota"></span>
     </section>
     <section>
+        <div id="boxNotifica" style="display: none;">
+            <a href="#" id="notification">🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!</a>
+        </div>
         <div class="seguici">
             <h2><a href="https://t.me/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/telegram.svg" alt=""><span>Seguici su Telegram!</span></a></h2>
             <h2><a href="https://www.facebook.com/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/facebook.svg" alt=""><span>Seguici su Facebook!</span></a></h2>
@@ -161,10 +178,29 @@
     <script>
 
         var animation;
+        var OneSignal = OneSignal || [];
+        var buttonSelector = "#boxNotifica";
+
+        /* Inserts data into table and top couters */
         updateData();
+        /* Updates region chart */
         getChart();
+        /* Updates difference chart */
         getChart1();
         
+
+        /* Initializes notifications */
+        OneSignal.push(function() {
+            // Unsupported browser
+            if (!OneSignal.isPushNotificationsSupported()) {
+                return;
+            }
+            subscriptionButtonHandler(buttonSelector);
+            OneSignal.on("subscriptionChange", function(isSubscribed) {
+                subscriptionButtonHandler(buttonSelector);
+            });
+        });
+
         function getChart(){
             $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico.php?_=' + new Date().getTime(), function(dati) {
                 datasets = [];
@@ -380,13 +416,84 @@
                 }
             });
         }
+
+        function subscriptionButtonClicked(event) {
+            getSubscriptionState().then(function(state) {
+                if (state.isPushEnabled) {
+                    /* Subscribed, opt them out */
+                    OneSignal.setSubscription(false);
+                } else {
+                    if (state.isOptedOut) {
+                        /* Opted out, opt them back in */
+                        OneSignal.setSubscription(true);
+                    } else {
+                        /* Unsubscribed, subscribe them */
+                        OneSignal.registerForPushNotifications();
+                    }
+                }
+            });
+            event.preventDefault();
+        }
+
+        function subscriptionButtonHandler(buttonSelector) {
+            var hideWhenSubscribed = false;
+            var subscribeText = "🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!";
+            var unsubscribeText = "";
+
+            getSubscriptionState().then(function(state) {
+                var buttonText = !state.isPushEnabled || state.isOptedOut ? subscribeText : unsubscribeText;
+
+                var element = document.querySelector(buttonSelector);
+                if (element === null) {
+                    return;
+                }
+
+                element.removeEventListener('click', subscriptionButtonClicked);
+                element.addEventListener('click', subscriptionButtonClicked);
+                element.innerHTML = buttonText;
+
+                if (state.hideWhenSubscribed || state.isPushEnabled) {
+                    element.style.display = "none";
+                } else {
+                    element.style.display = "";
+                }
+            });
+        }
+
+        function getSubscriptionState() {
+            return Promise.all([
+              OneSignal.isPushNotificationsEnabled(),
+              OneSignal.isOptedOut()
+            ]).then(function(result) {
+                var isPushEnabled = result[0];
+                var isOptedOut = result[1];
+
+                return {
+                    isPushEnabled: isPushEnabled,
+                    isOptedOut: isOptedOut
+                };
+            });
+        }
+
+        OneSignal.push(function() {
+            OneSignal.on('notificationPermissionChange', function(permissionChange) {
+                var currentPermission = permissionChange.to;
+                if (currentPermission == "denied") {
+                    document.querySelector(buttonSelector).style.display = "none";
+                }
+                else {
+                    document.querySelector(buttonSelector).style.display = "";
+                }
+            });
+        });
     </script>
 
     <!-- Facebook condividi -->
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v6.0"></script>
     <!-- Twitter condividi -->
-    <script>window.twttr = (function(d, s, id) {
+    <script>
+        window.twttr = (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
           t = window.twttr || {};
         if (d.getElementById(id)) return t;
@@ -401,6 +508,7 @@
         };
       
         return t;
-      }(document, "script", "twitter-wjs"));</script>
+        }(document, "script", "twitter-wjs"));
+    </script>
 </body>
 </html>

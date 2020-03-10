@@ -9,11 +9,12 @@
     color: #ffffff;
     display: flex;
     flex-direction: column;
+    text-align: center;
     min-height: 100vh;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: normal;
     display: block;
     text-align: center;
@@ -47,14 +48,6 @@ h1 {
     margin: 0 10px;
     display: none;
     animation: liveDot 1.5s infinite;
-}
-
-/* Disclaimer */	
-.disclaimer {	
-    max-width: 600px;	
-    text-align: center;	
-    margin: 0 auto;	
-    margin-top: 5px;	
 }
 
 /* Live animation */
@@ -126,6 +119,32 @@ h1 {
 }
 #ultimoControllo {
     display: none;
+}
+
+/* Disclaimer */	
+.disclaimer {	
+    max-width: 600px;	
+    text-align: center;	
+    margin: 0 auto;	
+    margin-top: 5px;	
+}
+
+/* Notifiche */
+#boxNotifica {
+    text-align: center;
+    width: max-content;
+    margin: 20px auto 0 auto;
+    background-color: white;
+    padding: 10px;
+    color: black;
+    font-size: 23px;
+    text-decoration: none;
+    cursor: pointer;
+    max-width: 80%;
+}
+
+#boxNotifica span {
+    text-decoration: underline;
 }
 
 /* Tabella regioni */
