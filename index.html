@@ -75,10 +75,13 @@
       var OneSignal = window.OneSignal || [];
       OneSignal.push(function() {
         OneSignal.init({
-          appId: "6df81c29-6877-4bda-81fa-602cba9abf83",
-          notifyButton: {
-            enable: false,
-          },
+            appId: "6df81c29-6877-4bda-81fa-602cba9abf83",
+            notifyButton: {
+                enable: false,
+            },
+            welcomeNotification: {
+                message: "Grazie per l'iscrizione!"
+            }
         });
       });
     </script>
