@@ -21,12 +21,21 @@ function subscriptionButtonHandler(buttonSelector) {
     var subscribeText = "🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!";
     var unsubscribeText = "Annulla iscrizione alle notifiche live";
 
-    getSubscriptionState().then(function(state) {
-        var buttonText = !state.isPushEnabled || state.isOptedOut ? subscribeText : unsubscribeText;
+    var element = document.querySelector(buttonSelector);
+    if (element === null) {
+        return;
+    }
 
-        var element = document.querySelector(buttonSelector);
-        if (element === null) {
-            return;
+    getSubscriptionState().then(function(state) {
+        if (!state.isPushEnabled || state.isOptedOut) {
+            var buttonText = subscribeText;
+        }
+        else {
+            var buttonText = unsubscribeText;
+            element.style.backgroundColor = '';
+            element.style.color = '#ffffff';
+            element.style.color = '#ffffff';
+            element.style.margin = '10px auto';
         }
 
         element.removeEventListener('click', subscriptionButtonClicked);

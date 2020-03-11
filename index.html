@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia - LIVE</title>
-    <link rel="stylesheet" href="style.css?_=30">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?_=31">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
 
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
 
@@ -114,9 +115,7 @@
         <span id="notaNonConfermati"></span>
     </section>
     <section>
-        <div id="boxNotifica" style="display: none;">
-            <a href="#" id="notification" style="display:none">🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!</a>
-        </div>
+        <div id="boxNotifica" style="display: none;"></div>
         <div class="linkSocial">
             <a href="https://t.me/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/telegram.svg" alt=""><span>Seguici su Telegram!</span></a>
             <a href="https://www.facebook.com/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/facebook.svg" alt=""><span>Seguici su Facebook!</span></a>
@@ -166,7 +165,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="js/chart.js"></script>
     <script src="js/populateData.js"></script>
-    <script src="js/notifications.js"></script>
+    <script src="js/notifications.js?_=1"></script>
     
     <!-- Notifiche Push -->
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
