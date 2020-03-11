@@ -191,7 +191,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-.linkSocial a {
+.linkIcona {
     font-size: 23px;
     padding: 6px 0;
     display: flex;
@@ -200,7 +200,7 @@ h1 {
     flex-direction: row;
 }
 
-.linkSocial img {
+.linkIcona img {
     height: 28px;
     padding-right: 9px;
 }
