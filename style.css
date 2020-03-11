@@ -126,12 +126,39 @@ h1 {
     display: none;
 }
 
-/* Testo */	
+/* Breaking news */	
 #testo {	
     max-width: 600px;	
     text-align: center;	
     margin: 10px auto 0 auto;
     padding: 10px 10px 10px 0;
+}
+
+.video-container {
+    overflow: hidden;
+    position: relative;
+    width:100%;
+    margin: 0 auto;
+}
+
+.video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.allegato {
+    display: inline-block;
+    margin: 12px auto 0 auto;
+    font-size: 19px;
 }
 
 /* Notifiche */
@@ -304,25 +331,4 @@ footer p {
     .video-container {
         max-width: 500px;
     }
-}
-
-.video-container {
-    overflow: hidden;
-    position: relative;
-    width:100%;
-    margin: 0 auto;
-}
-
-.video-container::after {
-    padding-top: 56.25%;
-    display: block;
-    content: '';
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
 }
