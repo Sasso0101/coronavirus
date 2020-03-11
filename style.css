@@ -302,7 +302,7 @@ footer p {
         font-size: 24px;
     }
     .video-container {
-        max-width: 70%;
+        max-width: 500px;
     }
 }
 
