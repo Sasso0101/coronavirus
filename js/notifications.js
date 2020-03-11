@@ -32,8 +32,7 @@ function subscriptionButtonHandler(buttonSelector) {
         }
         else {
             var buttonText = unsubscribeText;
-            element.style.backgroundColor = '';
-            element.style.color = '#ffffff';
+            element.style.backgroundColor = 'transparent';
             element.style.color = '#ffffff';
             element.style.margin = '10px auto';
         }
