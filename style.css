@@ -130,7 +130,8 @@ h1 {
 #testo {	
     max-width: 600px;	
     text-align: center;	
-    margin: 10px auto 0 auto;	
+    margin: 10px auto 0 auto;
+    padding: 10px 10px 10px 0;
 }
 
 /* Notifiche */
