@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia - LIVE</title>
-    <link rel="stylesheet" href="style.css?_=25">
+    <link rel="stylesheet" href="style.css?_=30">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
@@ -69,55 +69,41 @@
         gtag('config', 'UA-120259790-3');
     </script>
 
-    <!-- Push notification -->
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-      var OneSignal = window.OneSignal || [];
-      OneSignal.push(function() {
-        OneSignal.init({
-            appId: "6df81c29-6877-4bda-81fa-602cba9abf83",
-            notifyButton: {
-                enable: false,
-            },
-            welcomeNotification: {
-                message: "Grazie per l'iscrizione!"
-            }
-        });
-      });
-    </script>
 </head>
-<body class="mainBody">
-    <header class="titolo">
+<body>
+    <header>
         <span class="liveDot"></span>
         <h1>Situazione Coronavirus in Italia - LIVE</h1>
     </header>
-    <section class="numeriTotali">
-        <div class="totale confermati">
+    <section id="totali">
+        <div class="totale positivi">
             <span class="spanTotaleTitolo">Attualmente positivi</span>
-            <span class="spanTotaleNumero odometer" id="totalePositivi"></span>
+            <span class="spanTotaleNumero" id="totalePositivi"></span>
             <span>(0,55% casi mondiali)</span>
         </div>
         <div class="totale morti">
             <span class="spanTotaleTitolo">Deceduti</span>
-            <span class="spanTotaleNumero odometer" id="totaleDecessi"></span>
+            <span class="spanTotaleNumero" id="totaleDecessi"></span>
             <span>Età media: ~80 anni</span>
         </div>
         <div class="totale guariti">
             <span class="spanTotaleTitolo">Guariti</span>
-            <span class="spanTotaleNumero odometer" id="totaleGuariti"></span>
+            <span class="spanTotaleNumero" id="totaleGuariti"></span>
             <span>(0.009% casi mondiali)</span>
         </div>
     </section>
-    <section class="aggiorna">
-        <a class="pulsanteAggiorna" onClick="updateData();">
+    <section id="aggiorna">
+        <a id="pulsanteAggiorna" onClick="updateData();">
             Aggiorna dati
         </a>
         <span id="ultimoControllo"></span>
-        <p class="disclaimer"></p>
+    </section>
+    <section>
+        <p id="testo"></p>
     </section>
     <section>
         <h2>Regioni colpite:</h2>
-        <table class="regioni" id="regioni">
+        <table id="regioni">
             <tr>
                 <th>Regione</th>
                 <th>Positivi</th>
@@ -125,15 +111,15 @@
                 <th>Guariti</th>
             </tr>
         </table>
-        <span id="nota"></span>
+        <span id="notaNonConfermati"></span>
     </section>
     <section>
         <div id="boxNotifica" style="display: none;">
-            <a href="#" id="notification">🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!</a>
+            <a href="#" id="notification" style="display:none">🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!</a>
         </div>
-        <div class="seguici">
-            <h2><a href="https://t.me/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/telegram.svg" alt=""><span>Seguici su Telegram!</span></a></h2>
-            <h2><a href="https://www.facebook.com/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/facebook.svg" alt=""><span>Seguici su Facebook!</span></a></h2>
+        <div class="linkSocial">
+            <a href="https://t.me/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/telegram.svg" alt=""><span>Seguici su Telegram!</span></a>
+            <a href="https://www.facebook.com/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/facebook.svg" alt=""><span>Seguici su Facebook!</span></a>
         </div>
         <span class="consiglialo">Consiglialo ai tuoi amici: </span>
         <div class="social socialFissi">
@@ -162,7 +148,7 @@
         <div><a href="https://www.open.online/2020/03/01/coronavirus-ultime-notizie-1-marzo/" rel="noopener" target="_blank">Copertura live Open</a></div>
     </section>
     <footer>
-        <p>Ultimo aggiornamento: <span id="ultimoAggiornamento"></span></p>
+        <p>Ultimo aggiornamento: <time id="ultimoAggiornamento"></time></p>
         <p id="idVersione" style="display: none"></p>
         <p>Riguardo alle notizie di stampa: aggiorniamo i numeri dei contagiati solo quando due o più testate confermano i fatti (decessi, contagi ecc.) oppure quando un ente governativo rilascia dati ufficiali (Regioni, Protezione Civile, Ministero ecc.), questo per prevenire potenziali fake news.</p>
         <p>Fonti dei dati: <a href="https://www.facebook.com/RegionedelVeneto" rel="noopener" target="_blank">Regione Veneto</a>, <a href="http://www.regione.marche.it/" rel="noopener" target="_blank">Regione Marche</a>, <a href="https://www.lombardianotizie.online/coronavirus-casi-lombardia/" rel="noopener" target="_blank">Regione Lombardia</a>, <a href="http://www.regione.emilia-romagna.it/" rel="noopener" target="_blank">Regione Emilia Romagna</a>, <a href="https://www.youtube.com/channel/UC4fru33Tzpu0UhCIHChiNFA" rel="noopener" target="_blank">Protezione Civile</a> (Italia), <a href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" rel="noopener" target="_blank">The Lancet</a> (Mondo)</p>
@@ -178,6 +164,12 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/populateData.js"></script>
+    <script src="js/notifications.js"></script>
+    
+    <!-- Notifiche Push -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
 
         var animation;
@@ -191,295 +183,23 @@
         /* Updates difference chart */
         getChart1();
         
-
         /* Initializes notifications */
         OneSignal.push(function() {
+            OneSignal.init({
+                appId: "6df81c29-6877-4bda-81fa-602cba9abf83",
+                notifyButton: {
+                    enable: false,
+                },
+                welcomeNotification: {
+                    message: "Grazie per l'iscrizione!"
+                }
+            });
+
             // Unsupported browser
             if (!OneSignal.isPushNotificationsSupported()) {
                 document.querySelector(buttonSelector).style.display = "none";
                 return;
             }
-            subscriptionButtonHandler(buttonSelector);
-            OneSignal.on("subscriptionChange", function(isSubscribed) {
-                subscriptionButtonHandler(buttonSelector);
-            });
-        });
-
-        function getChart(){
-            $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico.php?_=' + new Date().getTime(), function(dati) {
-                datasets = [];
-                for (var i = 1; i < dati.length; i++) {
-                    var label = dati[i][0];
-                    var color = dati[i][1];
-                    dati[i].splice(0, 2);
-                    datasets.push({
-                        label: label,
-                        data: dati[i],
-                        borderColor: color,
-                        pointBackgroundColor: color,
-                        backgroundColor: color,
-                        fill: false
-                    });
-                }
-                var ctx = document.getElementById('canvasdatiGrafico').getContext('2d');
-                var chart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: dati[0],
-                        datasets: datasets
-                    },
-                    options: {
-                        maintainAspectRatio: false,
-                        defaultFontFamily: "'Roboto', 'sans-serif'",
-                        layout: {
-                            padding: {
-                                left: 0,
-                                right: 0,
-                                top: 20,
-                                bottom: 0
-                            }
-                        },
-                        elements: {
-                            line: {
-                                tension: 0
-                            },
-                            point: {
-                                hitRadius: 6
-                            }
-                        },
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                boxWidth: 20,
-                                usePointStyle: true,
-                                padding: 10,
-                                fontColor: '#d4d4d4'
-                            }
-                        },
-                        scales: {
-                            xAxes: [{
-                                gridLines: {
-                                    color: "#8a8a8a"
-                                },
-                                ticks: {
-                                    fontColor: "#fff"
-                                },
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    color: "#8a8a8a"
-                                },
-                                ticks: {
-                                    fontColor: "#fff"
-                                },
-                            }],
-                        }
-                    }
-                });
-            });
-        }
-
-        function getChart1(){
-            $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico2.php?_=' + new Date().getTime(), function(dati) {
-                datasets = [];
-                for (var i = 4; i < dati.length; i++) {
-                    var label = dati[i][0];
-                    var color = dati[i][1];
-                    dati[i].splice(0, 2);
-                    datasets.push({
-                        label: label,
-                        data: dati[i],
-                        borderColor: color,
-                        pointBackgroundColor: color,
-                        backgroundColor: color,
-                        fill: false
-                    });
-                }
-                var ctx = document.getElementById('canvasdatiGrafico1').getContext('2d');
-                var chart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: dati[0],
-                        datasets: datasets
-                    },
-                    options: {
-                        maintainAspectRatio: false,
-                        defaultFontFamily: "'Roboto', 'sans-serif'",
-                        layout: {
-                            padding: {
-                                left: 0,
-                                right: 0,
-                                top: 20,
-                                bottom: 0
-                            }
-                        },
-                        elements: {
-                            point: {
-                                hitRadius: 6
-                            }
-                        },
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                boxWidth: 20,
-                                usePointStyle: true,
-                                padding: 10,
-                                fontColor: '#d4d4d4'
-                            }
-                        },
-                        scales: {
-                            xAxes: [{
-                                gridLines: {
-                                    color: "#8a8a8a"
-                                },
-                                ticks: {
-                                    fontColor: "#fff"
-                                },
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    color: "#8a8a8a"
-                                },
-                                ticks: {
-                                    fontColor: "#fff"
-                                },
-                            }],
-                        }
-                    }
-                });
-            });
-        }
-
-        function updateData() {
-            $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/dati.php?_=' + new Date().getTime(), function(dati) {
-                var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
-                var nuovoIdVersione = parseInt(dati.idVersione);
-                if (idVersione != nuovoIdVersione) {
-                    var nuovoUltimoAggiornamento = dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
-                    var totalePositivi = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, nonConfermati = '', nome = '';
-                    const tabella = document.getElementById('regioni').getElementsByTagName('tbody')[0];
-                    // Reset tabella
-                    tabella.innerHTML = tabella.rows[0].innerHTML;
-                    for(regione in dati['regioni']) {
-                        nome = regione;
-                        regione = dati["regioni"][regione];
-                        var row = document.createElement("tr");
-                        // Incremento counter totali
-                        totalePositivi += regione.contagiati;
-                        totaleDecessi += regione.decessi;
-                        totaleGuariti += regione.guariti;
-                        // Casi non confermati
-                        nonConfermati = '';
-                        if (regione.nonConfermati > 0) {
-                            nonConfermati = ' (+'+regione.nonConfermati+')*';
-                            totaleNonConfermati += regione.nonConfermati;
-                        }
-                        // Inserimento riga
-                        row.innerHTML = '<td>'+nome+'</td><td>'+regione.contagiati+nonConfermati+'</td><td>'+regione.decessi+'</td><td>'+regione.guariti+'</td>';
-                        tabella.appendChild(row);
-                    }
-                    nonConfermati='';
-                    if (totaleNonConfermati > 0) {
-                        document.getElementById('nota').innerHTML='* Casi di tampone positivo ma non confermati';
-                        nonConfermati = ' (+'+totaleNonConfermati+')*';
-                    }
-                    // Riga finale totale Italia
-                    var row = document.createElement("tr");
-                    row.classList.add("tabellaitalia");
-                    row.innerHTML = '<td>Italia</td><td>'+totalePositivi+nonConfermati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td>';
-                    tabella.appendChild(row);
-                    var row = document.createElement("tr");
-                    row.innerHTML = '<td colspan="4">'+dati.paeseAlMondo+'° paese nel mondo per numero di contagi</td>';
-                    tabella.appendChild(row);
-                    // Counter totali
-                    document.getElementById('totalePositivi').innerHTML=totalePositivi;
-                    document.getElementById('totaleDecessi').innerHTML=totaleDecessi;
-                    document.getElementById('totaleGuariti').innerHTML=totaleGuariti;
-                    document.getElementById('ultimoAggiornamento').innerHTML=nuovoUltimoAggiornamento;
-                    document.getElementById('ultimoControllo').innerHTML='';
-                    document.getElementById('idVersione').innerHTML = nuovoIdVersione;
-                    if (idVersione) {
-                        document.getElementById('ultimoControllo').innerHTML='I dati sono stati aggiornati.';
-                        clearTimeout(animation);
-                        $("#ultimoControllo").slideDown("slow");
-                        animation = setTimeout(function() {
-                            $('#ultimoControllo').slideUp('slow');
-                        }, 5000);
-                    }
-                }
-                else {
-                    var oggi = new Date();
-                    var data = oggi.getDate()+'/'+(oggi.getMonth()+1)+'/'+oggi.getFullYear();
-                    var ora = oggi.getHours() + ":" + oggi.getMinutes() + ":" + oggi.getSeconds();
-                    document.getElementById('ultimoControllo').innerHTML='Nessun nuovo aggiornamento. Ultimo controllo '+data+' '+ora;
-                    clearTimeout(animation);
-                    $("#ultimoControllo").slideDown("slow");
-                    animation = setTimeout(function() {
-                        $('#ultimoControllo').slideUp('slow');
-                    }, 5000);
-                }
-            });
-        }
-
-        function subscriptionButtonClicked(event) {
-            getSubscriptionState().then(function(state) {
-                if (state.isPushEnabled) {
-                    /* Subscribed, opt them out */
-                    OneSignal.setSubscription(false);
-                } else {
-                    if (state.isOptedOut) {
-                        /* Opted out, opt them back in */
-                        OneSignal.setSubscription(true);
-                    } else {
-                        /* Unsubscribed, subscribe them */
-                        OneSignal.registerForPushNotifications();
-                    }
-                }
-            });
-            event.preventDefault();
-        }
-
-        function subscriptionButtonHandler(buttonSelector) {
-            var hideWhenSubscribed = false;
-            var subscribeText = "🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!";
-            var unsubscribeText = "Annulla iscrizione alle notifiche live";
-
-            getSubscriptionState().then(function(state) {
-                var buttonText = !state.isPushEnabled || state.isOptedOut ? subscribeText : unsubscribeText;
-
-                var element = document.querySelector(buttonSelector);
-                if (element === null) {
-                    return;
-                }
-
-                element.removeEventListener('click', subscriptionButtonClicked);
-                element.addEventListener('click', subscriptionButtonClicked);
-                element.innerHTML = buttonText;
-
-                if (state.hideWhenSubscribed && state.isPushEnabled) {
-                    element.style.display = "none";
-                } else {
-                    element.style.display = "";
-                }
-            });
-        }
-
-        function getSubscriptionState() {
-            return Promise.all([
-              OneSignal.isPushNotificationsEnabled(),
-              OneSignal.isOptedOut()
-            ]).then(function(result) {
-                var isPushEnabled = result[0];
-                var isOptedOut = result[1];
-
-                return {
-                    isPushEnabled: isPushEnabled,
-                    isOptedOut: isOptedOut
-                };
-            });
-        }
-
-        OneSignal.push(function() {
             OneSignal.on('notificationPermissionChange', function(permissionChange) {
                 var currentPermission = permissionChange.to;
                 if (currentPermission == "denied") {
@@ -488,6 +208,10 @@
                 else {
                     document.querySelector(buttonSelector).style.display = "";
                 }
+            });
+            subscriptionButtonHandler(buttonSelector);
+            OneSignal.on("subscriptionChange", function(isSubscribed) {
+                subscriptionButtonHandler(buttonSelector);
             });
         });
     </script>
