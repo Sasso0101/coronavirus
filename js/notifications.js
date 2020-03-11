@@ -29,12 +29,11 @@ function subscriptionButtonHandler(buttonSelector) {
     getSubscriptionState().then(function(state) {
         if (!state.isPushEnabled || state.isOptedOut) {
             var buttonText = subscribeText;
+            element.classList.remove('disiscriviti');
         }
         else {
             var buttonText = unsubscribeText;
-            element.style.backgroundColor = 'transparent';
-            element.style.color = '#ffffff';
-            element.style.margin = '10px auto';
+            element.classList.add('disiscriviti');
         }
 
         element.removeEventListener('click', subscriptionButtonClicked);
