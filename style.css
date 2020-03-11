@@ -135,7 +135,7 @@ h1 {
 }
 
 /* Notifiche */
-#boxNotifica {
+.boxNotifica {
     text-align: center;
     width: max-content;
     margin: 30px auto 10px auto;
@@ -155,7 +155,7 @@ h1 {
     text-decoration: underline;
 }
 
-#boxNotifica span {
+.boxNotifica span {
     text-decoration: underline;
 }
 

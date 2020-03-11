@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia - LIVE</title>
-    <link rel="stylesheet" href="style.css?_=35">
+    <link rel="stylesheet" href="style.css?_=36">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
 
@@ -118,7 +118,7 @@
         <span id="notaNonConfermati"></span>
     </section>
     <section>
-        <div id="boxNotifica" style="display: none;"></div>
+        <div class="boxNotifica" style="display: none;"></div>
         <div class="linkSocial">
             <a href="https://t.me/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/telegram.svg" alt=""><span>Seguici su Telegram!</span></a>
             <a href="https://www.facebook.com/coronavirusliveitalia" rel="noopener" target="_blank"><img src="img/facebook.svg" alt=""><span>Seguici su Facebook!</span></a>
@@ -176,7 +176,7 @@
 
         var animation;
         var OneSignal = OneSignal || [];
-        var buttonSelector = "#boxNotifica";
+        var buttonSelector = ".boxNotifica";
 
         /* Inserts data into table and top couters */
         updateData();
