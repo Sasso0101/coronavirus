@@ -1,10 +1,10 @@
 function updateData() {
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/dati.php?_=' + new Date().getTime(), function(dati) {
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/dati2.php?_=' + new Date().getTime(), function(dati) {
         var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
         var nuovoIdVersione = parseInt(dati.idVersione);
         if (idVersione != nuovoIdVersione) {
             var nuovoUltimoAggiornamento = dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
-            var totalePositivi = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, nonConfermati = '', nome = '';
+            var totalePositivi = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, totaleTamponi = 0, nonConfermati = '', nome = '';
             const tabella = document.getElementById('regioni').getElementsByTagName('tbody')[0];
             // Reset tabella
             tabella.innerHTML = tabella.rows[0].innerHTML;
@@ -16,6 +16,7 @@ function updateData() {
                 totalePositivi += regione.contagiati;
                 totaleDecessi += regione.decessi;
                 totaleGuariti += regione.guariti;
+                totaleTamponi += regione.tamponi;
                 // Casi non confermati
                 nonConfermati = '';
                 if (regione.nonConfermati > 0) {
@@ -23,7 +24,7 @@ function updateData() {
                     totaleNonConfermati += regione.nonConfermati;
                 }
                 // Inserimento riga
-                row.innerHTML = '<td>'+nome+'</td><td>'+regione.contagiati+nonConfermati+'</td><td>'+regione.decessi+'</td><td>'+regione.guariti+'</td>';
+                row.innerHTML = '<td>'+nome+'</td><td>'+regione.contagiati+nonConfermati+'</td><td>'+regione.decessi+'</td><td>'+regione.guariti+'</td><td>'+regione.tamponi+'</td>';
                 tabella.appendChild(row);
             }
             nonConfermati='';
@@ -34,10 +35,10 @@ function updateData() {
             // Riga finale totale Italia
             var row = document.createElement("tr");
             row.classList.add("rigaTotaleItalia");
-            row.innerHTML = '<td>Italia</td><td>'+totalePositivi+nonConfermati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td>';
+            row.innerHTML = '<td>Italia</td><td>'+totalePositivi+nonConfermati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td><td>'+totaleTamponi+'</td>';
             tabella.appendChild(row);
             var row = document.createElement("tr");
-            row.innerHTML = '<td colspan="4">'+dati.paeseAlMondo+'° paese nel mondo per numero di contagi</td>';
+            row.innerHTML = '<td colspan="5">'+dati.paeseAlMondo+'° paese nel mondo per numero di contagi</td>';
             tabella.appendChild(row);
             // Counter totali
             document.getElementById('totalePositivi').innerHTML=totalePositivi;

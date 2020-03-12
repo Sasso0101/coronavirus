@@ -207,6 +207,7 @@ h1 {
 
 .linkIcona p {
     width: min-content;
+    margin: 0;
 }
 
 /* Tabella regioni */
