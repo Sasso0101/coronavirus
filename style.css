@@ -205,6 +205,10 @@ h1 {
     padding-right: 9px;
 }
 
+.linkIcona p {
+    width: min-content;
+}
+
 /* Tabella regioni */
 #regioni, #notaNonConfermati {
     font-size: 4vw;
