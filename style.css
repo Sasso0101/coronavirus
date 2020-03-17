@@ -186,28 +186,25 @@ h1 {
     text-decoration: underline;
 }
 
-/* Social */
-.linkSocial {
-    margin-bottom: 10px;
+/* Box aggiornamenti live */
+.aggiornamentiLive {
+    padding-top: 10px;
 }
 
 .linkIcona {
     font-size: 23px;
-    padding: 6px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    display: inline;
 }
 
 .linkIcona img {
     height: 28px;
     padding-right: 9px;
+    vertical-align: middle;
 }
 
-.linkIcona p {
-    width: min-content;
-    margin: 0;
+/* Social */
+.linkSocial {
+    margin-bottom: 10px;
 }
 
 /* Tabella regioni */
