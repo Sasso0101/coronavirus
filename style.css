@@ -257,20 +257,14 @@ h1 {
     max-height: 300px;
 }
 
-/* Coperture live giornali */
-.live a {
-    text-decoration: underline;
-    color: #b84826;
-    transition: color 0.5s;
-    font-size: 20px;
-}
-.live a:hover {
-    color: #ffffff;
+.spiegazione {
+    max-width: 600px;
+    margin: 10px auto 0 auto;
 }
 
 /* Footer */
 footer {
-    font-size: 15px;
+    font-size: 16px;
     margin-top: auto;
     bottom: 0;
     text-align: center;
@@ -284,7 +278,7 @@ footer p {
 }
 
 .contatti {
-    padding: 20px 0;
+    margin: 15px 0;
 }
 
 /* Pulsanti social */
