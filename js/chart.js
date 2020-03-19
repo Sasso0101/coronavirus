@@ -45,7 +45,7 @@ function getChart(){
 }
 
 function getChart1(){
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico2.php?_=' + new Date().getTime(), function(dati) {
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
         datasets = [];
         for (var i = 4; i < dati.length; i++) {
             var label = dati[i][0];

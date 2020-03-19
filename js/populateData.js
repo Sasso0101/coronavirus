@@ -1,5 +1,5 @@
 function updateData() {
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/dati2.php?_=' + new Date().getTime(), function(dati) {
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/dati.php?_=' + new Date().getTime(), function(dati) {
         var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
         var nuovoIdVersione = parseInt(dati.idVersione);
         if (idVersione != nuovoIdVersione) {
