@@ -257,6 +257,11 @@ h1 {
     max-height: 300px;
 }
 
+.containerGrafico2 {
+    max-height: 250px;
+    max-width: 450px;
+}
+
 /* Footer */
 footer {
     font-size: 16px;

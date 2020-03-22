@@ -59,6 +59,8 @@ function updateData() {
                     $('#ultimoControllo').slideUp('slow');
                 }, 5000);
             }
+            /* Pie chart */
+            getChart2(dati, totaleDecessi, totaleGuariti);
         }
         else {
             var oggi = new Date();

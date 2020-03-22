@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia - LIVE</title>
-    <link rel="stylesheet" href="style.css?_=43">
+    <link rel="stylesheet" href="style.css?_=44">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
 
@@ -136,18 +136,27 @@
             <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large" data-url="https://coronaviruslive.it/" data-hashtags="COVID19italia, coronavirus, contagio">Tweet</a>
         </div>
     </section>
-    <section class="grafico">
-        <h2>Casi giornalieri</h2>
-        <h3>(Aggiornato alle 18 giornalmente)</h3>
-        <div class="containerGrafico containerGrafico1">
-            <canvas id="canvasdatiGrafico1"></canvas>
+    <section class="grafici">
+        <div class="grafico">
+            <h2>Casi giornalieri</h2>
+            <h3>(Aggiornato alle 18 giornalmente)</h3>
+            <div class="containerGrafico containerGrafico1">
+                <canvas id="canvasdatiGrafico1"></canvas>
+            </div>
         </div>
-    </section>
-    <section class="grafico">
-        <h2>Storico casi totali per regione</h2>
-        <h3>(Aggiornato alle 18 giornalmente)</h3>
-        <div class="containerGrafico">
-            <canvas id="canvasdatiGrafico"></canvas>
+        <div class="grafico">
+            <h2>Storico casi totali per regione</h2>
+            <h3>(Aggiornato alle 18 giornalmente)</h3>
+            <div class="containerGrafico">
+                <canvas id="canvasdatiGrafico"></canvas>
+            </div>
+        </div>
+        <div class="grafico">
+            <h2>Stato casi totali</h2>
+            <h3>(Aggiornato alle 18 giornalmente)</h3>
+            <div class="containerGrafico containerGrafico2">
+                <canvas id="canvasdatiGrafico2"></canvas>
+            </div>
         </div>
     </section>
     <footer>
@@ -166,7 +175,8 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="js/chart.js?_=2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <script src="js/chart.js?_=3"></script>
     <script src="js/populateData.js?_=4"></script>
     <script src="js/notifications.js?_=3"></script>
     
@@ -178,6 +188,7 @@
         var OneSignal = OneSignal || [];
         var buttonSelector = ".boxNotifica";
 
+        Chart.plugins.unregister(ChartDataLabels);
         /* Inserts data into table and top couters */
         updateData();
         /* Updates region chart */
