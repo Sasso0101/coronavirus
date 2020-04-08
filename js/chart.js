@@ -50,7 +50,9 @@ function getChart(){
 function getChart1(){
     $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
         datasets = [];
+        isHidden = true;
         for (var i = 4; i < dati.length; i++) {
+            if (i == 5) {isHidden = false;}
             var label = dati[i][0];
             var color = dati[i][1];
             dati[i].splice(0, 2);
@@ -60,8 +62,10 @@ function getChart1(){
                 borderColor: color,
                 pointBackgroundColor: color,
                 backgroundColor: color,
-                fill: false
+                fill: false,
+                hidden: isHidden
             });
+            isHidden = true;
         }
         var ctx = document.getElementById('canvasdatiGrafico1').getContext('2d');
         var chart = new Chart(ctx, {
