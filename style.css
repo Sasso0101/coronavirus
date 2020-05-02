@@ -332,3 +332,8 @@ footer p {
         max-width: 500px;
     }
 }
+
+.notaDecremento {
+    max-width: 600px;
+    margin: 20px auto 0 auto;
+}
