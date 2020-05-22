@@ -104,7 +104,7 @@ function getChart2(dati, totaleDecessi, totaleGuariti){
                 padding: {left: 0, right: 0, top: 10, bottom: 10}
             },
             plugins: {
-                datalabels: {
+                /*datalabels: {
                     color: [
                         '#1f1a1a',
                         '#fff',
@@ -125,7 +125,7 @@ function getChart2(dati, totaleDecessi, totaleGuariti){
                         let percentage = (value*100 / sum).toFixed(2)+"%";
                         return percentage;
                     }
-                }
+                }*/
             }
         }
     });
