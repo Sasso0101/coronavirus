@@ -38,7 +38,7 @@ function updateData() {
             row.innerHTML = '<td>Italia</td><td>'+totalePositivi+nonConfermati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td><td>'+totaleTamponi+'</td>';
             tabella.appendChild(row);
             var row = document.createElement("tr");
-            row.innerHTML = '<td colspan="5">'+dati.paeseAlMondo+'° paese nel mondo per numero di contagiati</td>';
+            row.innerHTML = '<td colspan="5">'+dati.paeseAlMondo+'° paese nel mondo per numero di attualmente positivi</td>';
             tabella.appendChild(row);
             // Counter totali
             document.getElementById('totalePositivi').innerHTML=totalePositivi;
