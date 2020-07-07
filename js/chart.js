@@ -21,9 +21,9 @@ Chart.defaults.bar.scales.yAxes[0].ticks = {fontColor: "#fff"};
 Chart.defaults.doughnut.cutoutPercentage = 70;
 
 function getChart(){
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico.php?_=' + new Date().getTime(), function(dati) {
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
         datasets = [];
-        for (var i = 1; i < dati.length; i++) {
+        for (var i = 1; i < 4; i++) {
             var label = dati[i][0];
             var color = dati[i][1];
             dati[i].splice(0, 2);
