@@ -45,6 +45,8 @@ function updateData() {
             document.getElementById('totaleDecessi').innerHTML=totaleDecessi;
             document.getElementById('totaleGuariti').innerHTML=totaleGuariti;
             document.getElementById('terapiaIntensiva').innerHTML=dati.terapiaIntensiva+' in terapia intensiva';
+            percentuale = (totaleDecessi*100) / (totalePositivi + totaleDecessi + totaleGuariti);
+            document.getElementById('percentualeDeceduti').innerHTML= Math.round((percentuale + Number.EPSILON) * 100) / 100+'% casi totali in Italia';
             percentuale = (totaleGuariti*100) / (totalePositivi + totaleDecessi + totaleGuariti);
             document.getElementById('percentualeGuariti').innerHTML= Math.round((percentuale + Number.EPSILON) * 100) / 100+'% casi totali in Italia';
 
