@@ -9,9 +9,9 @@ function updateData() {
             // Reset tabella
             tabella.innerHTML = tabella.rows[0].innerHTML;
             for(regione in dati['regioni']) {
-                nome = regione;
                 regione = dati["regioni"][regione];
                 var row = document.createElement("tr");
+                nome = regione.nome;
                 // Incremento counter totali
                 totalePositivi += regione.contagiati;
                 totaleDecessi += regione.decessi;
