@@ -21,136 +21,132 @@ Chart.defaults.bar.scales.yAxes[0].ticks = {fontColor: "#fff"};
 Chart.defaults.doughnut.cutoutPercentage = 70;
 
 // Primo grafico nuvi casi (barre verticali)
-function getChart1(){
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
-        datasets = [];
+function getChart1(dati){
+    datasets = [];
+    isHidden = true;
+    for (var i = 5; i < dati.length; i++) {
+        if (i == 5) {isHidden = false;}
+        var label = dati[i][0];
+        var color = dati[i][1];
+        dati[i].splice(0, 2);
+        datasets.push({
+            label: label,
+            data: dati[i],
+            borderColor: color,
+            pointBackgroundColor: color,
+            backgroundColor: color,
+            fill: false,
+            hidden: isHidden
+        });
         isHidden = true;
-        for (var i = 5; i < dati.length; i++) {
-            if (i == 5) {isHidden = false;}
-            var label = dati[i][0];
-            var color = dati[i][1];
-            dati[i].splice(0, 2);
-            datasets.push({
-                label: label,
-                data: dati[i],
-                borderColor: color,
-                pointBackgroundColor: color,
-                backgroundColor: color,
-                fill: false,
-                hidden: isHidden
-            });
-            isHidden = true;
-        }
-        var ctx = document.getElementById('canvasdatiGrafico1').getContext('2d');
-        var chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: dati[0],
-                datasets: datasets
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        type: 'timecenter',
-                        time: {
-                            unit: 'month',
-                            parser: 'DD/MM/YYYY',
-                            displayFormats: {
-                                month: 'MMM'
-                            }
-                        },
-                        barPercentage: 1.2,
-                        categoryPercentage: 1.0,
-                        gridLines: {
-                            color: "#8A8A8A",
-                            offsetGridLines: true
-                        },
-                        ticks: {
-                            maxRotation: 90
+    }
+    var ctx = document.getElementById('canvasdatiGrafico1').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: dati[0],
+            datasets: datasets
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'timecenter',
+                    time: {
+                        unit: 'month',
+                        parser: 'DD/MM/YYYY',
+                        displayFormats: {
+                            month: 'MMM'
                         }
-                    }]
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false
-                },
-                legend: {
-                    display: true,
-                    onHover: function (e) {
-                      e.target.style.cursor = 'pointer'
                     },
-                    onLeave: function (e) {
-                      e.target.style.cursor = 'default'
+                    barPercentage: 1.2,
+                    categoryPercentage: 1.0,
+                    gridLines: {
+                        color: "#8A8A8A",
+                        offsetGridLines: true
+                    },
+                    ticks: {
+                        maxRotation: 90
                     }
+                }]
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            legend: {
+                display: true,
+                onHover: function (e) {
+                  e.target.style.cursor = 'pointer'
+                },
+                onLeave: function (e) {
+                  e.target.style.cursor = 'default'
                 }
             }
-        });
+        }
     });
 }
 
 // Grafico casi totali orizzontale
-function getChart(){
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
-        datasets = [];
-        for (var i = 1; i < 5; i++) {
-            isHidden = false;
-            if (i == 4) {isHidden = true;}
-            var label = dati[i][0];
-            var color = dati[i][1];
-            dati[i].splice(0, 2);
-            datasets.push({
-                label: label,
-                data: dati[i],
-                borderColor: color,
-                pointBackgroundColor: color,
-                pointRadius: 0,
-                backgroundColor: color,
-                fill: false,
-                hidden: isHidden
-            });
-        }
-        var ctx = document.getElementById('canvasdatiGrafico').getContext('2d');
-        var chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: dati[0],
-                datasets: datasets
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        type: 'timecenter',
-                        time: {
-                            unit: 'month',
-                            parser: 'DD/MM/YYYY',
-                            displayFormats: {
-                                month: 'MMM'
-                            }
-                        },
-                        gridLines: {
-                            color: "#8A8A8A",
-                            offsetGridLines: true
-                        },
-                        ticks: {
-                            maxRotation: 90
+function getChart(dati){
+    datasets = [];
+    for (var i = 1; i < 5; i++) {
+        isHidden = false;
+        if (i == 4) {isHidden = true;}
+        var label = dati[i][0];
+        var color = dati[i][1];
+        dati[i].splice(0, 2);
+        datasets.push({
+            label: label,
+            data: dati[i],
+            borderColor: color,
+            pointBackgroundColor: color,
+            pointRadius: 0,
+            backgroundColor: color,
+            fill: false,
+            hidden: isHidden
+        });
+    }
+    var ctx = document.getElementById('canvasdatiGrafico').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dati[0],
+            datasets: datasets
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'timecenter',
+                    time: {
+                        unit: 'month',
+                        parser: 'DD/MM/YYYY',
+                        displayFormats: {
+                            month: 'MMM'
                         }
-                    }]
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false
-                },
-                legend: {
-                    display: true,
-                    onHover: function (e) {
-                      e.target.style.cursor = 'pointer'
                     },
-                    onLeave: function (e) {
-                      e.target.style.cursor = 'default'
+                    gridLines: {
+                        color: "#8A8A8A",
+                        offsetGridLines: true
+                    },
+                    ticks: {
+                        maxRotation: 90
                     }
+                }]
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            legend: {
+                display: true,
+                onHover: function (e) {
+                  e.target.style.cursor = 'pointer'
+                },
+                onLeave: function (e) {
+                  e.target.style.cursor = 'default'
                 }
             }
-        });
+        }
     });
 }
 

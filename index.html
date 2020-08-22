@@ -80,16 +80,19 @@
         <div class="totale positivi">
             <span class="spanTotaleTitolo">Attualmente positivi</span>
             <span class="spanTotaleNumero" id="totalePositivi"></span>
+            <span id="nuoviPositivi"></span>
             <span id="terapiaIntensiva"></span>
         </div>
         <div class="totale morti">
             <span class="spanTotaleTitolo">Deceduti</span>
             <span class="spanTotaleNumero" id="totaleDecessi"></span>
+            <span id="nuoviDeceduti"></span>
             <span id="percentualeDeceduti"></span>
         </div>
         <div class="totale guariti">
             <span class="spanTotaleTitolo">Guariti</span>
             <span class="spanTotaleNumero" id="totaleGuariti"></span>
+            <span id="nuoviGuariti"></span>
             <span id="percentualeGuariti"></span>
         </div>
     </section>
@@ -171,8 +174,8 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/locale/it.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-    <script src="js/chart.js?_=10"></script>
-    <script src="js/populateData.js?_=8"></script>
+    <script src="js/chart.js?_=11"></script>
+    <script src="js/populateData.js?_=9"></script>
     <script src="js/notifications.js?_=3"></script>
     
     <!-- Notifiche Push -->
@@ -184,12 +187,8 @@
         var buttonSelector = ".boxNotifica";
 
         Chart.plugins.unregister(ChartDataLabels);
-        /* Inserts data into table and top couters */
+        /* Inserts data into table and top couters and creates charts */
         updateData();
-        /* Updates region chart */
-        getChart();
-        /* Updates difference chart */
-        getChart1();
         
         /* Initializes notifications */
         OneSignal.push(function() {
