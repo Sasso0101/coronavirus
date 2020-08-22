@@ -64,6 +64,9 @@ function getChart1(){
                         gridLines: {
                             color: "#8A8A8A",
                             offsetGridLines: true
+                        },
+                        ticks: {
+                            maxRotation: 90
                         }
                     }]
                 },
@@ -118,6 +121,9 @@ function getChart(){
                         gridLines: {
                             color: "#8A8A8A",
                             offsetGridLines: true
+                        },
+                        ticks: {
+                            maxRotation: 90
                         }
                     }]
                 },
