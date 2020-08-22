@@ -2,7 +2,7 @@ Chart.defaults.global.maintainAspectRatio = false;
 Chart.defaults.global.defaultFontFamily =  "'Roboto', 'sans-serif'";
 Chart.defaults.global.layout.padding = {left: 0, right: 0, top: 20, bottom: 0}
 Chart.defaults.global.elements.line.tension = 0;
-Chart.defaults.global.elements.point.hitRadius = 6;
+// Chart.defaults.global.elements.point.hitRadius = 10;
 Chart.defaults.global.legend.labels.fontColor = "#d4d4d4";
 Chart.defaults.global.defaultFontSize = 13;
 Chart.defaults.global.legend.labels.usePointStyle = true;
@@ -20,39 +20,13 @@ Chart.defaults.bar.scales.yAxes[0].ticks = {fontColor: "#fff"};
 
 Chart.defaults.doughnut.cutoutPercentage = 70;
 
-function getChart(){
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
-        datasets = [];
-        for (var i = 1; i < 4; i++) {
-            var label = dati[i][0];
-            var color = dati[i][1];
-            dati[i].splice(0, 2);
-            datasets.push({
-                label: label,
-                data: dati[i],
-                borderColor: color,
-                pointBackgroundColor: color,
-                backgroundColor: color,
-                fill: false
-            });
-        }
-        var ctx = document.getElementById('canvasdatiGrafico').getContext('2d');
-        var chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: dati[0],
-                datasets: datasets
-            }
-        });
-    });
-}
-
+// Primo grafico nuvi casi (barre verticali)
 function getChart1(){
     $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
         datasets = [];
         isHidden = true;
         for (var i = 4; i < dati.length; i++) {
-            if (i == 5) {isHidden = false;}
+            if (i == 4) {isHidden = false;}
             var label = dati[i][0];
             var color = dati[i][1];
             dati[i].splice(0, 2);
@@ -73,16 +47,86 @@ function getChart1(){
             data: {
                 labels: dati[0],
                 datasets: datasets
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'timecenter',
+                        time: {
+                            unit: 'month',
+                            parser: 'DD/MM/YYYY',
+                        },
+                        barPercentage: 1.2,
+                        categoryPercentage: 1.0,
+                        gridLines: {
+                            color: "#8A8A8A",
+                            offsetGridLines: true
+                        }
+                    }]
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                }
             }
         });
     });
 }
 
+// Grafico casi totali orizzontale
+function getChart(){
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(dati) {
+        datasets = [];
+        for (var i = 1; i < 4; i++) {
+            var label = dati[i][0];
+            var color = dati[i][1];
+            dati[i].splice(0, 2);
+            datasets.push({
+                label: label,
+                data: dati[i],
+                borderColor: color,
+                pointBackgroundColor: color,
+                pointRadius: 0,
+                backgroundColor: color,
+                fill: false
+            });
+        }
+        var ctx = document.getElementById('canvasdatiGrafico').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dati[0],
+                datasets: datasets
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'timecenter',
+                        time: {
+                            unit: 'month',
+                            parser: 'DD/MM/YYYY'
+                        },
+                        gridLines: {
+                            color: "#8A8A8A",
+                            offsetGridLines: true
+                        }
+                    }]
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                }
+            }
+        });
+    });
+}
+
+// Grafico a torta
 function getChart2(dati, totaleDecessi, totaleGuariti){
     datasets = [];
-    dati = [dati.isolamentoDomiciliare, dati.ricoveratiSintomi, dati.terapiaIntensiva, totaleDecessi, totaleGuariti]
-    labels = ['Isolamento domiciliare', 'Ricoverati con sintomi', 'Terapia intensiva', 'Deceduti', 'Guariti'];
-    colors = ['rgba(255, 251, 0, 1)', 'rgba(252, 136, 3, 1)', 'rgba(252, 3, 3, 1)', 'rgba(0, 0, 0, 1)', 'rgba(14, 143, 0, 1)'];
+    dati = [dati.isolamentoDomiciliare+dati.ricoveratiSintomi+dati.terapiaIntensiva, totaleDecessi, totaleGuariti]
+    labels = ['Attualmente positivi', 'Deceduti', 'Guariti'];
+    colors = ['rgba(188, 133, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(14, 143, 0, 1)'];
     var ctx = document.getElementById('canvasdatiGrafico2').getContext('2d');
     var chart = new Chart(ctx, {
         type: 'doughnut',
@@ -91,7 +135,8 @@ function getChart2(dati, totaleDecessi, totaleGuariti){
             labels: labels,
             datasets: [{
                 data: dati,
-                backgroundColor: colors
+                backgroundColor: colors,
+                borderWidth: 0
             }]
         },
         options: {
@@ -105,13 +150,7 @@ function getChart2(dati, totaleDecessi, totaleGuariti){
             },
             plugins: {
                 datalabels: {
-                    color: [
-                        '#1f1a1a',
-                        '#fff',
-                        '#fff',
-                        '#fff',
-                        '#fff'
-                    ],
+                    color: '#fff',
                     font: {
                         size: '14',
                         weight: '900'
@@ -130,3 +169,27 @@ function getChart2(dati, totaleDecessi, totaleGuariti){
         }
     });
 }
+
+var TimeCenterScale = Chart.scaleService.getScaleConstructor('time').extend({
+    getPixelForTick: function(index) {
+        var ticks = this.getTicks();
+        if (index < 0 || index >= ticks.length) {
+            return null;
+        }
+        // Get the pixel value for the current tick.
+        var px = this.getPixelForOffset(ticks[index].value);
+
+        // Get the next tick's pixel value.
+        var nextPx = this.right;
+        var nextTick = ticks[index + 1];
+        if (nextTick) {
+            nextPx = this.getPixelForOffset(nextTick.value);
+        }
+
+        // Align the labels in the middle of the current and next tick.
+        return px + (nextPx - px) / 2;
+    },
+});
+// Register the scale type
+var defaults = Chart.scaleService.getScaleDefaults('time');
+Chart.scaleService.registerScaleType('timecenter', TimeCenterScale, defaults);

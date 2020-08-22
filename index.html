@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Situazione Coronavirus Italia - LIVE</title>
+    <title>Situazione Coronavirus Italia</title>
     <link rel="stylesheet" href="style.css?_=46">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
 
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
 
-    <meta name="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati live in tempo reale. Vedi i casi nella tua regione e confrontali con i dati storici per capire l'andamento.">
+    <meta name="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale. Vedi i casi nella tua regione e confrontali con i dati storici per capire l'andamento.">
 
     <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="Situazione Coronavirus in Italia - LIVE">
-    <meta itemprop="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati live in tempo reale.">
+    <meta itemprop="name" content="Situazione Coronavirus in Italia">
+    <meta itemprop="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.">
     <meta itemprop="image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
 
     <script type="application/ld+json">
@@ -25,8 +25,8 @@
             "@type": "WebPage",
             "@id": "https://coronaviruslive.it/"
           },
-          "headline": "Situazione Coronavirus in Italia - LIVE",
-          "description": "Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati live in tempo reale.",
+          "headline": "Situazione Coronavirus in Italia",
+          "description": "Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.",
           "image": "https://coronaviruslive.it/img/coronavirus.jpg",  
           "author": {
             "@type": "Person",
@@ -50,15 +50,15 @@
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://coronaviruslive.it">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Situazione Coronavirus in Italia - LIVE">
-    <meta property="og:description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati live in tempo reale.">
+    <meta property="og:title" content="Situazione Coronavirus in Italia">
+    <meta property="og:description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.">
     <meta property="og:image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
     <meta property="og:locale"        content="it_IT" />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Situazione Coronavirus in Italia - LIVE">
-    <meta name="twitter:description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati live in tempo reale.">
+    <meta name="twitter:title" content="Situazione Coronavirus in Italia">
+    <meta name="twitter:description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.">
     <meta name="twitter:image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -73,8 +73,8 @@
 </head>
 <body>
     <header>
-        <span class="liveDot"></span>
-        <h1>Situazione Coronavirus in Italia - LIVE</h1>
+        <!-- <span class="liveDot"></span> -->
+        <h1>Situazione Coronavirus in Italia</h1>
     </header>
     <section id="totali">
         <div class="totale positivi">
@@ -167,9 +167,11 @@
         </a>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/locale/it.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-    <script src="js/chart.js?_=4"></script>
+    <script src="js/chart.js?_=5"></script>
     <script src="js/populateData.js?_=8"></script>
     <script src="js/notifications.js?_=3"></script>
     
