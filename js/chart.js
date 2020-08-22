@@ -73,6 +73,15 @@ function getChart1(){
                 tooltips: {
                     mode: 'index',
                     intersect: false
+                },
+                legend: {
+                    display: true,
+                    onHover: function (e) {
+                      e.target.style.cursor = 'pointer'
+                    },
+                    onLeave: function (e) {
+                      e.target.style.cursor = 'default'
+                    }
                 }
             }
         });
@@ -130,6 +139,15 @@ function getChart(){
                 tooltips: {
                     mode: 'index',
                     intersect: false
+                },
+                legend: {
+                    display: true,
+                    onHover: function (e) {
+                      e.target.style.cursor = 'pointer'
+                    },
+                    onLeave: function (e) {
+                      e.target.style.cursor = 'default'
+                    }
                 }
             }
         });
