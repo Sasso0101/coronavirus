@@ -55,6 +55,9 @@ function getChart1(){
                         time: {
                             unit: 'month',
                             parser: 'DD/MM/YYYY',
+                            displayFormats: {
+                                month: 'MMM'
+                            }
                         },
                         barPercentage: 1.2,
                         categoryPercentage: 1.0,
@@ -107,7 +110,10 @@ function getChart(){
                         type: 'timecenter',
                         time: {
                             unit: 'month',
-                            parser: 'DD/MM/YYYY'
+                            parser: 'DD/MM/YYYY',
+                            displayFormats: {
+                                month: 'MMM'
+                            }
                         },
                         gridLines: {
                             color: "#8A8A8A",
