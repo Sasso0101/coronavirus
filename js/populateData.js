@@ -62,9 +62,9 @@ function updateData() {
                 }, 5000);
             }
             /* Charts */
-            getChart2(dati, totaleDecessi, totaleGuariti);
+            getChart2(totalePositivi, totaleDecessi, totaleGuariti);
             $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(datiGrafico) {
-                document.getElementById('nuoviPositivi').innerHTML='+'+datiGrafico[5][datiGrafico[5].length-1]+' nuovi casi oggi';
+                document.getElementById('nuoviPositivi').innerHTML='+'+datiGrafico[5][datiGrafico[5].length-1]+' positivi oggi';
                 document.getElementById('nuoviDeceduti').innerHTML='+'+datiGrafico[6][datiGrafico[6].length-1]+' deceduti oggi';
                 document.getElementById('nuoviGuariti').innerHTML='+'+datiGrafico[7][datiGrafico[7].length-1]+' guariti oggi';
                 getChart1(datiGrafico);

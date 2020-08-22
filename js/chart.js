@@ -151,9 +151,9 @@ function getChart(dati){
 }
 
 // Grafico a torta
-function getChart2(dati, totaleDecessi, totaleGuariti){
+function getChart2(totalePositivi, totaleDecessi, totaleGuariti){
     datasets = [];
-    dati = [dati.isolamentoDomiciliare+dati.ricoveratiSintomi+dati.terapiaIntensiva, totaleDecessi, totaleGuariti]
+    dati = [totalePositivi, totaleDecessi, totaleGuariti]
     labels = ['Attualmente positivi', 'Deceduti', 'Guariti'];
     colors = ['rgba(188, 133, 0, 1)', 'rgba(0, 0, 0, 1)', 'rgba(14, 143, 0, 1)'];
     var ctx = document.getElementById('canvasdatiGrafico2').getContext('2d');
