@@ -212,6 +212,9 @@ h1 {
 }
 
 /* Mappa regioni/province */
+#maps {
+    z-index: 1;
+}
 #chartSelection {
     display: flex;
     flex-direction: column;
@@ -237,6 +240,20 @@ h1 {
 #maps canvas {
     max-width: 400px;
     margin: 0 auto;
+}
+
+#chartjs-tooltip {
+    opacity: 1;
+    position: absolute;
+    background: rgba(0, 0, 0, .8);
+    color: white;
+    border-radius: 3px;
+    -webkit-transition: all .1s ease;
+    transition: all .1s ease;
+    pointer-events: none;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    width: fit-content;
 }
 
 /* Grafico */
@@ -291,6 +308,9 @@ footer p {
 }
 
 /* Pulsanti social */
+#socialBox {
+    z-index: -1;
+}
 .social {
     display: flex;
     flex-direction: row;

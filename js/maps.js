@@ -27,17 +27,39 @@ async function fetchMap(chartData, type, value = 'activeCases', period = 'today'
     labels = [];
     mapChartData =  []
     for (var i = 0; i < chartData.length; i++) {
-        mapChartData.push({
-            feature: mapFeatures.find((d) => d.properties[codeFieldName] == chartData[i].code),
-            value: chartData[i][value]
-        });
+        if (type == 'region') {
+            mapChartData.push({
+                feature: mapFeatures.find((d) => d.properties[codeFieldName] == chartData[i].code),
+                value: chartData[i][value],
+                name: chartData[i]['name'],
+                activeCases: chartData[i]['activeCases'],
+                newActiveCases: chartData[i]['activeCases'],
+                recovered: chartData[i]['recovered'],
+                newRecovered: chartData[i]['newRecovered'],
+                hospitalized: chartData[i]['hospitalized'],
+                intensiveCare: chartData[i]['intensiveCare'],
+                deaths: chartData[i]['deaths'],
+                newDeaths: chartData[i]['newDeaths'],
+                peopleTested: chartData[i]['peopleTested']
+            });
+        } else {
+            mapChartData.push({
+                feature: mapFeatures.find((d) => d.properties[codeFieldName] == chartData[i].code),
+                value: chartData[i][value],
+                name: chartData[i]['name'],
+                totalCases: chartData[i]['totalCases'],
+                totalCasesToday: chartData[i]['totalCasesToday'],
+            });
+        }
         labels.push(chartData[i].name);
     }
     return [labels, mapFeatures, mapChartData];
 }
-Chart.defaults.choropleth.defaultColor = '#ffffff';
-Chart.defaults.choropleth.defaultFontColor = '#ffffff';
-Chart.defaults.choropleth.defaultFontSize = 20;
+
+Chart.Tooltip.positioners.cursor = function(chartElements, coordinates) {
+    return coordinates;
+};
+
 function initMap() {
     fetchMap(regionsData, 'region').then(chartData => {
         map = new Chart(document.getElementById("map").getContext("2d"), {
@@ -64,12 +86,102 @@ function initMap() {
                     colorScale: {
                         display: true,
                         interpolate: "reds",
+                        legend: {
+                            position: 'top-right',
+                            margin: 50
+                        }
                     }
                 },
                 elements: {
                     geoFeature: {
                         borderWidth: 1,
                         borderColor: '#000'
+                    }
+                },
+                tooltips: {
+                    titleFontSize: 14,
+                    bodyFontSize: 14,
+                    enabled: false,
+                    custom: function(tooltip) {
+                        var tooltipEl = document.getElementById('chartjs-tooltip');
+
+                        if (!tooltipEl) {
+                            tooltipEl = document.createElement('div');
+                            tooltipEl.id = 'chartjs-tooltip';
+                            tooltipEl.innerHTML = '<table></table>';
+                            this._chart.canvas.parentNode.appendChild(tooltipEl);
+                        }
+
+                        // Hide if no tooltip
+			            if (tooltip.opacity === 0) {
+			            	tooltipEl.style.opacity = 0;
+			            	return;
+                        }
+                        
+                        // Set caret Position
+			            tooltipEl.classList.remove('above', 'below', 'no-transform');
+			            if (tooltip.yAlign) {
+			            	tooltipEl.classList.add(tooltip.yAlign);
+			            } else {
+			            	tooltipEl.classList.add('no-transform');
+                        }
+                        
+                        function getBody(bodyItem) {
+                            return bodyItem.lines;
+                        }
+
+                        // Set Text
+			            if (tooltip.body) {
+			            	var titleLines = tooltip.title || [];
+			            	var bodyLines = tooltip.body.map(getBody);
+			            	var innerHtml = '<thead>';
+			            	titleLines.forEach(function(title) {
+			            		innerHtml += '<tr><th>' + title + '</th></tr>';
+			            	});
+			            	innerHtml += '</thead><tbody>';
+			            	bodyLines.forEach(function(body, i) {
+			            		var colors = tooltip.labelColors[i];
+			            		var style = 'background:' + colors.backgroundColor;
+			            		style += '; border-color:' + colors.borderColor;
+			            		style += '; border-width: 2px';
+			            		var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+			            		innerHtml += '<tr><td>' + span + body + '</td></tr>';
+			            	});
+			            	innerHtml += '</tbody>';
+			            	var tableRoot = tooltipEl.querySelector('table');
+                            tableRoot.innerHTML = innerHtml;
+                            var positionY = this._chart.canvas.offsetTop + 10;
+                            var positionX = this._chart.canvas.offsetLeft;
+                            if (positionX + tooltip.caretX < 140) {
+                                positionX = 140 - tooltip.caretX;
+                            }
+                            if (positionX + tooltip.caretX > $( window ).width() - 150) {
+                                positionX = $( window ).width() - 120 - tooltip.caretX;
+                            }
+			                // Display, position, and set styles for font
+			                tooltipEl.style.opacity = 1;
+			                tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+			                tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+			                tooltipEl.style.fontFamily = tooltip._bodyFontFamily;
+			                tooltipEl.style.fontSize = tooltip.bodyFontSize + 'px';
+			                tooltipEl.style.fontStyle = tooltip._bodyFontStyle;
+			                tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
+			            }
+                    },
+                    callbacks: {
+                        title: function(tooltipItem, data) {
+                            return data.datasets[tooltipItem[0].datasetIndex]['data'][tooltipItem[0].index]['name'];
+
+                        },
+                        label: function(tooltipItem, data) {
+                            var value = data.datasets[tooltipItem.datasetIndex]['data'][tooltipItem.index];
+                            if (data.datasets[tooltipItem.datasetIndex].label == 'Regioni') {
+                                var label = "Attualmente positivi: "+value['activeCases']+' (+'+value['newActiveCases']+')<br>In ospedale: '+value['hospitalized']+'<br>In terapia intensiva: '+value['intensiveCare']+'<br>Guariti: '+value['recovered']+'<br>Decessi: '+value['deaths']+' (+'+value['newDeaths']+')<br>Persone testate: '+value['peopleTested']
+                            } else {
+                                var label = "Casi totali: "+value['totalCases']+' (+'+value['totalCasesToday']+')'
+                            }
+                            return label;
+                        }
                     }
                 }
             }
