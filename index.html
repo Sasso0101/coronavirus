@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia</title>
-    <link rel="stylesheet" href="style.css?_=46">
+    <link rel="stylesheet" href="style.css?_=47">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
 
@@ -84,7 +84,7 @@
             <span id="terapiaIntensiva"></span>
         </div>
         <div class="totale morti">
-            <span class="spanTotaleTitolo">Deceduti</span>
+            <span class="spanTotaleTitolo">Decessi</span>
             <span class="spanTotaleNumero" id="totaleDecessi"></span>
             <span id="nuoviDeceduti"></span>
             <span id="percentualeDeceduti"></span>
@@ -105,18 +105,28 @@
     <section class="aggiornamentiLive">
         <p style="margin: 10px 0 0 0;">Ultimo aggiornamento: <time id="ultimoAggiornamento"></time></p>
     </section>
-    <section>
-        <h2>Casi per regione</h2>
-        <table id="regioni">
-            <tr>
-                <th>Regione</th>
-                <th>Positivi</th>
-                <th>Deceduti</th>
-                <th>Guariti</th>
-                <th>Testati</th>
-            </tr>
-        </table>
-        <span id="notaNonConfermati"></span>
+    <section id="maps">
+        <h2>Distribuzione dei casi</h2>
+        <div id="chartSelection">
+            <div id="territorySelection">
+                <div id="byRegion" class="choice" onClick="showTerritory(this, 'region');" style="background-color: #a0a0a0;">Per regione</div> 
+                <div id="byProvince" class="choice" onClick="showTerritory(this, 'province');">Per provincia</div>
+            </div>
+            <div id="valueSelection">
+                <div id="regionSelection">
+                    <div id="RegionActiveCases" class="choice" onClick="showTerritory(this, 'region', 'activeCases');" style="background-color: #a0a0a0;">Attualmente positivi</div>
+                    <div id="RegionNewActiveCases" class="choice" onClick="showTerritory(this, 'region', 'newActiveCases');">Nuovi positivi</div>
+                    <div id="RegionIntensiveCare" class="choice" onClick="showTerritory(this, 'region', 'intensiveCare');">In terapia intensiva</div>
+                    <div id="RegionNewDeaths" class="choice" onClick="showTerritory(this, 'region', 'newDeaths');">Nuovi decessi</div>
+                </div>
+                <div id="provinceSelection" style="display:none;">
+                    <div id="ProvinceToday" class="choice" onClick="showTerritory(this, 'province',undefined,'today');">Nuovi casi oggi</div>
+                    <div id="Province30days" class="choice" onClick="showTerritory(this, 'province',undefined,'30days');">Negli ultimi 30 giorni</div>
+                    <div id="ProvinceBeginning" class="choice" onClick="showTerritory(this, 'province',undefined,'all');" >Dall'inizio</div>
+                </div>
+            </div>
+        </div>
+        <canvas id="map"></canvas>
     </section>
     <section>
         <div class="boxNotifica" style="display: none;"></div>
@@ -134,8 +144,6 @@
     <section class="grafici">
         <div class="grafico">
             <h2>Casi giornalieri</h2>
-            <!-- <p class="notaDecremento">❗ <u>Nota</u>: 419 dei nuovi contagiati oggi in realtà riferiscono a persone testate nelle settimane precedenti e non nelle ultime 24 ore.<br>Fonte: <i>Regione Lombardia</i></p> -->
-            <!-- <h3>(Aggiornato alle 18 giornalmente)</h3> -->
             <div class="containerGrafico containerGrafico1">
                 <canvas id="canvasdatiGrafico1"></canvas>
             </div>
@@ -143,14 +151,12 @@
         </div>
         <div class="grafico">
             <h2>Stato casi totali</h2>
-            <!-- <h3>(Aggiornato alle 18 giornalmente)</h3> -->
             <div class="containerGrafico">
                 <canvas id="canvasdatiGrafico"></canvas>
             </div>
             <br>    
         </div>
         <div class="grafico">
-            <!-- <h3>(Aggiornato alle 18 giornalmente)</h3> -->
             <div class="containerGrafico containerGrafico2">
                 <canvas id="canvasdatiGrafico2"></canvas>
             </div>
@@ -172,15 +178,17 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/locale/it.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-    <script src="js/chart.js?_=12"></script>
-    <script src="js/populateData.js?_=10"></script>
-    <script src="js/notifications.js?_=3"></script>
+    <script src="https://unpkg.com/chartjs-chart-geo@2.1.0"></script>
+    <script src="js/chart.js?_=13"></script>
+    <script src="js/maps.js?_=1"></script>
+    <script src="js/populateData.js?_=11"></script>
+    <script src="js/notifications.js?_=4"></script>
     
     <!-- Notifiche Push -->
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
 
-        var animation;
+        var animation, regionsData, provincesData, map;
         var OneSignal = OneSignal || [];
         var buttonSelector = ".boxNotifica";
 

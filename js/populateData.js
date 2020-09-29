@@ -1,54 +1,23 @@
 function updateData() {
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/dati.php?_=' + new Date().getTime(), function(dati) {
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/datiV2.php?_=' + new Date().getTime(), function(datiJSON) {
+        dati = datiJSON;
         var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
-        var nuovoIdVersione = parseInt(dati.idVersione);
+        var nuovoIdVersione = parseInt(dati.id);
         if (idVersione != nuovoIdVersione) {
-            var nuovoUltimoAggiornamento = dati.ultimoAggiornamento.ora+' '+dati.ultimoAggiornamento.data;
-            var totalePositivi = 0, totaleDecessi = 0, totaleGuariti = 0, totaleNonConfermati = 0, totaleTamponi = 0, nonConfermati = '', nome = '';
-            const tabella = document.getElementById('regioni').getElementsByTagName('tbody')[0];
-            // Reset tabella
-            tabella.innerHTML = tabella.rows[0].innerHTML;
-            for(regione in dati['regioni']) {
-                regione = dati["regioni"][regione];
-                var row = document.createElement("tr");
-                nome = regione.nome;
-                // Incremento counter totali
-                totalePositivi += regione.contagiati;
-                totaleDecessi += regione.decessi;
-                totaleGuariti += regione.guariti;
-                totaleTamponi += regione.tamponi;
-                // Casi non confermati
-                nonConfermati = '';
-                if (regione.nonConfermati > 0) {
-                    nonConfermati = ' (+'+regione.nonConfermati+')*';
-                    totaleNonConfermati += regione.nonConfermati;
-                }
-                // Inserimento riga
-                row.innerHTML = '<td>'+nome+'</td><td>'+regione.contagiati+nonConfermati+'</td><td>'+regione.decessi+'</td><td>'+regione.guariti+'</td><td>'+regione.tamponi+'</td>';
-                tabella.appendChild(row);
-            }
-            nonConfermati='';
-            if (totaleNonConfermati > 0) {
-                document.getElementById('notaNonConfermati').innerHTML='* Casi di tampone positivo ma non confermati';
-                nonConfermati = ' (+'+totaleNonConfermati+')*';
-            }
-            // Riga finale totale Italia
-            var row = document.createElement("tr");
-            row.classList.add("rigaTotaleItalia");
-            row.innerHTML = '<td>Italia</td><td>'+totalePositivi+nonConfermati+'</td><td>'+totaleDecessi+'</td><td>'+totaleGuariti+'</td><td>'+totaleTamponi+'</td>';
-            tabella.appendChild(row);
-            var row = document.createElement("tr");
-            // row.innerHTML = '<td colspan="5">'+dati.paeseAlMondo+'° paese nel mondo per numero di attualmente positivi</td>';
-            tabella.appendChild(row);
+            var nuovoUltimoAggiornamento = dati.lastUpdated.time+' '+dati.lastUpdated.day;
+
             // Counter totali
-            document.getElementById('totalePositivi').innerHTML=totalePositivi;
-            document.getElementById('totaleDecessi').innerHTML=totaleDecessi;
-            document.getElementById('totaleGuariti').innerHTML=totaleGuariti;
-            document.getElementById('terapiaIntensiva').innerHTML=dati.terapiaIntensiva+' in terapia intensiva';
-            percentuale = (totaleDecessi*100) / (totalePositivi + totaleDecessi + totaleGuariti);
+            document.getElementById('totalePositivi').innerHTML=dati.today.activeCases;
+            document.getElementById('totaleDecessi').innerHTML=dati.today.deaths;
+            document.getElementById('totaleGuariti').innerHTML=dati.today.recovered;
+            document.getElementById('terapiaIntensiva').innerHTML=dati.today.intensiveCare+' in terapia intensiva';
+            percentuale = (dati.today.deaths*100) / (dati.today.activeCases + dati.today.deaths + dati.today.recovered);
             document.getElementById('percentualeDeceduti').innerHTML= Math.round((percentuale + Number.EPSILON) * 100) / 100+'% casi totali in Italia';
-            percentuale = (totaleGuariti*100) / (totalePositivi + totaleDecessi + totaleGuariti);
+            percentuale = (dati.today.recovered*100) / (dati.today.activeCases + dati.today.deaths + dati.today.recovered);
             document.getElementById('percentualeGuariti').innerHTML= Math.round((percentuale + Number.EPSILON) * 100) / 100+'% casi totali in Italia';
+            document.getElementById('nuoviPositivi').innerHTML='+'+dati.today.newActiveCases+' positivi oggi';
+            document.getElementById('nuoviDeceduti').innerHTML='+'+dati.today.newDeaths+' decessi oggi';
+            document.getElementById('nuoviGuariti').innerHTML='+'+dati.today.newRecovered+' guariti oggi';
 
             document.getElementById('ultimoAggiornamento').innerHTML=nuovoUltimoAggiornamento;
             document.getElementById('ultimoControllo').innerHTML='';
@@ -61,15 +30,13 @@ function updateData() {
                     $('#ultimoControllo').slideUp('slow');
                 }, 5000);
             }
+            regionsData = dati.regions;
+            provincesData = dati.provinces;
+            initMap();
             /* Charts */
-            getChart2(totalePositivi, totaleDecessi, totaleGuariti);
-            $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/grafico/datiGrafico1.php?_=' + new Date().getTime(), function(datiGrafico) {
-                document.getElementById('nuoviPositivi').innerHTML='+'+datiGrafico[5][datiGrafico[5].length-1]+' positivi oggi';
-                document.getElementById('nuoviDeceduti').innerHTML='+'+datiGrafico[6][datiGrafico[6].length-1]+' deceduti oggi';
-                document.getElementById('nuoviGuariti').innerHTML='+'+datiGrafico[7][datiGrafico[7].length-1]+' guariti oggi';
-                getChart1(datiGrafico);
-                getChart(datiGrafico);
-            });
+            getChart2(dati.today);
+            getChart1(dati.chart);
+            getChart(dati.chart);
         }
         else {
             var oggi = new Date();
