@@ -264,7 +264,7 @@ h1 {
 }
 
 /* Grafico */
-.grafici {
+#graficiFlex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -272,7 +272,7 @@ h1 {
 }
 
 @media only screen and (min-width: 1000px)  {
-    .grafico {
+    #graficiFlex .grafico {
         padding: 10px;
     }
 }
