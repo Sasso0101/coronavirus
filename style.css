@@ -89,7 +89,7 @@ h1 {
     justify-content: center;
 }
 .totale {
-    width: 300px;
+    width: 340px;
     background-color: #ffffff;
     border-radius: 40px;
     margin: 4px;
@@ -104,8 +104,8 @@ h1 {
     font-weight: bold;
 }
 .spanTotaleNumero {
-    font-size: 89px;
-    line-height: 85px;
+    font-size: 64px;
+    line-height: 64px;
 }
 
 .positivi {
@@ -117,12 +117,15 @@ h1 {
 .guariti {
     color: #008000;
 }
+.tamponi {
+    color: #929292;
+}
 
 /* Sezione aggiorna */
 #pulsanteAggiorna {
     cursor: pointer;
     margin: 0 auto;
-    font-size: 27px;
+    font-size: 24px;
     text-decoration: underline;
     user-select: none;
 }
@@ -212,6 +215,10 @@ h1 {
 }
 
 /* Mappa regioni/province */
+.mapContainer {
+    position: relative;
+}
+
 #maps {
     z-index: 1;
 }
@@ -309,7 +316,7 @@ footer p {
 
 /* Pulsanti social */
 #socialBox {
-    z-index: -1;
+    z-index: 0;
 }
 .social {
     display: flex;
@@ -329,6 +336,7 @@ footer p {
     color: #000000;
     padding: 10px 0;
     height: 39px;
+    z-index: 3;
 }
 
 .socialFissi {

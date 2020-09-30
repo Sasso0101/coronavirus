@@ -1,3 +1,7 @@
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+}
+
 function updateData() {
     $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/datiV2.php?_=' + new Date().getTime(), function(datiJSON) {
         dati = datiJSON;
@@ -7,17 +11,20 @@ function updateData() {
             var nuovoUltimoAggiornamento = dati.lastUpdated.time+' '+dati.lastUpdated.day;
 
             // Counter totali
-            document.getElementById('totalePositivi').innerHTML=dati.today.activeCases;
-            document.getElementById('totaleDecessi').innerHTML=dati.today.deaths;
-            document.getElementById('totaleGuariti').innerHTML=dati.today.recovered;
-            document.getElementById('terapiaIntensiva').innerHTML=dati.today.intensiveCare+' in terapia intensiva';
+            document.getElementById('totalePositivi').innerHTML=formatNumber(dati.today.activeCases);
+            document.getElementById('totaleDecessi').innerHTML=formatNumber(dati.today.deaths);
+            document.getElementById('totaleGuariti').innerHTML=formatNumber(dati.today.recovered);
+            document.getElementById('totaleTamponi').innerHTML=formatNumber(dati.today.tests);
+            document.getElementById('terapiaIntensiva').innerHTML=formatNumber(dati.today.intensiveCare)+' in terapia intensiva';
             percentuale = (dati.today.deaths*100) / (dati.today.activeCases + dati.today.deaths + dati.today.recovered);
             document.getElementById('percentualeDeceduti').innerHTML= Math.round((percentuale + Number.EPSILON) * 100) / 100+'% casi totali in Italia';
             percentuale = (dati.today.recovered*100) / (dati.today.activeCases + dati.today.deaths + dati.today.recovered);
             document.getElementById('percentualeGuariti').innerHTML= Math.round((percentuale + Number.EPSILON) * 100) / 100+'% casi totali in Italia';
-            document.getElementById('nuoviPositivi').innerHTML='+'+dati.today.newActiveCases+' positivi oggi';
-            document.getElementById('nuoviDeceduti').innerHTML='+'+dati.today.newDeaths+' decessi oggi';
-            document.getElementById('nuoviGuariti').innerHTML='+'+dati.today.newRecovered+' guariti oggi';
+            document.getElementById('nuoviPositivi').innerHTML=formatNumber(dati.today.newActiveCases)+' positivi oggi';
+            document.getElementById('nuoviDeceduti').innerHTML=formatNumber(dati.today.newDeaths)+' decessi oggi';
+            document.getElementById('nuoviGuariti').innerHTML=formatNumber(dati.today.newRecovered)+' guariti oggi';
+            document.getElementById('nuoviTamponi').innerHTML=formatNumber(dati.today.newTests)+' tamponi effettuati oggi';
+            document.getElementById('personeTestate').innerHTML=formatNumber(dati.today.peopleTested)+' persone testate';
 
             document.getElementById('ultimoAggiornamento').innerHTML=nuovoUltimoAggiornamento;
             document.getElementById('ultimoControllo').innerHTML='';
