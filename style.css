@@ -264,6 +264,19 @@ h1 {
 }
 
 /* Grafico */
+.grafici {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 1000px)  {
+    .grafico {
+        padding: 10px;
+    }
+}
+
 .grafico h3 {
     margin-bottom: 10px;
     text-align: center;
@@ -283,7 +296,7 @@ h1 {
 }
 
 .containerGrafico1 {
-    max-height: 300px;
+    max-height: 400px;
 }
 
 .containerGrafico2 {
