@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia</title>
-    <link rel="stylesheet" href="style.css?_=48">
+    <link rel="stylesheet" href="style.css?_=49">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
 
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
 
     <meta name="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale. Vedi i casi nella tua regione e confrontali con i dati storici per capire l'andamento.">
+    <meta name="theme-color" content="#0a0a0a" />
 
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="Situazione Coronavirus in Italia">
@@ -148,20 +149,18 @@
         </div>
     </section>
     <section class="grafici">
-        <div id="graficiFlex">
-            <div class="grafico">
-                <h2>Casi giornalieri</h2>
-                <div class="containerGrafico containerGrafico1">
-                    <canvas id="canvasdatiGrafico1"></canvas>
-                </div>
+        <div class="grafico">
+            <h2>Casi giornalieri</h2>
+            <div class="containerGrafico containerGrafico1">
+                <canvas id="canvasdatiGrafico1"></canvas>
             </div>
-            <div class="grafico">
-                <h2>Stato casi totali</h2>
-                <div class="containerGrafico">
-                    <canvas id="canvasdatiGrafico"></canvas>
-                </div>
-                <br>    
+        </div>
+        <div class="grafico">
+            <h2>Stato casi totali</h2>
+            <div class="containerGrafico">
+                <canvas id="canvasdatiGrafico"></canvas>
             </div>
+            <br>    
         </div>
         <div class="grafico">
             <div class="containerGrafico containerGrafico2">
@@ -187,7 +186,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <script src="https://unpkg.com/chartjs-chart-geo@2.1.0"></script>
     <script src="js/chart.js?_=13"></script>
-    <script src="js/maps.js?_=1"></script>
+    <script src="js/maps.js?_=2"></script>
     <script src="js/populateData.js?_=11"></script>
     <script src="js/notifications.js?_=4"></script>
     

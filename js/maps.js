@@ -33,7 +33,7 @@ async function fetchMap(chartData, type, value = 'activeCases', period = 'today'
                 value: chartData[i][value],
                 name: chartData[i]['name'],
                 activeCases: chartData[i]['activeCases'],
-                newActiveCases: chartData[i]['activeCases'],
+                newActiveCases: chartData[i]['newActiveCases'],
                 recovered: chartData[i]['recovered'],
                 newRecovered: chartData[i]['newRecovered'],
                 hospitalized: chartData[i]['hospitalized'],
@@ -85,7 +85,7 @@ function initMap() {
                 geo: {
                     colorScale: {
                         display: true,
-                        interpolate: "reds",
+                        interpolate: 'reds',
                         legend: {
                             position: 'top-right',
                             margin: 50
