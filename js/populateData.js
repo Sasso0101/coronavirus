@@ -3,7 +3,7 @@ function formatNumber(num) {
 }
 
 function updateData() {
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/datiV2.php?_=' + new Date().getTime(), function(datiJSON) {
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/datiV3.php?_=' + new Date().getTime(), function(datiJSON) {
         dati = datiJSON;
         var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
         var nuovoIdVersione = parseInt(dati.id);
