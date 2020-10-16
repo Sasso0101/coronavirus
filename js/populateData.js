@@ -31,7 +31,6 @@ function updateData() {
             document.getElementById('personeTestate').innerHTML=formatNumber(dati.today.peopleTested)+' persone testate';
 
             document.getElementById('ultimoAggiornamento').innerHTML=nuovoUltimoAggiornamento;
-            document.getElementById('ultimoControllo').innerHTML='';
             document.getElementById('idVersione').innerHTML = nuovoIdVersione;
             if (idVersione) {
                 document.getElementById('ultimoControllo').innerHTML='I dati sono stati aggiornati.';
@@ -47,17 +46,6 @@ function updateData() {
             chartNewCases(dati.chartNewCases);
             initCasesChart();
             chartCumulativeCases();
-        }
-        else {
-            var oggi = new Date();
-            var data = oggi.getDate()+'/'+(oggi.getMonth()+1)+'/'+oggi.getFullYear();
-            var ora = oggi.getHours() + ":" + oggi.getMinutes() + ":" + oggi.getSeconds();
-            document.getElementById('ultimoControllo').innerHTML='Nessun nuovo aggiornamento. Ultimo controllo '+data+' '+ora;
-            clearTimeout(animation);
-            $("#ultimoControllo").slideDown("slow");
-            animation = setTimeout(function() {
-                $('#ultimoControllo').slideUp('slow');
-            }, 5000);
-        }
+        };
     });
 }
