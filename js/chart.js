@@ -22,11 +22,10 @@ Chart.defaults.bar.scales.yAxes[0].ticks = {fontColor: "#fff"};
 Chart.defaults.doughnut.cutoutPercentage = 70;
 
 // Primo grafico nuvi casi (barre verticali)
-function getChart1(chartData){
+function chartNewCases(chartData){
     datasets = [];
-    isHidden = true;
-    for (var i = 6; i < chartData.length; i++) {
-        if (i == 6) {isHidden = false;}
+    isHidden = false;
+    for (var i = 1; i < chartData.length; i++) {
         var label = chartData[i][0];
         var color = chartData[i][1];
         chartData[i].splice(0, 2);
@@ -88,11 +87,11 @@ function getChart1(chartData){
 }
 
 // Grafico casi totali orizzontale
-function getChart(chartData){
+function chartByDay(chartData){
     datasets = [];
-    for (var i = 1; i < 6; i++) {
+    for (var i = 1; i < chartData.length; i++) {
         isHidden = false;
-        if (i == 5) {isHidden = true;}
+        if (i > 3) {isHidden = true;}
         var label = chartData[i][0];
         var color = chartData[i][1];
         chartData[i].splice(0, 2);
@@ -152,7 +151,7 @@ function getChart(chartData){
 }
 
 // Grafico a torta
-function getChart2(today){
+function chartPie(today){
     datasets = [];
     chartData = [today.selfIsolation, today.hospitalized, today.intensiveCare, today.deaths, today.recovered]
     labels = ['Isolamento domiciliare', 'Ospedalizzati', 'Terapia intensiva', 'Deceduti', 'Guariti'];
