@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia</title>
-    <link rel="stylesheet" href="style.css?_=52">
+    <link rel="stylesheet" href="style.css?_=53">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
 
@@ -113,19 +113,19 @@
     </section>
     <section id="maps">
         <h2>Distribuzione dei casi</h2>
-        <div id="chartSelection">
-            <div id="territorySelection">
+        <div id="chartSelection" class="chartSelection">
+            <div id="territorySelection" class="territorySelection">
                 <div id="byRegion" class="choice" onClick="showTerritory(this, 'region');" style="background-color: #a0a0a0;">Per regione</div> 
                 <div id="byProvince" class="choice" onClick="showTerritory(this, 'province');">Per provincia</div>
             </div>
-            <div id="valueSelection">
-                <div id="regionSelection">
+            <div id="valueSelection" class="valueSelection">
+                <div id="regionSelection" class="regionSelection">
                     <div id="RegionActiveCases" class="choice" onClick="showTerritory(this, 'region', 'activeCases');" style="background-color: #a0a0a0;">Attualmente positivi</div>
                     <div id="RegionNewActiveCases" class="choice" onClick="showTerritory(this, 'region', 'newActiveCases');">Nuovi positivi</div>
                     <div id="RegionIntensiveCare" class="choice" onClick="showTerritory(this, 'region', 'intensiveCare');">In terapia intensiva</div>
                     <div id="RegionNewDeaths" class="choice" onClick="showTerritory(this, 'region', 'newDeaths');">Nuovi decessi</div>
                 </div>
-                <div id="provinceSelection" style="display:none;">
+                <div id="provinceSelection" class="provinceSelection" style="display:none;">
                     <div id="ProvinceToday" class="choice" onClick="showTerritory(this, 'province',undefined,'today');">Nuovi casi oggi</div>
                     <div id="Province30days" class="choice" onClick="showTerritory(this, 'province',undefined,'30days');">Negli ultimi 30 giorni</div>
                     <div id="ProvinceBeginning" class="choice" onClick="showTerritory(this, 'province',undefined,'all');" >Dall'inizio</div>
@@ -157,16 +157,17 @@
             </div>
         </div>
         <div class="grafico">
-            <h2>Stato casi totali</h2>
+            <h2>Stato casi</h2>
+            <div class="chartSelection">
+                <div id="casesSelection" class="territorySelection">
+                    <div id="all" class="choice" onClick="updateCasesChart(this, 'all');" style="background-color: #a0a0a0;">Tutti</div> 
+                    <div id="activeCases" class="choice" onClick="updateCasesChart(this, 'activeCases');">Attualmente positivi</div>
+                </div>
+            </div>
             <div class="containerGrafico">
-                <canvas id="canvasdatiGrafico"></canvas>
+                <canvas id="casesChart"></canvas>
             </div>
             <br>    
-        </div>
-        <div class="grafico">
-            <div class="containerGrafico containerGrafico2">
-                <canvas id="canvasdatiGrafico2"></canvas>
-            </div>
         </div>
     </section>
     <footer>
@@ -186,16 +187,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <script src="https://unpkg.com/chartjs-chart-geo@2.1.0"></script>
-    <script src="js/chart.js?_=15"></script>
-    <script src="js/maps.js?_=2"></script>
-    <script src="js/populateData.js?_=14"></script>
+    <script src="js/chart.js?_=16"></script>
+    <script src="js/maps.js?_=3"></script>
+    <script src="js/populateData.js?_=15"></script>
     <script src="js/notifications.js?_=4"></script>
     
     <!-- Notifiche Push -->
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
 
-        var animation, regionsData, provincesData, map;
+        var animation, dati, map, casesChart;
         var OneSignal = OneSignal || [];
         var buttonSelector = ".boxNotifica";
 

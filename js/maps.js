@@ -61,7 +61,7 @@ Chart.Tooltip.positioners.cursor = function(chartElements, coordinates) {
 };
 
 function initMap() {
-    fetchMap(regionsData, 'region').then(chartData => {
+    fetchMap(dati.regions, 'region').then(chartData => {
         map = new Chart(document.getElementById("map").getContext("2d"), {
             type: 'choropleth',
             data: {
@@ -195,10 +195,10 @@ function initMap() {
 function updateMap(type, value = 'activeCases', period = 'today') {
     if (type == 'region') {
         label = 'Regioni';
-        chartData = regionsData;
+        chartData = dati.regions;
     } else {
         label = 'Province';
-        chartData = provincesData;
+        chartData = dati.provinces;
     }
     fetchMap(chartData, type, value, period).then(chartData => {
         map.data = {

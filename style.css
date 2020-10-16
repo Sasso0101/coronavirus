@@ -37,7 +37,7 @@ h2 {
     font-weight: normal;
     display: block;
     text-align: center;
-    margin: 20px 0 5px 0;
+    margin-top: 20px;
 }
 
 /* Titolo */
@@ -222,11 +222,11 @@ h1 {
 #maps {
     z-index: 1;
 }
-#chartSelection {
+.chartSelection {
     display: flex;
     flex-direction: column;
 }
-#territorySelection, #regionSelection, #provinceSelection {
+.territorySelection, .regionSelection, .provinceSelection {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -280,19 +280,7 @@ h1 {
     max-height: 400px;
     margin: 0 auto;
     background-color: #303030;
-}
-
-.containerGrafico1 {
-    max-height: 400px;
-}
-
-.containerGrafico2 {
-    max-height: 250px;
-    max-width: 450px;
-}
-
-.guidaGrafico {
-    margin: 6px 5px 0 5px;
+    margin-top: 5px;
 }
 
 /* Footer */

@@ -86,33 +86,10 @@ function chartNewCases(chartData){
     });
 }
 
-// Grafico casi totali orizzontale
-function chartByDay(chartData){
-    datasets = [];
-    for (var i = 1; i < chartData.length; i++) {
-        isHidden = false;
-        if (i > 3) {isHidden = true;}
-        var label = chartData[i][0];
-        var color = chartData[i][1];
-        chartData[i].splice(0, 2);
-        datasets.push({
-            label: label,
-            data: chartData[i],
-            borderColor: color,
-            pointBackgroundColor: color,
-            pointRadius: 0,
-            backgroundColor: color,
-            fill: false,
-            hidden: isHidden
-        });
-    }
-    var ctx = document.getElementById('canvasdatiGrafico').getContext('2d');
-    var chart = new Chart(ctx, {
+function initCasesChart() {
+    var ctx = document.getElementById('casesChart').getContext('2d');
+    casesChart = new Chart(ctx, {
         type: 'line',
-        data: {
-            labels: chartData[0],
-            datasets: datasets
-        },
         options: {
             scales: {
                 xAxes: [{
@@ -131,11 +108,14 @@ function chartByDay(chartData){
                     ticks: {
                         maxRotation: 90
                     }
+                }],
+                yAxes: [{
+                    stacked: true,
                 }]
             },
             tooltips: {
                 mode: 'index',
-                intersect: false
+                intersect: false,
             },
             legend: {
                 display: true,
@@ -150,56 +130,71 @@ function chartByDay(chartData){
     });
 }
 
-// Grafico a torta
-function chartPie(today){
+function updateCasesChart(el, selection){
+    if (selection == 'all') {
+        chartCumulativeCases();
+        $('#activeCases').css('background-color', '#fff');
+    }
+    else if (selection == 'activeCases') {
+        chartActiveCases();
+        $('#all').css('background-color', '#fff');
+    }
+    el.style.backgroundColor = "#a0a0a0";
+}
+
+// Grafico casi attivi per tipo orizzontale
+function chartActiveCases(){
+    var activeCases = dati.chartActiveCases;
     datasets = [];
-    chartData = [today.selfIsolation, today.hospitalized, today.intensiveCare, today.deaths, today.recovered]
-    labels = ['Isolamento domiciliare', 'Ospedalizzati', 'Terapia intensiva', 'Deceduti', 'Guariti'];
-    colors = ['#ffaa00', '#0080ff', '#ff1900', '#000000', '#15a30d'];
-    var ctx = document.getElementById('canvasdatiGrafico2').getContext('2d');
-    var chart = new Chart(ctx, {
-        type: 'doughnut',
-        plugins: [ChartDataLabels],
-        data: {
-            labels: labels,
-            datasets: [{
-                data: chartData,
-                backgroundColor: colors,
-                borderWidth: 0
-            }]
-        },
-        options: {
-            legend: {
-                position: 'right',
-                align: 'center',
-                onClick: ''
-            },
-            layout: {
-                padding: {left: 0, right: 0, top: 10, bottom: 10}
-            },
-            plugins: {
-                datalabels: {
-                    color: '#fff',
-                    font: {
-                        size: '14',
-                        weight: '900'
-                    },
-                    anchor: 'center',
-                    align: 'center',
-                    display: 'auto',
-                    formatter: (value, ctx) => {
-                        let sum = 0;
-                        let dataArr = ctx.chart.data.datasets[0].data;
-                        dataArr.map(data => {
-                            sum += data;
-                        });
-                        let percentage = (value*100 / sum).toFixed(2)+"%";
-                        return percentage;
-                    }
-                }
-            }
-        }
-    });
+    for (var i = 1; i < activeCases.length; i++) {
+        isHidden = false;
+        var label = activeCases[i][0];
+        var color = activeCases[i][1];
+        var borderColor = activeCases[i][2];
+        var chartData = activeCases[i].slice(3, activeCases[i].length); //Return all elements but first 3
+        datasets.push({
+            label: label,
+            data: chartData,
+            borderColor: borderColor,
+            pointBackgroundColor: color,
+            pointRadius: 0,
+            backgroundColor: color,
+            fill: true,
+            hidden: isHidden
+        });
+    }
+    casesChart.data = {
+        labels: activeCases[0],
+        datasets: datasets
+    }
+    casesChart.update();
+}
+
+// Grafico casi attivi per tipo orizzontale
+function chartCumulativeCases(){
+    var cumulativeCases = dati.chartCumulativeCases;
+    datasets = [];
+    for (var i = 1; i < cumulativeCases.length; i++) {
+        isHidden = false;
+        var label = cumulativeCases[i][0];
+        var color = cumulativeCases[i][1];
+        var chartData = cumulativeCases[i].slice(2, cumulativeCases[i].length); //Return all elements but first 2
+        datasets.push({
+            label: label,
+            data: chartData,
+            borderColor: color,
+            pointBackgroundColor: color,
+            pointRadius: 0,
+            backgroundColor: color,
+            fill: true,
+            hidden: isHidden
+        });
+    }
+    casesChart.data = {
+        labels: cumulativeCases[0],
+        datasets: datasets
+    }
+    casesChart.update();
 }
 
 var TimeCenterScale = Chart.scaleService.getScaleConstructor('time').extend({

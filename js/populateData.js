@@ -7,7 +7,7 @@ function formatNumber(num, addPlus = false) {
 }
 
 function updateData() {
-    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/datiV4.php?_=' + new Date().getTime(), function(datiJSON) {
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/datiV5.php?_=' + new Date().getTime(), function(datiJSON) {
         dati = datiJSON;
         var idVersione = parseInt(document.getElementById('idVersione').innerHTML);
         var nuovoIdVersione = parseInt(dati.id);
@@ -41,14 +41,13 @@ function updateData() {
                     $('#ultimoControllo').slideUp('slow');
                 }, 5000);
             }
-            regionsData = dati.regions;
-            provincesData = dati.provinces;
             initMap();
 
             /* Charts */
             chartNewCases(dati.chartNewCases);
-            chartByDay(dati.chartByDay);
-            chartPie(dati.today);
+            initCasesChart();
+            chartActiveCases();
+            // chartCumulativeCases();
         }
         else {
             var oggi = new Date();
