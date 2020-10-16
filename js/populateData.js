@@ -46,8 +46,7 @@ function updateData() {
             /* Charts */
             chartNewCases(dati.chartNewCases);
             initCasesChart();
-            chartActiveCases();
-            // chartCumulativeCases();
+            chartCumulativeCases();
         }
         else {
             var oggi = new Date();
