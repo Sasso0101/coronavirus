@@ -104,8 +104,8 @@ h1 {
     font-weight: bold;
 }
 .spanTotaleNumero {
-    font-size: 64px;
-    line-height: 64px;
+    font-size: 63px;
+    line-height: 63px;
 }
 
 .positivi {
@@ -352,9 +352,6 @@ footer p {
 }
 
 @media screen and (min-width: 750px) {
-    .liveDot {
-        display: block;
-    }
     #regioni {
         font-size: 24px;
     }
@@ -363,6 +360,12 @@ footer p {
     }
     .video-container {
         max-width: 500px;
+    }
+}
+
+@media (max-width: 354px) {
+    .choice {
+        font-size: 14px;
     }
 }
 
