@@ -1,4 +1,4 @@
 # [coronaviruslive.it](https://coronaviruslive.it)
 
-Dashboard per controllare l'avanzamento del contagio del coronavirus in Italia.
-Dashboard to check the status of the coronavirus spread in Italy.
+Dashboard sull'andamento del covid-19 in Italia con statistiche e grafici aggiornata giornalmente.
+Dashboard about covid-19 spread in Italy updated daily.
