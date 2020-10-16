@@ -1,5 +1,9 @@
-function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+function formatNumber(num, addPlus = false) {
+    var newNum = num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    if (addPlus && num > 0) {
+        newNum = '+' + newNum;
+    }
+    return newNum;
 }
 
 function updateData() {
@@ -15,7 +19,7 @@ function updateData() {
             document.getElementById('totaleDecessi').innerHTML=formatNumber(dati.today.deaths);
             document.getElementById('totaleGuariti').innerHTML=formatNumber(dati.today.recovered);
             document.getElementById('totaleTamponi').innerHTML=formatNumber(dati.today.tests);
-            document.getElementById('terapiaIntensiva').innerHTML=formatNumber(dati.today.intensiveCare)+' in terapia intensiva';
+            document.getElementById('terapiaIntensiva').innerHTML=formatNumber(dati.today.intensiveCare)+' in terapia intensiva ('+formatNumber(dati.today.diffIntensiveCare, true)+' oggi)';
             percentuale = (dati.today.deaths*100) / (dati.today.activeCases + dati.today.deaths + dati.today.recovered);
             document.getElementById('percentualeDeceduti').innerHTML= Math.round((percentuale + Number.EPSILON) * 100) / 100+'% casi totali in Italia';
             percentuale = (dati.today.recovered*100) / (dati.today.activeCases + dati.today.deaths + dati.today.recovered);
