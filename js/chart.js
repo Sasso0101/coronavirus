@@ -178,11 +178,12 @@ function chartCumulativeCases(){
         isHidden = false;
         var label = cumulativeCases[i][0];
         var color = cumulativeCases[i][1];
-        var chartData = cumulativeCases[i].slice(2, cumulativeCases[i].length); //Return all elements but first 2
+        var borderColor = cumulativeCases[i][2];
+        var chartData = cumulativeCases[i].slice(3, cumulativeCases[i].length); //Return all elements but first 2
         datasets.push({
             label: label,
             data: chartData,
-            borderColor: color,
+            borderColor: borderColor,
             pointBackgroundColor: color,
             pointRadius: 0,
             backgroundColor: color,
