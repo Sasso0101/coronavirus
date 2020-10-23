@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia</title>
-    <link rel="stylesheet" href="style.css?_=57">
+    <link rel="stylesheet" href="style.css?_=58">
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
 
     <meta name="description" content="Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.">
@@ -190,7 +190,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <script src="https://unpkg.com/chartjs-chart-geo@2.1.0"></script>
-    <script src="js/chart.js?_=19"></script>
+    <script src="js/chart.js?_=20"></script>
     <script src="js/maps.js?_=4"></script>
     <script src="js/populateData.js?_=19"></script>
     <script src="js/notifications.js?_=6"></script>
@@ -198,6 +198,32 @@
     <!-- Notifiche Push -->
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            var root = document.documentElement;
+            Chart.defaults.global.legend.labels.fontColor = "#fff";
+            Chart.defaults.line.scales.xAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.line.scales.xAxes[0].ticks = {fontColor: "#8a8a8a"};
+            Chart.defaults.line.scales.yAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.line.scales.yAxes[0].ticks = {fontColor: "#8a8a8a"}
+            Chart.defaults.bar.scales.xAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.bar.scales.xAxes[0].ticks = {fontColor: "#8a8a8a"};
+            Chart.defaults.bar.scales.yAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.bar.scales.yAxes[0].ticks = {fontColor: "#8a8a8a"};
+            root.style.setProperty('--background-color', '#000000');
+            root.style.setProperty('--text-color', '#fff');
+            root.style.setProperty('--chart-background-color', '#131212');
+        } else {
+            Chart.defaults.global.legend.labels.fontColor = "#000";
+            Chart.defaults.line.scales.xAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.line.scales.xAxes[0].ticks = {fontColor: "#000"};
+            Chart.defaults.line.scales.yAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.line.scales.yAxes[0].ticks = {fontColor: "#000"}
+            Chart.defaults.bar.scales.xAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.bar.scales.xAxes[0].ticks = {fontColor: "#000"};
+            Chart.defaults.bar.scales.yAxes[0].gridLines = {color: "#8a8a8a"};
+            Chart.defaults.bar.scales.yAxes[0].ticks = {fontColor: "#000"};
+        }
+
         var dati, map, casesChart;
         Chart.plugins.unregister(ChartDataLabels);
         /* Inserts data into table and top couters and creates charts */

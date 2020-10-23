@@ -3,7 +3,6 @@ Chart.defaults.global.defaultFontFamily =  "'IBM Plex Sans', sans-serif";
 Chart.defaults.global.layout.padding = {left: 0, right: 0, top: 0, bottom: 0}
 Chart.defaults.global.elements.line.tension = 0;
 // Chart.defaults.global.elements.point.hitRadius = 10;
-Chart.defaults.global.legend.labels.fontColor = "#000";
 Chart.defaults.global.defaultFontSize = 13;
 Chart.defaults.global.legend.labels.usePointStyle = true;
 Chart.defaults.global.legend.labels.boxWidth = 20;
@@ -11,14 +10,6 @@ Chart.defaults.global.legend.labels.padding = 10;
 Chart.defaults.global.legend.position = "bottom";
 Chart.defaults.global.tooltips.titleFontSize = 14
 Chart.defaults.global.tooltips.bodyFontSize = 14
-Chart.defaults.line.scales.xAxes[0].gridLines = {color: "#8a8a8a"};
-Chart.defaults.line.scales.xAxes[0].ticks = {fontColor: "#000"};
-Chart.defaults.line.scales.yAxes[0].gridLines = {color: "#8a8a8a"};
-Chart.defaults.line.scales.yAxes[0].ticks = {fontColor: "#000"}
-Chart.defaults.bar.scales.xAxes[0].gridLines = {color: "#8a8a8a"};
-Chart.defaults.bar.scales.xAxes[0].ticks = {fontColor: "#000"};
-Chart.defaults.bar.scales.yAxes[0].gridLines = {color: "#8a8a8a"};
-Chart.defaults.bar.scales.yAxes[0].ticks = {fontColor: "#000"};
 Chart.defaults.doughnut.cutoutPercentage = 70;
 
 // Primo grafico nuvi casi (barre verticali)
