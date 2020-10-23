@@ -138,7 +138,10 @@ h2 {
     text-align: center;
     width: max-content;
     margin: 30px auto 10px auto;
-    background-color: white;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    border-radius: 8px;
     color: black;
     font-size: 23px;
     text-decoration: none;
@@ -148,7 +151,11 @@ h2 {
 
 .disiscriviti {
     background-color: transparent;
-    color: #ffffff;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    border-radius: 8px;
+    color: black;
     margin: 10px auto;
     font-size: 20px;
     text-decoration: underline;
@@ -235,7 +242,7 @@ h2 {
 }
 
 .chart h2 {
-    margin: 3px 0;
+    padding-top: 5px;
 }
 
 .chartContainer {
