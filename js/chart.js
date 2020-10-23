@@ -133,7 +133,7 @@ function initCasesChart() {
 function updateCasesChart(el, selection){
     if (selection == 'all') {
         chartCumulativeCases();
-        $('#activeCases').css('background-color', '#fff');
+        $('#onlyActiveCases').css('background-color', '#fff');
     }
     else if (selection == 'activeCases') {
         chartActiveCases();
