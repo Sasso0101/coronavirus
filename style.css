@@ -1,3 +1,17 @@
+/* Variables */
+:root {
+    --background-color: #f5f5f0;
+    --text-color: black;
+    --box-background-color: white;
+    --counters-title-font-size: 20px;
+    --counters-mainNumber-font-size: 47px;
+    --counters-smallNumber-font-size: 16px;
+    --counter-width: 280px;
+    --counter-margin: 6px;
+    --h1-font-size: 40px;
+    --h2-font-size: 24px;
+}
+
 * {
     -webkit-tap-highlight-color: transparent;
 }
@@ -8,39 +22,49 @@ body, h1, h2, h3 {
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Roboto'), local('Roboto-Regular'),
-         url('fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('fonts/roboto-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('IBM Plex Sans'), local('IBMPlexSans'),
+    url('fonts/ibm-plex-sans-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('fonts/ibm-plex-sans-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #0a0a0a;
-    color: #ffffff;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     text-align: center;
     min-height: 100vh;
-    text-align: center;
 }
 
 a {
-    color: #ffffff;
+    color: var(--text-color);
 }
 
-h2 {
-    font-size: 26px;
-    font-weight: normal;
-    display: block;
-    text-align: center;
-    margin-top: 20px;
+/* Colors */
+.orange {
+    color: #c48208;
+}
+.darkGrey {
+    color: #2e2e2e;
+}
+.lightGray {
+    color: #929292;
+}
+.green {
+    color: #008000;
+}
+.blue {
+    color: #195497;
+}
+.red {
+    color:#ff0000;
 }
 
-/* Titolo */
+/* Section titles */
 header {
     display: flex;
     flex-direction: row;
@@ -51,74 +75,57 @@ header {
 }
 
 h1 {
-    font-size: 37px;
+    font-size: var(--h1-font-size);
     text-align: center;
+    font-weight: bold;
 }
 
-.liveDot {
-    width: 40px;
-    height: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 0 10px;
-    display: none;
-    animation: liveDot 1.5s infinite;
+h2 {
+    font-size: var(--h2-font-size);
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-top: 13px;
 }
 
-/* Live animation */
-@keyframes liveDot {
-    0% {
-        opacity: 0%;
-    }
-    40% {
-        opacity: 100%;
-    }
-    65% {
-        opacity: 100%;
-    }
-    100% {
-        opacity: 0%;
-    }
-}
-
-/* Numeri totali */
-#totali {
+/* Counters */
+#counters {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: calc((var(--counter-width) + var(--counter-margin) * 2) * 3);
+    margin: 0 auto;
 }
-.totale {
-    width: 340px;
-    background-color: #ffffff;
-    border-radius: 40px;
-    margin: 4px;
+.counter {
+    width: var(--counter-width);
+    background-color: var(--box-background-color);
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    border-radius: 8px;
+    margin: var(--counter-margin);
     text-align: center;
-    padding: 10px 0;
+    padding: 12px 0;
 }
-.totale span {
+.counter .title {
+    font-size: var(--counters-title-font-size);
+    font-weight: bold;
     display: block;
 }
-.spanTotaleTitolo {
-    font-size: 22px;
+.counter p {
+    margin: 4px 0 0 0;
+}
+.counter .mainNumber {
+    font-size: var(--counters-mainNumber-font-size);
+    line-height: var(--counters-mainNumber-font-size);
+    margin: 6px 0;
     font-weight: bold;
 }
-.spanTotaleNumero {
-    font-size: 63px;
-    line-height: 63px;
+.counter .percentage {
+    margin-left: 5px;
 }
-
-.positivi {
-    color: #c48208;
-}
-.morti {
-    color: #ff0000;
-}
-.guariti {
-    color: #008000;
-}
-.tamponi {
-    color: #929292;
+.counter .smallNumber {
+    font-size: var(--counters-smallNumber-font-size);
 }
 
 /* Ultimo aggiornamento */
@@ -151,11 +158,10 @@ h1 {
     text-decoration: underline;
 }
 
-/* Box aggiornamenti live */
-.aggiornamentiLive {
-    padding-top: 10px;
+/* Social */
+.linkSocial {
+    margin-bottom: 10px;
 }
-
 .linkIcona {
     font-size: 23px;
     display: inline;
@@ -167,12 +173,7 @@ h1 {
     vertical-align: middle;
 }
 
-/* Social */
-.linkSocial {
-    margin-bottom: 10px;
-}
-
-/* Mappa regioni/province */
+/* Regions/provinces map */
 .mapContainer {
     position: relative;
 }
@@ -194,12 +195,14 @@ h1 {
     cursor: pointer;
     user-select: none;
     margin: 5px;
-    background-color: #fff;
     color: #000;
+    background-color: #fff;
     padding: 7px;
     border-radius: 20px;
     display: flex;
     align-items: center;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
 }
 
 #maps canvas {
@@ -221,24 +224,23 @@ h1 {
     width: fit-content;
 }
 
-/* Grafico */
-.grafico h3 {
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: normal;
-    font-size: 18px;
+/* Chart */
+.chart {
+    margin: 10px auto;
+    max-width: 700px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    border-radius: 8px;
 }
 
-.containerGrafico {
-    position: relative;
-    margin: auto;
-    width: 100%;
+.chart h2 {
+    margin: 3px 0;
+}
+
+.chartContainer {
     height: 100vh;
-    max-width: 700px;
     max-height: 400px;
-    margin: 0 auto;
-    background-color: #303030;
-    margin-top: 5px;
 }
 
 /* Footer */
@@ -297,7 +299,18 @@ footer p {
     font-size: 23px;
 }
 
-@media screen and (min-width: 750px) {
+@media (max-width: 768px) {
+    :root {
+        --counters-title-font-size: 18px;
+        --counters-mainNumber-font-size: 35px;
+        --counters-smallNumber-font-size: 15px;
+        --counter-width: 172px;
+        --counter-margin: 4px;
+        --h1-font-size: 30px;
+    }
+}
+
+@media (min-width: 750px) {
     #regioni {
         font-size: 24px;
     }

@@ -74,8 +74,8 @@ function initMap() {
             },
             options: {
                 aspectRatio: 0.75,
-                showGraticule: true,
-                showOutline: true,
+                showGraticule: false,
+                showOutline: false,
                 legend: {
                     display: false
                 },
@@ -89,8 +89,8 @@ function initMap() {
                         legend: {
                             position: 'top-right',
                             margin: 50
-                        }
-                    }
+                        },
+                    },
                 },
                 elements: {
                     geoFeature: {

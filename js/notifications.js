@@ -1,3 +1,38 @@
+var OneSignal = OneSignal || [];
+var buttonSelector = ".boxNotifica";
+
+/* Initializes notifications */
+OneSignal.push(function() {
+    OneSignal.init({
+        appId: "6df81c29-6877-4bda-81fa-602cba9abf83",
+        notifyButton: {
+            enable: false,
+        },
+        welcomeNotification: {
+            message: "Grazie per l'iscrizione!"
+        }
+    });
+
+    // Unsupported browser
+    if (!OneSignal.isPushNotificationsSupported()) {
+        document.querySelector(buttonSelector).style.display = "none";
+        return;
+    }
+    OneSignal.on('notificationPermissionChange', function(permissionChange) {
+        var currentPermission = permissionChange.to;
+        if (currentPermission == "denied") {
+            document.querySelector(buttonSelector).style.display = "none";
+        }
+        else {
+            document.querySelector(buttonSelector).style.display = "";
+        }
+    });
+    subscriptionButtonHandler(buttonSelector);
+    OneSignal.on("subscriptionChange", function(isSubscribed) {
+        subscriptionButtonHandler(buttonSelector);
+    });
+});
+
 function subscriptionButtonClicked(event) {
     getSubscriptionState().then(function(state) {
         if (state.isPushEnabled) {

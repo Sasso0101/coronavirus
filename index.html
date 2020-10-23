@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia</title>
     <link rel="stylesheet" href="style.css?_=54">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="fonts/roboto-v20-latin-regular.woff2" crossorigin>
-
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
 
-    <meta name="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale. Vedi i casi nella tua regione e confrontali con i dati storici per capire l'andamento.">
+    <meta name="description" content="Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.">
     <meta name="theme-color" content="#0a0a0a" />
 
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="Situazione Coronavirus in Italia">
-    <meta itemprop="description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.">
+    <meta itemprop="description" content="Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.">
     <meta itemprop="image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
 
     <script type="application/ld+json">
@@ -27,7 +24,7 @@
             "@id": "https://coronaviruslive.it/"
           },
           "headline": "Situazione Coronavirus in Italia",
-          "description": "Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.",
+          "description": "Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.",
           "image": "https://coronaviruslive.it/img/coronavirus.jpg",  
           "author": {
             "@type": "Person",
@@ -52,17 +49,16 @@
     <meta property="og:url" content="https://coronaviruslive.it">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Situazione Coronavirus in Italia">
-    <meta property="og:description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.">
+    <meta property="og:description" content="Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.">
     <meta property="og:image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
     <meta property="og:locale"        content="it_IT" />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Situazione Coronavirus in Italia">
-    <meta name="twitter:description" content="Conteggio contagiati da coronavirus (Covid-19) in Italia, grafici e statistiche aggiornati in tempo reale.">
+    <meta name="twitter:description" content="Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.">
     <meta name="twitter:image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120259790-3"></script>
     <script>
@@ -75,44 +71,55 @@
 </head>
 <body>
     <header>
-        <!-- <span class="liveDot"></span> -->
         <h1>Situazione Coronavirus in Italia</h1>
     </header>
-    <section id="totali">
-        <div class="totale positivi">
-            <span class="spanTotaleTitolo">Attualmente positivi</span>
-            <span class="spanTotaleNumero" id="totalePositivi"></span>
-            <span id="nuoviPositivi"></span>
-            <span id="terapiaIntensiva"></span>
+    <section id="counters">
+        <div class="counter orange">
+            <span class="title">Attualmente positivi</span>
+            <p><span class="mainNumber" id="newActiveCases"></span></p>
+            <p class="percentage"><span id="newActiveCasesPercentage"></span> rispetto ieri</p>
+            <p class="smallNumber"><span id="activeCases"></span> totali</p>
         </div>
-        <div class="totale morti">
-            <span class="spanTotaleTitolo">Decessi</span>
-            <span class="spanTotaleNumero" id="totaleDecessi"></span>
-            <span id="nuoviDeceduti"></span>
-            <span id="percentualeDeceduti"></span>
+        <div class="counter darkGray">
+            <span class="title">Decessi</span>
+            <p><span class="mainNumber" id="newDeaths"></span></p>
+            <p class="smallNumber percentage"><span id="newDeathsPercentage"></span> rispetto ieri</p>
+            <p class="smallNumber"><span id="deaths"></span> totali</p>
         </div>
-        <div class="totale guariti">
-            <span class="spanTotaleTitolo">Guariti</span>
-            <span class="spanTotaleNumero" id="totaleGuariti"></span>
-            <span id="nuoviGuariti"></span>
-            <span id="percentualeGuariti"></span>
+        <div class="counter green">
+            <span class="title">Guariti</span>
+            <p><span class="mainNumber" id="newRecovered"></span></p>
+            <p class="smallNumber percentage"><span id="newRecoveredPercentage"></span> rispetto ieri</p>
+            <p class="smallNumber"><span id="recovered"></span> totali</p>
         </div>
-        <div class="totale tamponi">
-            <span class="spanTotaleTitolo">Tamponi</span>
-            <span class="spanTotaleNumero" id="totaleTamponi"></span>
-            <span id="nuoviTamponi"></span>
-            <span id="personeTestate"></span>
+        <div class="counter blue">
+            <span class="title">Ospedalizzati</span>
+            <p><span class="mainNumber" id="diffHospitalized"></span></p>
+            <p class="smallNumber percentage"><span id="diffHospitalizedPercentage"></span> rispetto ieri</p>
+            <p class="smallNumber"><span id="hospitalized"></span> totali</p>
+        </div>
+        <div class="counter red">
+            <span class="title">In terapia intensiva</span>
+            <p><span class="mainNumber" id="diffIntensiveCare"></span></p>
+            <p class="smallNumber percentage"><span id="diffIntensiveCarePercentage"></span> rispetto ieri</p>
+            <p class="smallNumber"><span id="intensiveCare"></span> totali</p>
+        </div>
+        <div class="counter lightGray">
+            <span class="title">Tamponi</span>
+            <p><span class="mainNumber" id="newTests"></span></p>
+            <p class="smallNumber percentage"><span id="newTestsPercentage"></span> rispetto ieri</p>
+            <p class="smallNumber"><span id="peopleTested"></span> persone testate</p>
         </div>
     </section>
-    <section id="aggiorna">
-        <p style="margin: 5px 0 0 0;">Ultimo aggiornamento: <time id="ultimoAggiornamento"></time></p>
+    <section id="lastUpdatedSection">
+        <p style="margin: 5px 0 0 0;">Ultimo aggiornamento: <time id="lastUpdated"></time></p>
     </section>
     <section id="maps">
         <h2>Distribuzione dei casi</h2>
         <div id="chartSelection" class="chartSelection">
             <div id="territorySelection" class="territorySelection">
-                <div id="byRegion" class="choice" onClick="showTerritory(this, 'region');" style="background-color: #a0a0a0;">Per regione</div> 
-                <div id="byProvince" class="choice" onClick="showTerritory(this, 'province');">Per provincia</div>
+                <!-- <div id="byRegion" class="choice" onClick="showTerritory(this, 'region');" style="background-color: #a0a0a0;">Per regione</div>  -->
+                <!-- <div id="byProvince" class="choice" onClick="showTerritory(this, 'province');">Per provincia</div> -->
             </div>
             <div id="valueSelection" class="valueSelection">
                 <div id="regionSelection" class="regionSelection">
@@ -145,14 +152,14 @@
             <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large" data-url="https://coronaviruslive.it/" data-hashtags="COVID19italia, coronavirus, contagio">Tweet</a>
         </div>
     </section>
-    <section class="grafici">
-        <div class="grafico">
+    <section class="charts">
+        <div class="chart">
             <h2>Casi giornalieri</h2>
-            <div class="containerGrafico containerGrafico1">
-                <canvas id="canvasdatiGrafico1"></canvas>
+            <div class="chartContainer">
+                <canvas id="newCasesChart"></canvas>
             </div>
         </div>
-        <div class="grafico">
+        <div class="chart">
             <h2>Stato dei casi</h2>
             <div class="chartSelection">
                 <div id="casesSelection" class="territorySelection">
@@ -160,16 +167,15 @@
                     <div id="activeCases" class="choice" onClick="updateCasesChart(this, 'activeCases');">Attualmente positivi</div>
                 </div>
             </div>
-            <div class="containerGrafico">
+            <div class="chartContainer">
                 <canvas id="casesChart"></canvas>
             </div>
-            <br>    
         </div>
     </section>
     <footer>
         <p id="idVersione" style="display: none"></p>
         <p>Dati forniti dalla <a href="https://github.com/pcm-dpc/COVID-19" rel="noopener" target="_blank">Protezione Civile</a> <a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/LICENSE" rel="noopener" target="_blank">CC BY</a></p>
-        <p class="contatti">Creato e aggiornato costantemente da Salvatore Andaloro<br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a>, <a href="https://www.instagram.com/sasso0101/" rel="noopener" target="_blank">Instagram</a>, <a href="https://t.me/sasso0101" rel="noopener" target="_blank">Telegram</a> - (c) 2020</p>
+        <p class="contatti">Questo sito è <a href="https://github.com/Sasso0101/coronavirus"target="_blank">open-source</a> (<a href="https://github.com/Sasso0101/coronavirus" target="_blank">github</a>) sotto licenza <a href="https://raw.githubusercontent.com/Sasso0101/coronavirus/master/LICENSE" target="_blank">MIT</a><br>Creato e aggiornato costantemente da Salvatore Andaloro<br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a>, <a href="https://www.instagram.com/sasso0101/" rel="noopener" target="_blank">Instagram</a>, <a href="https://t.me/sasso0101" rel="noopener" target="_blank">Telegram</a> - (c) 2020</p>
     </footer>
 
     <div class="social socialOverlay">
@@ -183,54 +189,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <script src="https://unpkg.com/chartjs-chart-geo@2.1.0"></script>
-    <script src="js/chart.js?_=17"></script>
-    <script src="js/maps.js?_=3"></script>
-    <script src="js/populateData.js?_=18"></script>
-    <script src="js/notifications.js?_=4"></script>
+    <script data-ad-client="ca-pub-7138154641640821" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script src="js/chart.js?_=18"></script>
+    <script src="js/maps.js?_=4"></script>
+    <script src="js/populateData.js?_=19"></script>
+    <script src="js/notifications.js?_=5"></script>
     
     <!-- Notifiche Push -->
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
-
-        var animation, dati, map, casesChart;
-        var OneSignal = OneSignal || [];
-        var buttonSelector = ".boxNotifica";
-
+        var dati, map, casesChart;
         Chart.plugins.unregister(ChartDataLabels);
         /* Inserts data into table and top couters and creates charts */
         updateData();
-        
-        /* Initializes notifications */
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "6df81c29-6877-4bda-81fa-602cba9abf83",
-                notifyButton: {
-                    enable: false,
-                },
-                welcomeNotification: {
-                    message: "Grazie per l'iscrizione!"
-                }
-            });
-
-            // Unsupported browser
-            if (!OneSignal.isPushNotificationsSupported()) {
-                document.querySelector(buttonSelector).style.display = "none";
-                return;
-            }
-            OneSignal.on('notificationPermissionChange', function(permissionChange) {
-                var currentPermission = permissionChange.to;
-                if (currentPermission == "denied") {
-                    document.querySelector(buttonSelector).style.display = "none";
-                }
-                else {
-                    document.querySelector(buttonSelector).style.display = "";
-                }
-            });
-            subscriptionButtonHandler(buttonSelector);
-            OneSignal.on("subscriptionChange", function(isSubscribed) {
-                subscriptionButtonHandler(buttonSelector);
-            });
-        });
     </script>
 
     <!-- Facebook condividi -->
