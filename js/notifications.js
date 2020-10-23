@@ -53,7 +53,7 @@ function subscriptionButtonClicked(event) {
 
 function subscriptionButtonHandler(buttonSelector) {
     var hideWhenSubscribed = false;
-    var subscribeText = "🔔 Clicca <span>qui</span> per ricevere le notifiche con tutti gli aggiornamenti!";
+    var subscribeText = "🔔 Clicca <span>qui</span> per ricevere una notifica i dati vengono aggiornati!";
     var unsubscribeText = "Annulla iscrizione alle notifiche live";
 
     var element = document.querySelector(buttonSelector);
