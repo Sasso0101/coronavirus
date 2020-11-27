@@ -116,14 +116,15 @@
         <p style="margin: 5px 0 0 0;">Ultimo aggiornamento: <time id="lastUpdated"></time></p>
     </section>
     <section id="maps">
-        <h2>Distribuzione dei casi</h2>
+        <h2>Distribuzione sul territorio</h2>
         <div id="chartSelection" class="chartSelection">
             <div id="territorySelection" class="territorySelection">
-                <div id="byRegion" class="choice" onClick="showTerritory(this, 'region');" style="background-color: #a0a0a0;">Per regione</div>
-                <div id="byProvince" class="choice" onClick="showTerritory(this, 'province');">Per provincia</div>
+                <div id="byZone" class="choice" onClick="showZones();" style="background-color: #a0a0a0;">Aree gialle/arancioni/rosse</div>
+                <div id="byRegion" class="choice" onClick="showTerritory(this, 'region');">Casi per regione</div>
+                <div id="byProvince" class="choice" onClick="showTerritory(this, 'province');">Casi per provincia</div>
             </div>
             <div id="valueSelection" class="valueSelection">
-                <div id="regionSelection" class="regionSelection">
+                <div id="regionSelection" class="regionSelection" style="display: none;">
                     <div id="RegionActiveCases" class="choice" onClick="showTerritory(this, 'region', 'activeCases');" style="background-color: #a0a0a0;">Attualmente positivi</div>
                     <div id="RegionNewActiveCases" class="choice" onClick="showTerritory(this, 'region', 'newActiveCases');">Nuovi positivi</div>
                     <div id="RegionIntensiveCare" class="choice" onClick="showTerritory(this, 'region', 'intensiveCare');">In terapia intensiva</div>
@@ -137,7 +138,14 @@
             </div>
         </div>
         <div class="mapContainer">
-            <canvas id="map"></canvas>
+            <a href="http://www.governo.it/it/articolo/domande-frequenti-sulle-misure-adottate-dal-governo/15638" id="zones" rel="noopener noreferrer" target="_blank" >
+                <img src="zones.svg">
+            </a>
+            <canvas id="map" style="display: none;"></canvas>
+        </div>
+        <div id="zonesInfo" class="zonesInfo">
+            <p>💡 Premendo sulla mappa verrai reindirizzato sul sito del Governo con le informazioni sulle misure adottate.</p>
+            <p>Ultimo aggiornamento: 24/11/2020</p>
         </div>
     </section>
     <section id="socialBox">
@@ -148,8 +156,7 @@
         </div>
         <span class="consiglialo">Consiglialo ai tuoi amici: </span>
         <div class="social socialFissi">
-            <div class="fb-like" data-href="https://coronaviruslive.it/" data-width="" data-layout="button_count" data-action="recommend" data-size="large" data-share="false"></div>
-            <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcoronaviruslive.it%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore" rel="noopener noreferrer">Condividi</a></div>
+            <div class="fb-like" data-href="https://facebook.com/coronavirusliveitalia" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
             <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-size="large" data-url="https://coronaviruslive.it/" data-hashtags="COVID19italia, coronavirus, contagio">Tweet</a>
         </div>
     </section>
@@ -180,8 +187,7 @@
     </footer>
 
     <div class="social socialOverlay">
-        <div class="fb-like" data-href="https://coronaviruslive.it/" data-width="" data-layout="button_count" data-action="recommend" data-size="large" data-share="false"></div>
-        <div class="fb-share-button" data-href="https://coronaviruslive.it/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcoronaviruslive.it%2F&amp;src=sdkpreparse" rel="noopener noreferrer" class="fb-xfbml-parse-ignore">Condividi</a></div>
+        <div class="fb-like" data-href="https://facebook.com/coronavirusliveitalia" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
         </a>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -232,7 +238,7 @@
 
     <!-- Facebook condividi -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v6.0"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=2806244442939834&autoLogAppEvents=1" nonce="Obj8dfkp"></script>
     <!-- Twitter condividi -->
     <script>
         window.twttr = (function(d, s, id) {

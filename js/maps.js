@@ -4,7 +4,7 @@ async function fetchMap(chartData, type, value = 'activeCases', period = 'today'
         url = 'maps/regions.json';
         objectName = 'regions';
         codeFieldName = 'reg_istat_code_num';
-    } else {
+    } else if (type == 'province') {
         url = 'maps/provinces.json';
         objectName = 'provinces';
         codeFieldName = 'prov_istat_code_num';
@@ -196,7 +196,7 @@ function updateMap(type, value = 'activeCases', period = 'today') {
     if (type == 'region') {
         label = 'Regioni';
         chartData = dati.regions;
-    } else {
+    } else if (type == 'province') {
         label = 'Province';
         chartData = dati.provinces;
     }
@@ -221,17 +221,34 @@ function showTerritory(el, territory, value = 'activeCases', period = 'today') {
         show = 'regionSelection';
         hide = 'provinceSelection';
         resetBackground = 'byProvince';
+        resetBackground1 = 'byZone';
         if (value == 'activeCases') $('#RegionActiveCases').css('background-color', '#a0a0a0'); // Default
     }
-    else {
+    else if (territory == 'province') {
         show = 'provinceSelection';
         hide = 'regionSelection';
         resetBackground = 'byRegion';
+        resetBackground1 = 'byZone';
         if (period == 'today') $('#ProvinceToday').css('background-color', '#a0a0a0'); // Default
     }
 
     $('#'+resetBackground).css('background-color', '#fff');
+    $('#'+resetBackground1).css('background-color', '#fff');
     el.style.backgroundColor = "#a0a0a0";
+    document.getElementById('zones').style.display = "none";
+    document.getElementById('map').style.display = "block";
     document.getElementById(show).style.display = "flex";
     document.getElementById(hide).style.display = "none";
+    document.getElementById('zonesInfo').style.display = "none";
+}
+
+function showZones() {
+    document.getElementById('zones').style.display = "block";
+    document.getElementById('zonesInfo').style.display = "block";
+    document.getElementById('map').style.display = "none";
+    document.getElementById('regionSelection').style.display = "none";
+    document.getElementById('provinceSelection').style.display = "none";
+    $('#byRegion').css('background-color', '#fff');
+    $('#byProvince').css('background-color', '#fff');
+    $('#byZone').css('background-color', '#a0a0a0');
 }
