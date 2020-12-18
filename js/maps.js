@@ -221,34 +221,32 @@ function showTerritory(el, territory, value = 'activeCases', period = 'today') {
         show = 'regionSelection';
         hide = 'provinceSelection';
         resetBackground = 'byProvince';
-        resetBackground1 = 'byZone';
         if (value == 'activeCases') $('#RegionActiveCases').css('background-color', '#a0a0a0'); // Default
     }
     else if (territory == 'province') {
         show = 'provinceSelection';
         hide = 'regionSelection';
         resetBackground = 'byRegion';
-        resetBackground1 = 'byZone';
         if (period == 'today') $('#ProvinceToday').css('background-color', '#a0a0a0'); // Default
     }
 
     $('#'+resetBackground).css('background-color', '#fff');
-    $('#'+resetBackground1).css('background-color', '#fff');
     el.style.backgroundColor = "#a0a0a0";
-    document.getElementById('zones').style.display = "none";
     document.getElementById('map').style.display = "block";
     document.getElementById(show).style.display = "flex";
     document.getElementById(hide).style.display = "none";
-    document.getElementById('zonesInfo').style.display = "none";
 }
 
 function showZones() {
     document.getElementById('zones').style.display = "block";
-    document.getElementById('zonesInfo').style.display = "block";
-    document.getElementById('map').style.display = "none";
-    document.getElementById('regionSelection').style.display = "none";
-    document.getElementById('provinceSelection').style.display = "none";
-    $('#byRegion').css('background-color', '#fff');
-    $('#byProvince').css('background-color', '#fff');
+    document.getElementById('calendar').style.display = "none";
+    $('#byCalendar').css('background-color', '#fff');
     $('#byZone').css('background-color', '#a0a0a0');
+}
+
+function showCalendar() {
+    document.getElementById('calendar').style.display = "flex";
+    document.getElementById('zones').style.display = "none";
+    $('#byZone').css('background-color', '#fff');
+    $('#byCalendar').css('background-color', '#a0a0a0');
 }

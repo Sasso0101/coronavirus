@@ -47,6 +47,9 @@ function updateData() {
             // Last updated
             document.getElementById('lastUpdated').innerHTML=newLastUpdated;
             
+            /* Restriction calendar */
+            populateCalendar();
+
             /* Cases map */
             initMap();
 
@@ -59,4 +62,28 @@ function updateData() {
             chartCumulativeCases();
         };
     });
+}
+
+function populateCalendar() {
+    var container = document.getElementById('calendar');
+    var zone = document.getElementById('copyZone').cloneNode(true);
+    zone.removeAttribute('style');
+    for (let i = 24; i <= 31; i++) {
+        zone.getElementsByClassName('day')[0].textContent = i + ' dic';
+        if ([24,25,26,27,31].includes(i)) {
+            zone.getElementsByTagName('img')[0].setAttribute('src', 'maps/zonesRed.png');
+        } else {
+            zone.getElementsByTagName('img')[0].setAttribute('src', 'maps/zonesOrange.png');
+        }
+        container.appendChild(zone.cloneNode(true));
+    }
+    for (let i = 1; i <= 6; i++) {
+        zone.getElementsByClassName('day')[0].textContent = i + ' gen';
+        if ([1,2,3,5,6].includes(i)) {
+            zone.getElementsByTagName('img')[0].setAttribute('src', 'maps/zonesRed.png');
+        } else {
+            zone.getElementsByTagName('img')[0].setAttribute('src', 'maps/zonesOrange.png');
+        }
+        container.appendChild(zone.cloneNode(true));
+    }
 }

@@ -26,6 +26,7 @@ body, h1, h2, h3 {
   font-family: 'IBM Plex Sans';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local('IBM Plex Sans'), local('IBMPlexSans'),
     url('fonts/ibm-plex-sans-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
     url('fonts/ibm-plex-sans-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -167,21 +168,6 @@ h2 {
     text-decoration: underline;
 }
 
-/* Social */
-.linkSocial {
-    margin-bottom: 10px;
-}
-.linkIcona {
-    font-size: 23px;
-    display: inline;
-}
-
-.linkIcona img {
-    height: 28px;
-    padding-right: 9px;
-    vertical-align: middle;
-}
-
 /* Regions/provinces map */
 .mapContainer {
     position: relative;
@@ -194,9 +180,9 @@ h2 {
     display: flex;
     flex-direction: column;
 }
-.territorySelection, .regionSelection, .provinceSelection {
+.territorySelection, .regionSelection, .provinceSelection, .restrictionsSelection {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
 }
@@ -224,10 +210,11 @@ h2 {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
 }
 
-.mapContainer * {
-    max-width: 400px;
+.mapContainer *, .restrictionsContainer * {
     margin: 0 auto;
-    width: 100%;
+}
+#map, #zones * {
+    max-width: 400px;
 }
 
 #chartjs-tooltip {
@@ -242,6 +229,31 @@ h2 {
     -webkit-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
     width: fit-content;
+}
+
+/* Restrictions calendar */
+#calendar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+}
+.dayContainer {
+    width: 50px;
+    padding: 10px 10px 5px 10px;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    background-color: var(--box-background-color);
+    border-radius: 20px;
+    margin: 5px;
+}
+.day {
+    margin-bottom: 7px;
+    color: #000;
+}
+.dayContainer img {
+    width: 100%;
 }
 
 /* Chart */
@@ -285,7 +297,19 @@ footer p {
 /* Pulsanti social */
 #socialBox {
     z-index: 0;
+    background-color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    border-radius: 20px;
+    color: #000;
+    padding: 10px;
 }
+#socialBox a {
+    color: #000;
+}
+
 .social {
     display: flex;
     flex-direction: row;
@@ -317,6 +341,24 @@ footer p {
     width: 100%;
     margin-bottom: 4px;
     font-size: 23px;
+}
+
+/* Social */
+.linkSocial {
+    margin-bottom: 10px;
+}
+.linkIcona {
+    font-size: 23px;
+    display: inline;
+}
+
+.linkIcona img {
+    height: 28px;
+    padding-right: 9px;
+    vertical-align: middle;
+}
+#socialBox .st-total, .socialOverlay .st-total {
+    color: #000 !important;
 }
 
 @media (max-width: 768px) {
