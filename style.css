@@ -299,7 +299,8 @@ footer p {
 #socialBox {
     z-index: 0;
     background-color: #fff;
-    max-width: 800px;
+    width: 90%;
+    max-width: 460px;
     margin: 0 auto;
     -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
