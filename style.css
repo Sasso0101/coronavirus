@@ -215,6 +215,7 @@ h2 {
 }
 #map, #zones * {
     max-width: 400px;
+    width: 100%;
 }
 
 #chartjs-tooltip {
