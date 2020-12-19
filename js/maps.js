@@ -156,7 +156,7 @@ function initMap() {
                                 positionX = 140 - tooltip.caretX;
                             }
                             if (positionX + tooltip.caretX > $( window ).width() - 150) {
-                                positionX = $( window ).width() - 120 - tooltip.caretX;
+                                positionX = $( window ).width() - 130 - tooltip.caretX;
                             }
                             if (tooltipEl.offsetHeight + positionY + tooltip.caretY + 10 > this._chart.canvas.clientHeight) {
                                 positionY = -tooltipEl.offsetHeight - 10;
