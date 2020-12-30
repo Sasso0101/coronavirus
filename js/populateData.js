@@ -42,7 +42,7 @@ function updateData() {
             document.getElementById('newRecovered').innerHTML=formatNumber(dati.today.newRecovered, true);
             document.getElementById('diffHospitalized').innerHTML=formatNumber(dati.today.diffHospitalized, true);
             document.getElementById('diffIntensiveCare').innerHTML=formatNumber(dati.today.diffIntensiveCare, true);
-            document.getElementById('newTests').innerHTML=formatNumber(dati.today.newTests, true);
+            document.getElementById('newTests').innerHTML=formatNumber(dati.today.newTests);
 
             // Last updated
             document.getElementById('lastUpdated').innerHTML=newLastUpdated;
