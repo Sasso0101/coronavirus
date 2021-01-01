@@ -65,6 +65,9 @@ a {
 .red {
     color:#ff0000;
 }
+.vaccineColor {
+    color: #d81e85;
+}
 
 /* Section titles */
 header {
@@ -122,6 +125,7 @@ h2 {
     line-height: var(--counters-mainNumber-font-size);
     margin: 6px 0;
     font-weight: bold;
+    vertical-align: middle;
 }
 .counter .percentage {
     margin-left: 5px;
@@ -129,10 +133,28 @@ h2 {
 .counter .smallNumber {
     font-size: var(--counters-smallNumber-font-size);
 }
+.vaccine {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
+#primula {
+    position: absolute;
+    z-index: -1;
+    right: -78px;
+    bottom: -82px;
+    display: block;
+    width: 200px;
+    background-image: url(img/primula.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.15;
+}
 
 /* Ultimo aggiornamento */
-#aggiorna p {
-    margin-top: 11px;
+.lastUpdated {
+    white-space: nowrap;
 }
 
 /* Notifiche */
@@ -361,12 +383,15 @@ footer p {
 
 @media (max-width: 768px) {
     :root {
-        --counters-title-font-size: 18px;
-        --counters-mainNumber-font-size: 35px;
+        --counters-title-font-size: 17px;
+        --counters-mainNumber-font-size: 33px;
         --counters-smallNumber-font-size: 15px;
         --counter-width: 176px;
         --counter-margin: 4px;
         --h1-font-size: 30px;
+    }
+    .counter {
+        padding: 7px 0;
     }
 }
 

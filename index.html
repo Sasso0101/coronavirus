@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situazione Coronavirus Italia</title>
-    <link rel="stylesheet" href="style.css?_=64">
+    <link rel="stylesheet" href="style.css?_=65">
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
     <link rel=preload href="fonts/ibm-plex-sans-v8-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -113,9 +113,16 @@
             <p class="smallNumber percentage" style="display: none;"><span id="newTestsPercentage"></span> rispetto ieri</p>
             <p class="smallNumber"><span id="peopleTested"></span> persone testate</p>
         </div>
+        <div class="counter vaccineColor vaccine">
+            <span class="title">Vaccini somministrati</span>
+            <img src="img/primula.png" alt="Primula" id="primula">
+            <p><span class="mainNumber" id="vaccinated"></span></p>
+            <p class="smallNumber"><span id="availableVaccines"></span> vaccini consegnati</p>
+        </div>
     </section>
     <section id="lastUpdatedSection">
-        <p style="margin: 5px 0 0 0;">Ultimo aggiornamento: <time id="lastUpdated"></time></p>
+        <p style="margin: 5px 0 0 0;">Ultimo aggiornamento dati coronavirus: <time class="lastUpdated" id="lastUpdated"></time></p>
+        <p style="margin: 5px 0 0 0;">Ultimo aggiornamento dati vaccinazione: <time class="lastUpdated" id="lastUpdatedVaccines"></time></p>
     </section>
     <section id="restrictions">
         <h2>Restrizioni in vigore</h2>
@@ -218,7 +225,7 @@
     <script src="js/libs/Chart.Geo.min.js"></script>
     <script src="js/chart.js?_=21"></script>
     <script src="js/maps.js?_=6"></script>
-    <script src="js/populateData.js?_=21"></script>
+    <script src="js/populateData.js?_=22"></script>
     <script src="js/notifications.js?_=7"></script>
     
     <!-- Notifiche Push -->

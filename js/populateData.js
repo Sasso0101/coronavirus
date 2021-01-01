@@ -62,6 +62,11 @@ function updateData() {
             chartCumulativeCases();
         };
     });
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/5G.php?_=' + new Date().getTime(), function(datiJSON) {
+        document.getElementById('vaccinated').innerHTML=formatNumber(datiJSON.vaccinated);
+        document.getElementById('availableVaccines').innerHTML=formatNumber(datiJSON.availableVaccines);
+        document.getElementById('lastUpdatedVaccines').innerHTML=datiJSON.lastUpdated;
+    });
 }
 
 function populateCalendar() {
