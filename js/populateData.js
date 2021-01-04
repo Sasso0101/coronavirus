@@ -47,6 +47,14 @@ function updateData() {
             // Last updated
             document.getElementById('lastUpdated').innerHTML=newLastUpdated;
             
+            /* Current restrictions map */
+            redDays = ['05/01/2021', '06/01/2021'];
+            orangeDays = ['04/01/2021'];
+            today = new Date();
+            today = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            if (redDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesRedBig.svg';
+            else document.getElementById('restrinctionsMap').src = 'maps/zonesOrangeBig.svg';
+
             /* Restriction calendar */
             populateCalendar();
 
@@ -63,9 +71,16 @@ function updateData() {
         };
     });
     $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/5G.php?_=' + new Date().getTime(), function(datiJSON) {
-        document.getElementById('vaccinated').innerHTML=formatNumber(datiJSON.vaccinated);
-        document.getElementById('availableVaccines').innerHTML=formatNumber(datiJSON.availableVaccines);
-        document.getElementById('lastUpdatedVaccines').innerHTML=datiJSON.lastUpdated;
+        vaccinated = datiJSON.vaccinated;
+        availableVaccines = datiJSON.availableVaccines;
+        
+        if (vaccinated != null && availableVaccines != null && vaccinated > 100000 && availableVaccines > 100000){
+            document.getElementsByClassName('vaccine')[0].style.display = 'block';
+            document.getElementById('vaccineLastUpdatedP').style.display = 'block';
+            document.getElementById('vaccinated').innerHTML = formatNumber(vaccinated);
+            document.getElementById('availableVaccines').innerHTML = formatNumber(availableVaccines);
+            document.getElementById('lastUpdatedVaccines').innerHTML=datiJSON.lastUpdated;
+        }
     });
 }
 

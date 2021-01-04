@@ -113,7 +113,7 @@
             <p class="smallNumber percentage" style="display: none;"><span id="newTestsPercentage"></span> rispetto ieri</p>
             <p class="smallNumber"><span id="peopleTested"></span> persone testate</p>
         </div>
-        <div class="counter vaccineColor vaccine">
+        <div class="counter vaccineColor vaccine" style="display: none;">
             <span class="title">Vaccini somministrati</span>
             <img src="img/primula.png" alt="Primula" id="primula">
             <p><span class="mainNumber" id="vaccinated"></span></p>
@@ -122,7 +122,7 @@
     </section>
     <section id="lastUpdatedSection">
         <p style="margin: 5px 0 0 0;">Ultimo aggiornamento dati coronavirus: <time class="lastUpdated" id="lastUpdated"></time></p>
-        <p style="margin: 5px 0 0 0;">Ultimo aggiornamento dati vaccinazione: <time class="lastUpdated" id="lastUpdatedVaccines"></time></p>
+        <p style="margin: 5px 0 0 0; display: none;" id="vaccineLastUpdatedP">Ultimo aggiornamento dati vaccinazione: <time class="lastUpdated" id="lastUpdatedVaccines"></time></p>
     </section>
     <section id="restrictions">
         <h2>Restrizioni in vigore</h2>
@@ -134,7 +134,7 @@
         </div>
         <div class="restrictionsContainer">
             <a href="http://www.governo.it/it/faq-natale" aria-label="FAQ Governo" id="zones" rel="noopener noreferrer" target="_blank" >
-                <img src="maps/zonesRedBig.svg" alt="Oggi">
+                <img alt="Oggi" id="restrinctionsMap">
             </a>
             <div id="calendar" style="display: none;">
                 <div class="dayContainer" id="copyZone" style="display: none;">
@@ -225,7 +225,7 @@
     <script src="js/libs/Chart.Geo.min.js"></script>
     <script src="js/chart.js?_=21"></script>
     <script src="js/maps.js?_=6"></script>
-    <script src="js/populateData.js?_=22"></script>
+    <script src="js/populateData.js?_=23"></script>
     <script src="js/notifications.js?_=7"></script>
     
     <!-- Notifiche Push -->
