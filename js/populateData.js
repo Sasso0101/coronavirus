@@ -48,7 +48,7 @@ function updateData() {
             document.getElementById('lastUpdated').innerHTML=newLastUpdated;
             
             /* Current restrictions map */
-            redDays = ['05/01/2021', '06/01/2021'];
+            redDays = ['5/1/2021', '6/1/2021'];
             orangeDays = ['04/01/2021'];
             today = new Date();
             today = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
