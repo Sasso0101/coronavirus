@@ -334,13 +334,6 @@ footer p {
     color: #000;
 }
 
-.social {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
 .social div {
     margin: 1px 2px;
 }
@@ -351,7 +344,6 @@ footer p {
     background-color: rgba(255, 255, 255, 0.86);
     color: #000000;
     padding: 10px 0;
-    height: 39px;
     z-index: 3;
 }
 
@@ -381,6 +373,25 @@ footer p {
     color: #000 !important;
 }
 
+/* Cookie */
+
+#cookieContainer p {
+    margin: 5px 0 10px 0;
+}
+
+#moreInformation {
+    margin: 0 5px;
+}
+
+#accept {
+    background-color: #0088CC;
+    color: white;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     :root {
         --counters-title-font-size: 17px;
@@ -392,6 +403,11 @@ footer p {
     }
     .counter {
         padding: 7px 0;
+    }
+    #accept {
+        display: block;
+        width: fit-content;
+        margin: 5px auto;
     }
 }
 
@@ -411,9 +427,4 @@ footer p {
     .choice {
         font-size: 14px;
     }
-}
-
-.notaDecremento {
-    max-width: 600px;
-    margin: 10px auto 10px auto;
 }

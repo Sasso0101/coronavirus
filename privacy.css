@@ -1,0 +1,55 @@
+:root {
+    --background-color: #f5f5f0;
+    --text-color: black;
+    --box-background-color: #fff;
+    --chart-background-color: #fff;
+    --counters-title-font-size: 20px;
+    --counters-mainNumber-font-size: 47px;
+    --counters-smallNumber-font-size: 18px;
+    --counter-width: 280px;
+    --counter-margin: 6px;
+    --h1-font-size: 40px;
+    --h2-font-size: 24px;
+}
+
+body, h1, h2, h3 {
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('IBM Plex Sans'), local('IBMPlexSans'),
+      url('fonts/ibm-plex-sans-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url('fonts/ibm-plex-sans-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: justify;
+    margin: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px 0 10px 0;
+}
+
+p {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#back {
+    font-size: 23px;
+    text-align: center;
+    padding-top: 20px;
+}
+#back a:visited {
+    color: blue;
+}

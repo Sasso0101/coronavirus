@@ -210,11 +210,16 @@
     </section>
     <footer>
         <p id="idVersione" style="display: none"></p>
-        <p>Dati forniti dalla <a href="https://github.com/pcm-dpc/COVID-19" rel="noopener noreferrer" target="_blank">Protezione Civile</a> <a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/LICENSE" rel="noopener noreferrer" target="_blank">CC BY</a></p>
+        <p>Dati sull'andamento epidemiologico forniti dalla <a href="https://github.com/pcm-dpc/COVID-19" rel="noopener noreferrer" target="_blank">Protezione Civile</a> <a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/LICENSE" rel="noopener noreferrer" target="_blank">CC BY</a></p>
+        <p>Dati sui vaccini forniti dal <a href="https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9" rel="noopener noreferrer" target="_blank">Commissario straordinario Covid-19</a>.</p>
+        <p><a href="https://coronaviruslive.it/privacy.html">Privacy policy del sito</a></p>
         <p class="contatti">Questo sito è <a href="https://github.com/Sasso0101/coronavirus" rel="noopener noreferrer" target="_blank">open-source</a> (<a href="https://github.com/Sasso0101/coronavirus" rel="noopener noreferrer" target="_blank">github</a>) sotto licenza <a href="https://raw.githubusercontent.com/Sasso0101/coronavirus/master/LICENSE" rel="noopener noreferrer" target="_blank">MIT</a><br>Creato e aggiornato costantemente da <a href="https://sasso0101.dev/" rel="noopener noreferrer" target="_blank">Salvatore Andaloro</a><br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a>, <a href="https://www.instagram.com/sasso0101/" rel="noopener noreferrer" target="_blank">Instagram</a>, <a href="https://t.me/sasso0101" rel="noopener noreferrer" target="_blank">Telegram</a> - (c) 2020</p>
     </footer>
 
     <div class="social socialOverlay">
+        <div id="cookieContainer" style="display: none;">
+            <p>Questo sito fa utilizzo di cookie. <a id="moreInformation" href="https://coronaviruslive.it/privacy.html">Maggiori informazioni</a> <span id="accept" onclick="acceptCookies();">Accetta i cookie</span></p>
+        </div>
         <div class="sharethis-inline-share-buttons"></div>
     </div>
     <script src="js/libs/jquery-3.5.1.min.js"></script>
@@ -226,6 +231,7 @@
     <script src="js/chart.js?_=21"></script>
     <script src="js/maps.js?_=6"></script>
     <script src="js/populateData.js?_=24"></script>
+    <script src="js/cookies.js?_=1"></script>
     <script src="js/notifications.js?_=7"></script>
     
     <!-- Notifiche Push -->
