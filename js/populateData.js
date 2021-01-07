@@ -49,10 +49,12 @@ function updateData() {
             
             /* Current restrictions map */
             redDays = ['5/1/2021', '6/1/2021'];
-            orangeDays = ['04/01/2021'];
+            orangeDays = ['9/1/2021', '10/1/2021'];
+            yellowDays = ['7/1/2021', '8/1/2021'];
             today = new Date();
             today = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
             if (redDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesRedBig.svg';
+            else if (yellowDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesYellowBig.svg';
             else document.getElementById('restrinctionsMap').src = 'maps/zonesOrangeBig.svg';
 
             /* Restriction calendar */
