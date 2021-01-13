@@ -51,12 +51,12 @@ function updateData() {
             redDays = ['5/1/2021', '6/1/2021'];
             orangeDays = ['9/1/2021', '10/1/2021'];
             yellowDays = ['7/1/2021', '8/1/2021'];
-            today = new Date();
-            today = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            todayObj = new Date();
+            today = todayObj.getDate()+'/'+(todayObj.getMonth()+1)+'/'+todayObj.getFullYear();
             pastDate = new Date(2020, 1, 10);
             if (redDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesRedBig.svg';
             else if (yellowDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesYellowBig.svg';
-            else if (todayParsed > pastDate) {
+            else if (todayObj > pastDate) {
                 document.getElementById('restrictionsSelection').style.display = 'none';
                 document.getElementById('restrinctionsMap').src = 'maps/zones10Big.svg';
             }
