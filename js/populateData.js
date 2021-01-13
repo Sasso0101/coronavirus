@@ -53,10 +53,10 @@ function updateData() {
             yellowDays = ['7/1/2021', '8/1/2021'];
             today = new Date();
             today = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-            var todayParsed = Date.parse(today);
+            pastDate = new Date(2020, 1, 10);
             if (redDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesRedBig.svg';
             else if (yellowDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesYellowBig.svg';
-            else if (todayParsed > Date.parse('10/1/2021')) {
+            else if (todayParsed > pastDate) {
                 document.getElementById('restrictionsSelection').style.display = 'none';
                 document.getElementById('restrinctionsMap').src = 'maps/zones10Big.svg';
             }
