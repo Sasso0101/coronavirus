@@ -58,7 +58,7 @@ function updateData() {
             // else if (yellowDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesYellowBig.svg';
             // else if (todayObj > pastDate) {
                 document.getElementById('restrictionsSelection').style.display = 'none';
-                document.getElementById('restrinctionsMap').src = 'maps/zones.svg?_=2';
+                document.getElementById('restrinctionsMap').src = 'maps/zones.svg?_=3';
             // }
             // else document.getElementById('restrinctionsMap').src = 'maps/zonesOrangeBig.svg';
 
