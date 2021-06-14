@@ -89,6 +89,19 @@ function updateData() {
             document.getElementById('lastUpdatedVaccines').innerHTML=datiJSON.lastUpdated;
         }
     });
+    $.getJSON('https://salvatoreandaloro.altervista.org/coronavirus/zones.php?_=' + new Date().getTime(), function(datiJSON) {
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", "maps/zones.svg", false);
+        xhr.overrideMimeType("image/svg+xml");
+        xhr.onload = function(e) {
+            document.getElementById("zones").appendChild(xhr.responseXML.documentElement);
+        };
+        xhr.send("");
+
+        $.each(datiJSON, function( key, val ) {
+            document.getElementById(key).setAttribute("fill", val);
+        });
+    });
 }
 
 function populateCalendar() {
