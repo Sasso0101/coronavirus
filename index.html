@@ -59,15 +59,9 @@
     <meta name="twitter:description" content="Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.">
     <meta name="twitter:image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120259790-3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!-- Analytics -->
+    <script defer data-domain="coronaviruslive.it" src="https://analytics.sasso.dev/js/plausible.js"></script>
 
-      gtag('config', 'UA-120259790-3');
-    </script>
     <!-- Google ads -->
     <script defer data-ad-client="ca-pub-7138154641640821" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fdd503abed64e00118bc016&product=sop' async='async'></script>
@@ -126,12 +120,6 @@
     </section>
     <section id="restrictions">
         <h2>Restrizioni in vigore</h2>
-        <div id="chartSelection" class="chartSelection">
-            <!-- <div id="restrictionsSelection" class="restrictionsSelection">
-                <div id="byZone" class="choice" onClick="showZones();" style="background-color: #a0a0a0;">Oggi</div>
-                <div id="byCalendar" class="choice" onClick="showCalendar();">Calendario restrizioni</div>
-            </div> -->
-        </div>
         <div class="restrictionsContainer">
             <a href="http://www.governo.it/it/articolo/domande-frequenti-sulle-misure-adottate-dal-governo/15638" aria-label="FAQ Governo" id="zones" rel="noopener noreferrer" target="_blank" >
             </a>
