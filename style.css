@@ -396,7 +396,7 @@ footer p {
 @media (max-width: 768px) {
     :root {
         --counters-title-font-size: 17px;
-        --counters-mainNumber-font-size: 33px;
+        --counters-mainNumber-font-size: 29px;
         --counters-smallNumber-font-size: 15px;
         --counter-width: 176px;
         --counter-margin: 4px;
