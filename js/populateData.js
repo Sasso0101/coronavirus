@@ -47,24 +47,6 @@ function updateData() {
             // Last updated
             document.getElementById('lastUpdated').innerHTML=newLastUpdated;
             
-            /* Current restrictions map */
-            // redDays = ['5/1/2021', '6/1/2021'];
-            // orangeDays = ['9/1/2021', '10/1/2021'];
-            // yellowDays = ['7/1/2021', '8/1/2021'];
-            // todayObj = new Date();
-            // today = todayObj.getDate()+'/'+(todayObj.getMonth()+1)+'/'+todayObj.getFullYear();
-            // pastDate = new Date(2020, 1, 10);
-            // if (redDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesRedBig.svg';
-            // else if (yellowDays.includes(today)) document.getElementById('restrinctionsMap').src = 'maps/zonesYellowBig.svg';
-            // else if (todayObj > pastDate) {
-                // document.getElementById('restrictionsSelection').style.display = 'none';
-                // document.getElementById('restrinctionsMap').src = 'maps/zones.svg?_=4';
-            // }
-            // else document.getElementById('restrinctionsMap').src = 'maps/zonesOrangeBig.svg';
-
-            /* Restriction calendar */
-            populateCalendar();
-
             /* Cases map */
             initMap();
 
@@ -102,19 +84,4 @@ function updateData() {
             document.getElementById(key).setAttribute("fill", val);
         });
     });
-}
-
-function populateCalendar() {
-    var container = document.getElementById('calendar');
-    var zone = document.getElementById('copyZone').cloneNode(true);
-    zone.removeAttribute('style');
-    for (let i = 7; i <= 10; i++) {
-        zone.getElementsByClassName('day')[0].textContent = i + ' gen';
-        if ([7,8].includes(i)) {
-            zone.getElementsByTagName('img')[0].setAttribute('src', 'maps/zonesYellow.png');
-        } else {
-            zone.getElementsByTagName('img')[0].setAttribute('src', 'maps/zonesOrange.png');
-        }
-        container.appendChild(zone.cloneNode(true));
-    }
 }
