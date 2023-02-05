@@ -157,39 +157,6 @@ h2 {
     white-space: nowrap;
 }
 
-/* Notifiche */
-.boxNotifica {
-    text-align: center;
-    width: max-content;
-    margin: 10px auto;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
-    border-radius: 8px;
-    color: black;
-    font-size: 23px;
-    text-decoration: none;
-    cursor: pointer;
-    max-width: 80%;
-    padding: 3px 5px;
-}
-
-.disiscriviti {
-    background-color: transparent;
-    background-color: #ffffff;
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
-    border-radius: 8px;
-    color: black;
-    margin: 10px auto;
-    font-size: 20px;
-    padding: 3px 5px;
-}
-
-.boxNotifica span {
-    text-decoration: underline;
-}
-
 /* Regions/provinces map */
 .mapContainer {
     position: relative;
@@ -373,24 +340,13 @@ footer p {
     color: #000 !important;
 }
 
-/* Cookie */
-
-#cookieContainer p {
-    margin: 5px 0 10px 0;
+/* NOTICE */
+.notice {
+    background-color: #2e2e2e;
+    padding: 10px 5px;
 }
-
-#moreInformation {
-    margin: 0 5px;
-    color: #000000;
-}
-
-#accept {
-    background-color: #0088CC;
-    color: white;
-    border-radius: 20px;
-    padding: 5px;
-    margin: 5px;
-    cursor: pointer;
+.notice p {
+    margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -404,11 +360,6 @@ footer p {
     }
     .counter {
         padding: 7px 0;
-    }
-    #accept {
-        display: block;
-        width: fit-content;
-        margin: 5px auto;
     }
 }
 

@@ -58,15 +58,11 @@
     <meta name="twitter:title" content="Situazione Coronavirus in Italia">
     <meta name="twitter:description" content="Tutti i dati sulla diffusione del Coronavirus in Italia, aggiornati giorno dopo giorno.">
     <meta name="twitter:image" content="http://coronaviruslive.it/icons/favicon-96x96.png">
-
-    <!-- Analytics -->
-    <script defer data-domain="coronaviruslive.it" src="https://analytics.sasso.dev/js/plausible.js"></script>
-
-    <!-- Google ads -->
-    <script defer data-ad-client="ca-pub-7138154641640821" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fdd503abed64e00118bc016&product=sop' async='async'></script>
 </head>
 <body>
+    <div class="notice">
+        <p>Abbiamo cambiato indirizzo! Il vecchio indirizzo coronaviruslive.it non sarà più accessibile dal 21 febbraio.</p>
+    </div>
     <header>
         <h1>Situazione Coronavirus in Italia</h1>
     </header>
@@ -118,49 +114,12 @@
         <p style="margin: 5px 0 0 0;">Ultimo aggiornamento dati coronavirus: <time class="lastUpdated" id="lastUpdated"></time></p>
         <p style="margin: 5px 0 0 0; display: none;" id="vaccineLastUpdatedP">Ultimo aggiornamento dati vaccinazione: <time class="lastUpdated" id="lastUpdatedVaccines"></time></p>
     </section>
-    <!-- <section id="restrictions">
-        <h2>Restrizioni in vigore</h2>
-        <div class="restrictionsContainer">
-            <a href="http://www.governo.it/it/articolo/domande-frequenti-sulle-misure-adottate-dal-governo/15638" aria-label="FAQ Governo" id="zones" rel="noopener noreferrer" target="_blank" >
-            </a>
-            <div id="calendar" style="display: none;">
-                <div class="dayContainer" id="copyZone" style="display: none;">
-                    <div class="day">24 dic</div>
-                    <div class="restriction">
-                        <a href="http://www.governo.it/it/articolo/domande-frequenti-sulle-misure-adottate-dal-governo/15638" rel="noopener noreferrer" aria-label="FAQ Governo" target="_blank" >
-                            <img src="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="zonesInfo" class="zonesInfo">
-            <p>💡 Premendo sulle mappe verrai reindirizzato sul sito del Governo con le informazioni sulle misure adottate.</p>
-            <p>❗ Specifiche regioni possono avere adottato ordinanze più restrittive.</p>
-        </div>
-    </section> -->
     <section id="socialBox">
-        <div class="boxNotifica" style="display: none;"></div>
-        <div class="linkSocial">
-            <a href="https://t.me/coronavirusliveitalia" rel="noopener noreferrer" target="_blank" class="linkIcona"><img src="img/telegram.svg" alt=""><span>Seguici su Telegram!</span></a><br>
-            <a href="https://www.facebook.com/coronavirusliveitalia" rel="noopener noreferrer" target="_blank" class="linkIcona"><img src="img/facebook.svg" alt=""><span>Seguici su Facebook!</span></a>
-        </div>
         <span class="consiglialo">Consiglialo ai tuoi amici: </span>
         <div class="social socialFissi">
             <div class="sharethis-inline-share-buttons"></div>
         </div>
     </section>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-         style="display:block; margin: 15px auto 10px auto; z-index: 0; width: 320px; height: 100px;"
-         data-ad-client="ca-pub-7138154641640821"
-         data-ad-slot="3636505839"
-         data-ad-format="auto"
-         data-ad-test="on"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
     <section id="maps">
         <h2>Distribuzione dei casi sul territorio</h2>
         <div id="chartSelection" class="chartSelection">
@@ -210,14 +169,11 @@
         <p id="idVersione" style="display: none"></p>
         <p>Dati sull'andamento epidemiologico forniti dalla <a href="https://github.com/pcm-dpc/COVID-19" rel="noopener noreferrer" target="_blank">Protezione Civile</a> <a href="https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/LICENSE" rel="noopener noreferrer" target="_blank">CC BY</a></p>
         <p>Dati sui vaccini forniti dal <a href="https://github.com/italia/covid19-opendata-vaccini" rel="noopener noreferrer" target="_blank">Commissario straordinario Covid-19</a>.</p>
-        <p><a href="https://coronaviruslive.it/privacy.html">Privacy policy del sito</a></p>
-        <p class="contatti">Questo sito è <a href="https://github.com/Sasso0101/coronavirus" rel="noopener noreferrer" target="_blank">open-source</a> (<a href="https://github.com/Sasso0101/coronavirus" rel="noopener noreferrer" target="_blank">github</a>) sotto licenza <a href="https://raw.githubusercontent.com/Sasso0101/coronavirus/master/LICENSE" rel="noopener noreferrer" target="_blank">MIT</a><br>Creato e aggiornato costantemente da <a href="https://sasso.dev/" rel="noopener noreferrer" target="_blank">Salvatore Andaloro</a><br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a>, <a href="https://www.instagram.com/sasso0101/" rel="noopener noreferrer" target="_blank">Instagram</a>, <a href="https://t.me/sasso0101" rel="noopener noreferrer" target="_blank">Telegram</a></p>
+        <p>Questo sito non fa uso di nessun cookie.</p>
+        <p class="contatti">Questo sito è <a href="https://github.com/Sasso0101/coronavirus" rel="noopener noreferrer" target="_blank">open-source</a> (<a href="https://github.com/Sasso0101/coronavirus" rel="noopener noreferrer" target="_blank">github</a>) sotto licenza <a href="https://raw.githubusercontent.com/Sasso0101/coronavirus/master/LICENSE" rel="noopener noreferrer" target="_blank">MIT</a><br>Creato da <a href="https://sasso.dev/" rel="noopener noreferrer" target="_blank">Salvatore Andaloro</a><br>Contatti: <a href="mailto:sasso0101@gmail.com">Mail</a>, <a href="https://sasso.dev" rel="noopener noreferrer" target="_blank">Sito web</a></p>
     </footer>
 
     <div class="social socialOverlay">
-        <div id="cookieContainer" style="display: none;">
-            <p>Questo sito fa utilizzo di cookie. <a id="moreInformation" href="https://coronaviruslive.it/privacy.html">Maggiori informazioni</a> <span id="accept" onclick="acceptCookies();">Accetta i cookie</span></p>
-        </div>
         <div class="sharethis-inline-share-buttons"></div>
     </div>
     <script src="js/libs/jquery-3.5.1.min.js"></script>
@@ -229,11 +185,7 @@
     <script src="js/chart.js?_=21"></script>
     <script src="js/maps.js?_=6"></script>
     <script src="js/populateData.js?_=35"></script>
-    <script src="js/cookies.js?_=1"></script>
-    <script src="js/notifications.js?_=7"></script>
     
-    <!-- Notifiche Push -->
-    <script defer src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             var root = document.documentElement;
