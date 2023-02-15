@@ -342,7 +342,7 @@ footer p {
 
 /* NOTICE */
 .notice {
-    background-color: #2e2e2e;
+    background-color: var(--box-background-color);
     padding: 10px 5px;
 }
 .notice p {
