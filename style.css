@@ -340,15 +340,6 @@ footer p {
     color: #000 !important;
 }
 
-/* NOTICE */
-.notice {
-    background-color: var(--box-background-color);
-    padding: 10px 5px;
-}
-.notice p {
-    margin: 0;
-}
-
 @media (max-width: 768px) {
     :root {
         --counters-title-font-size: 17px;
